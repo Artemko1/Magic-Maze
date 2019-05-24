@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 419bd73280d68d549971de3be9d4c572
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - board: {fileID: 664873475245246372, guid: bf2290b2b0053a843aafeaf70ad7e949, type: 3}
+  - maze: {instanceID: 0}
+  - playerPrefab: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
