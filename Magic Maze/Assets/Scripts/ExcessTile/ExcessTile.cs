@@ -60,10 +60,30 @@ public class ExcessTile : MonoBehaviour {
     /// <summary>
     /// Поворачивает клетку на 90* против часовой стрелки.
     /// </summary>
-    public void Rotate()
+    public void RotateCounterclockwise()
     {
         transform.Rotate(0,-90f, 0);
+        Debug.Log("RotateCounterclockwise called");
+        bool wasWallUp = isWallUp;
+
+        isWallUp = isWallRight;
+        isWallRight = isWallDown;
+        isWallDown = isWallLeft;
+        isWallLeft = wasWallUp;
     }
+
+    public void RotateClockwise()
+    {
+        transform.Rotate(0, 90f, 0);
+        Debug.Log("RotateClockwise called");
+        bool wasWallUp = isWallUp;
+
+        isWallUp = isWallLeft;
+        isWallLeft = isWallDown ;
+        isWallDown = isWallRight;
+        isWallRight = wasWallUp;
+    }
+
     /// <summary>
     /// Двигает клетку на следующую позицию
     /// </summary>
@@ -75,7 +95,7 @@ public class ExcessTile : MonoBehaviour {
         Vector3 nextPosition = Maze.extraPositions[extraPosId];
         transform.position = nextPosition;
         if (extraPosId % 4 == 0)
-            transform.Rotate(0, -90f, 0);
+            RotateCounterclockwise();
     }
 
     public void GenerateWalls()
