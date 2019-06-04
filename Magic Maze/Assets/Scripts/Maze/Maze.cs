@@ -67,7 +67,7 @@ public class Maze : MonoBehaviour
         tileArray = mazeGenerator.GenerateTiles(boardSize);
         GeneratePlayers();
         GenerateExcessPositions();
-        SetExcessTilePosition(extraPositions[0]);
+        excessTile.transform.position = extraPositions[0];
     }
     
     /// <summary>
@@ -142,11 +142,6 @@ public class Maze : MonoBehaviour
                 extraPositions[n] = GetTile(z, x).transform.position + new Vector3(-1, 0, 0) * spacing;
                 break;
         }
-    }
-
-    private void SetExcessTilePosition(Vector3 pos)
-    {
-        excessTile.transform.position = pos;
     }
         
     public void GenerateNewTiles() // Генерирует новые стенки всем клеткам лабиринта
