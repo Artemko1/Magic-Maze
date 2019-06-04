@@ -4,23 +4,8 @@ using UnityEngine;
 [SelectionBase]
 public class ExcessTile : Tile
 {
-    //private GameObject upWallObject;
-    //private GameObject rightWallObject;
-    //private GameObject downWallObject;
-    //private GameObject leftWallObject;
-
-    //[SerializeField]
-    //private bool isWallUp;
-    //[SerializeField]
-    //private bool isWallRight;
-    //[SerializeField]
-    //private bool isWallDown;
-    //[SerializeField]
-    //private bool isWallLeft;
     [SerializeField]
     private int extraPosId;
-
-    
 
     public int ExtraPosId { get => extraPosId; set => extraPosId = value; }
     public Direction CurrentDirection
