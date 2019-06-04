@@ -20,7 +20,7 @@ public class ExcessTileGenerator
         }
     }
 
-    static void GenerateOppositeWalls(ExcessTile excessTile)
+    private static void GenerateOppositeWalls(ExcessTile excessTile)
     {
         if (Random.value <= 0.5)
         {
@@ -34,7 +34,7 @@ public class ExcessTileGenerator
         }
     }
 
-    static void GenerateCornerWalls(ExcessTile excessTile)
+    private static void GenerateCornerWalls(ExcessTile excessTile)
     {
         if (Random.value <= 0.25)
         {
@@ -57,6 +57,7 @@ public class ExcessTileGenerator
             ActivateWalls(excessTile, true, false, false, true);
         }
     }
+
     /// <summary>
     /// Устанавливает булевые переменные и отображает соответствующие стенки.
     /// </summary>
@@ -65,7 +66,7 @@ public class ExcessTileGenerator
     /// <param name="right"></param>
     /// <param name="down"></param>
     /// <param name="left"></param>
-    static void ActivateWalls(ExcessTile excessTile, bool up, bool right, bool down, bool left)
+    private static void ActivateWalls(ExcessTile excessTile, bool up, bool right, bool down, bool left)
     {
         excessTile.isWallUp = up;
         excessTile.isWallRight = right;
@@ -107,7 +108,7 @@ public class ExcessTileGenerator
         }
     }
 
-    static void SetWallVisual(ExcessTile excessTile, string wallName, bool set)
+    private static void SetWallVisual(ExcessTile excessTile, string wallName, bool set)
     {
         excessTile.transform.Find("Plate Visual").Find(wallName).gameObject.SetActive(set);
     }
