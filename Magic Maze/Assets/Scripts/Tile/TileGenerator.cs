@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ExcessTileGenerator
+public class TileGenerator
 {
     /// <summary>
     /// Случайно генерирует стены для переданной клетки.
@@ -72,44 +72,5 @@ public class ExcessTileGenerator
         excessTile.IsWallRight = right;
         excessTile.IsWallDown = down;
         excessTile.IsWallLeft = left;
-
-        if (excessTile.IsWallUp)
-        {
-            SetWallVisual(excessTile, "Wall Up", true);
-        }
-        else
-        {
-            SetWallVisual(excessTile, "Wall Up", false);
-        }
-
-        if (excessTile.IsWallRight)
-        {
-            SetWallVisual(excessTile, "Wall Right", true);
-        }
-        else
-        {
-            SetWallVisual(excessTile, "Wall Right", false);
-        }
-        if (excessTile.IsWallDown)
-        {
-            SetWallVisual(excessTile, "Wall Down", true);
-        }
-        else
-        {
-            SetWallVisual(excessTile, "Wall Down", false);
-        }
-        if (excessTile.IsWallLeft)
-        {
-            SetWallVisual(excessTile, "Wall Left", true);
-        }
-        else
-        {
-            SetWallVisual(excessTile, "Wall Left", false);
-        }
-    }
-
-    private static void SetWallVisual(Tile excessTile, string wallName, bool set)
-    {
-        excessTile.transform.Find("Plate Visual").Find(wallName).gameObject.SetActive(set);
     }
 }

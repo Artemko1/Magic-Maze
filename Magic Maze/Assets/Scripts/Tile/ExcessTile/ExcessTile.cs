@@ -35,7 +35,7 @@ public class ExcessTile : Tile
         downWallObject  = transform.Find("Plate Visual").Find("Wall Down").gameObject;
         leftWallObject = transform.Find("Plate Visual").Find("Wall Left").gameObject;
 
-        ExcessTileGenerator.GenerateWalls(this);
+        TileGenerator.GenerateWalls(this);
     }
 
     /// <summary>
