@@ -68,12 +68,12 @@ public class ExcessTileGenerator
     /// <param name="left"></param>
     private static void ActivateWalls(ExcessTile excessTile, bool up, bool right, bool down, bool left)
     {
-        excessTile.isWallUp = up;
-        excessTile.isWallRight = right;
-        excessTile.isWallDown = down;
-        excessTile.isWallLeft = left;
+        excessTile.IsWallUp = up;
+        excessTile.IsWallRight = right;
+        excessTile.IsWallDown = down;
+        excessTile.IsWallLeft = left;
 
-        if (excessTile.isWallUp)
+        if (excessTile.IsWallUp)
         {
             SetWallVisual(excessTile, "Wall Up", true);
         }
@@ -82,7 +82,7 @@ public class ExcessTileGenerator
             SetWallVisual(excessTile, "Wall Up", false);
         }
 
-        if (excessTile.isWallRight)
+        if (excessTile.IsWallRight)
         {
             SetWallVisual(excessTile, "Wall Right", true);
         }
@@ -90,7 +90,7 @@ public class ExcessTileGenerator
         {
             SetWallVisual(excessTile, "Wall Right", false);
         }
-        if (excessTile.isWallDown)
+        if (excessTile.IsWallDown)
         {
             SetWallVisual(excessTile, "Wall Down", true);
         }
@@ -98,7 +98,7 @@ public class ExcessTileGenerator
         {
             SetWallVisual(excessTile, "Wall Down", false);
         }
-        if (excessTile.isWallLeft)
+        if (excessTile.IsWallLeft)
         {
             SetWallVisual(excessTile, "Wall Left", true);
         }

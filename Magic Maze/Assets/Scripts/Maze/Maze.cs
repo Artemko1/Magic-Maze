@@ -188,15 +188,15 @@ public class Maze : MonoBehaviour {
     private void MoveColumnUp()
     {
         int x = excessTile.GetRowNumber();
-        int oldExtraPosId = excessTile.extraPosId;
+        int oldExtraPosId = excessTile.ExtraPosId;
         // Первый тайл становится эксесс
         Tile toBecomeExcessTile = GetTile(0, x);
         ExcessTile newExcessTile = toBecomeExcessTile.gameObject.AddComponent<ExcessTile>();
 
-        newExcessTile.isWallUp = toBecomeExcessTile.isWallUp;
-        newExcessTile.isWallRight = toBecomeExcessTile.isWallRight;
-        newExcessTile.isWallDown = toBecomeExcessTile.isWallDown;
-        newExcessTile.isWallLeft = toBecomeExcessTile.isWallLeft;
+        newExcessTile.IsWallUp = toBecomeExcessTile.isWallUp;
+        newExcessTile.IsWallRight = toBecomeExcessTile.isWallRight;
+        newExcessTile.IsWallDown = toBecomeExcessTile.isWallDown;
+        newExcessTile.IsWallLeft = toBecomeExcessTile.isWallLeft;
         toBecomeExcessTile.MoveUp();
         Destroy(toBecomeExcessTile);
 
@@ -212,10 +212,10 @@ public class Maze : MonoBehaviour {
         Tile toBeReplacedByExcessTile = GetTile(boardSize - 1, x);
         Tile newTile = excessTile.gameObject.AddComponent<Tile>();
 
-        newTile.isWallUp = excessTile.isWallUp;
-        newTile.isWallRight = excessTile.isWallRight;
-        newTile.isWallDown = excessTile.isWallDown;
-        newTile.isWallLeft = excessTile.isWallLeft;
+        newTile.isWallUp = excessTile.IsWallUp;
+        newTile.isWallRight = excessTile.IsWallRight;
+        newTile.isWallDown = excessTile.IsWallDown;
+        newTile.isWallLeft = excessTile.IsWallLeft;
         Destroy(excessTile);
 
         // Индекс уменьшался, чтобы перезаписать тайл в другую клетку.
@@ -228,7 +228,7 @@ public class Maze : MonoBehaviour {
 
         SetTile(boardSize - 1, x, newTile);
         excessTile = newExcessTile;
-        excessTile.extraPosId = 3 * MovableRowsPerSide - oldExtraPosId - 1;
+        excessTile.ExtraPosId = 3 * MovableRowsPerSide - oldExtraPosId - 1;
 
         MoveExcessTileButton.onClick.RemoveAllListeners();
         MoveExcessTileButton.onClick.AddListener(() => excessTile.MoveForward());
@@ -239,15 +239,15 @@ public class Maze : MonoBehaviour {
     private void MoveColumnRight()
     {
         int z = excessTile.GetRowNumber();
-        int oldExtraPosId = excessTile.extraPosId;
+        int oldExtraPosId = excessTile.ExtraPosId;
         // Последний тайл становится эксесс
         Tile toBecomeExcessTile = GetTile(z, boardSize-1);
         ExcessTile newExcessTile = toBecomeExcessTile.gameObject.AddComponent<ExcessTile>();
 
-        newExcessTile.isWallUp = toBecomeExcessTile.isWallUp;
-        newExcessTile.isWallRight = toBecomeExcessTile.isWallRight;
-        newExcessTile.isWallDown = toBecomeExcessTile.isWallDown;
-        newExcessTile.isWallLeft = toBecomeExcessTile.isWallLeft;
+        newExcessTile.IsWallUp = toBecomeExcessTile.isWallUp;
+        newExcessTile.IsWallRight = toBecomeExcessTile.isWallRight;
+        newExcessTile.IsWallDown = toBecomeExcessTile.isWallDown;
+        newExcessTile.IsWallLeft = toBecomeExcessTile.isWallLeft;
         toBecomeExcessTile.MoveRight();
         Destroy(toBecomeExcessTile);
 
@@ -263,10 +263,10 @@ public class Maze : MonoBehaviour {
         Tile toBeReplacedByExcessTile = GetTile(z, 0);
         Tile newTile = excessTile.gameObject.AddComponent<Tile>();
 
-        newTile.isWallUp = excessTile.isWallUp;
-        newTile.isWallRight = excessTile.isWallRight;
-        newTile.isWallDown = excessTile.isWallDown;
-        newTile.isWallLeft = excessTile.isWallLeft;
+        newTile.isWallUp = excessTile.IsWallUp;
+        newTile.isWallRight = excessTile.IsWallRight;
+        newTile.isWallDown = excessTile.IsWallDown;
+        newTile.isWallLeft = excessTile.IsWallLeft;
         Destroy(excessTile);
 
         newTile.zIndex = toBeReplacedByExcessTile.zIndex;
@@ -277,7 +277,7 @@ public class Maze : MonoBehaviour {
 
         SetTile(z, 0, newTile);
         excessTile = newExcessTile;
-        excessTile.extraPosId = 5 * MovableRowsPerSide - oldExtraPosId - 1;
+        excessTile.ExtraPosId = 5 * MovableRowsPerSide - oldExtraPosId - 1;
 
         MoveExcessTileButton.onClick.RemoveAllListeners();
         MoveExcessTileButton.onClick.AddListener(() => excessTile.MoveForward());
@@ -288,15 +288,15 @@ public class Maze : MonoBehaviour {
     private void MoveColumnDown()
     {
         int x = excessTile.GetRowNumber();
-        int oldExtraPosId = excessTile.extraPosId;
+        int oldExtraPosId = excessTile.ExtraPosId;
         // Последний тайл становится эксесс
         Tile toBecomeExcessTile = GetTile(boardSize-1, x);
         ExcessTile newExcessTile = toBecomeExcessTile.gameObject.AddComponent<ExcessTile>();
 
-        newExcessTile.isWallUp = toBecomeExcessTile.isWallUp;
-        newExcessTile.isWallRight = toBecomeExcessTile.isWallRight;
-        newExcessTile.isWallDown = toBecomeExcessTile.isWallDown;
-        newExcessTile.isWallLeft = toBecomeExcessTile.isWallLeft;
+        newExcessTile.IsWallUp = toBecomeExcessTile.isWallUp;
+        newExcessTile.IsWallRight = toBecomeExcessTile.isWallRight;
+        newExcessTile.IsWallDown = toBecomeExcessTile.isWallDown;
+        newExcessTile.IsWallLeft = toBecomeExcessTile.isWallLeft;
         toBecomeExcessTile.MoveDown();
         Destroy(toBecomeExcessTile);
 
@@ -312,10 +312,10 @@ public class Maze : MonoBehaviour {
         Tile toBeReplacedByExcessTile = GetTile(0, x);
         Tile newTile = excessTile.gameObject.AddComponent<Tile>();
 
-        newTile.isWallUp = excessTile.isWallUp;
-        newTile.isWallRight = excessTile.isWallRight;
-        newTile.isWallDown = excessTile.isWallDown;
-        newTile.isWallLeft = excessTile.isWallLeft;
+        newTile.isWallUp = excessTile.IsWallUp;
+        newTile.isWallRight = excessTile.IsWallRight;
+        newTile.isWallDown = excessTile.IsWallDown;
+        newTile.isWallLeft = excessTile.IsWallLeft;
         Destroy(excessTile);
 
         newTile.zIndex = toBeReplacedByExcessTile.zIndex;
@@ -325,7 +325,7 @@ public class Maze : MonoBehaviour {
 
         SetTile(0, x, newTile);
         excessTile = newExcessTile;
-        excessTile.extraPosId = 3 * MovableRowsPerSide - oldExtraPosId - 1;
+        excessTile.ExtraPosId = 3 * MovableRowsPerSide - oldExtraPosId - 1;
 
         MoveExcessTileButton.onClick.RemoveAllListeners();
         MoveExcessTileButton.onClick.AddListener(() => excessTile.MoveForward());
@@ -336,15 +336,15 @@ public class Maze : MonoBehaviour {
     private void MoveColumnLeft()
     {
         int z = excessTile.GetRowNumber();
-        int oldExtraPosId = excessTile.extraPosId;
+        int oldExtraPosId = excessTile.ExtraPosId;
         // Первый тайл становится эксесс
         Tile toBecomeExcessTile = GetTile(z, 0);
         ExcessTile newExcessTile = toBecomeExcessTile.gameObject.AddComponent<ExcessTile>();
 
-        newExcessTile.isWallUp = toBecomeExcessTile.isWallUp;
-        newExcessTile.isWallRight = toBecomeExcessTile.isWallRight;
-        newExcessTile.isWallDown = toBecomeExcessTile.isWallDown;
-        newExcessTile.isWallLeft = toBecomeExcessTile.isWallLeft;
+        newExcessTile.IsWallUp = toBecomeExcessTile.isWallUp;
+        newExcessTile.IsWallRight = toBecomeExcessTile.isWallRight;
+        newExcessTile.IsWallDown = toBecomeExcessTile.isWallDown;
+        newExcessTile.IsWallLeft = toBecomeExcessTile.isWallLeft;
         toBecomeExcessTile.MoveLeft();
         Destroy(toBecomeExcessTile);
 
@@ -360,10 +360,10 @@ public class Maze : MonoBehaviour {
         Tile toBeReplacedByExcessTile = GetTile(z, boardSize - 1);
         Tile newTile = excessTile.gameObject.AddComponent<Tile>();
 
-        newTile.isWallUp = excessTile.isWallUp;
-        newTile.isWallRight = excessTile.isWallRight;
-        newTile.isWallDown = excessTile.isWallDown;
-        newTile.isWallLeft = excessTile.isWallLeft;
+        newTile.isWallUp = excessTile.IsWallUp;
+        newTile.isWallRight = excessTile.IsWallRight;
+        newTile.isWallDown = excessTile.IsWallDown;
+        newTile.isWallLeft = excessTile.IsWallLeft;
         Destroy(excessTile);
 
         newTile.xIndex = toBeReplacedByExcessTile.xIndex;
@@ -373,7 +373,7 @@ public class Maze : MonoBehaviour {
 
         SetTile(z, boardSize - 1, newTile);
         excessTile = newExcessTile;
-        excessTile.extraPosId = 5 * MovableRowsPerSide - oldExtraPosId - 1;
+        excessTile.ExtraPosId = 5 * MovableRowsPerSide - oldExtraPosId - 1;
 
         MoveExcessTileButton.onClick.RemoveAllListeners();
         MoveExcessTileButton.onClick.AddListener(() => excessTile.MoveForward());

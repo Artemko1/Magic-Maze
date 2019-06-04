@@ -2,19 +2,71 @@
 using System.Collections.Generic;
 using UnityEngine;
 [SelectionBase]
-public class ExcessTile : MonoBehaviour {
+public class ExcessTile : MonoBehaviour
+{
+    private GameObject upWallObject;
+    private GameObject rightWallObject;
+    private GameObject downWallObject;
+    private GameObject leftWallObject;
 
-    public bool isWallUp;
-    public bool isWallRight;
-    public bool isWallDown;
-    public bool isWallLeft;
+    [SerializeField]
+    private bool isWallUp;
+    [SerializeField]
+    private bool isWallRight;
+    [SerializeField]
+    private bool isWallDown;
+    [SerializeField]
+    private bool isWallLeft;
+    [SerializeField]
+    private int extraPosId;
 
-    public int extraPosId;
+    public bool IsWallUp
+    {
+        get => isWallUp;
+        set
+        {
+            isWallUp = value;
+            Debug.Log("Inside up setter");
+            upWallObject?.SetActive(value);
+        }
+    }
+    public bool IsWallRight
+    {
+        get => isWallRight;
+        set
+        {
+            isWallRight = value;
+            Debug.Log("Inside right setter");
+            rightWallObject?.SetActive(value);
+        }
+    }
+    public bool IsWallDown
+    {
+        get => isWallDown;
+        set
+        {
+            isWallDown = value;
+            Debug.Log("Inside down setter");
+            downWallObject?.SetActive(value);
+        }
+    }
+    public bool IsWallLeft
+    {
+        get => isWallLeft;
+        set
+        {
+            isWallLeft = value;
+            Debug.Log("Inside left setter");
+            leftWallObject?.SetActive(value);
+        }
+    }
+
+    public int ExtraPosId { get => extraPosId; set => extraPosId = value; }
     public Direction CurrentDirection
     {
         get
         {
-             switch ((extraPosId / Maze.MovableRowsPerSide))
+            switch ((ExtraPosId / Maze.MovableRowsPerSide))
             {
                 case 0:
                     return Direction.Down;
@@ -26,11 +78,18 @@ public class ExcessTile : MonoBehaviour {
                     return Direction.Left;
                 default:
                     throw new System.ArgumentException("Parameter can only be 0-3", " extraPosId/Maze.MovableRowsPerSide");
-            }            
+            }
         }
     }
 
-    
+    private void Awake()
+    {
+        upWallObject    = transform.Find("Plate Visual").Find("Wall Up").gameObject;
+        rightWallObject = transform.Find("Plate Visual").Find("Wall Right").gameObject;
+        downWallObject  = transform.Find("Plate Visual").Find("Wall Down").gameObject;
+        leftWallObject = transform.Find("Plate Visual").Find("Wall Left").gameObject;
+    }
+
     /// <summary>
     /// Выводит в консоль положение относительно лабиринта.
     /// </summary>
@@ -39,49 +98,54 @@ public class ExcessTile : MonoBehaviour {
         Debug.Log("Current direction is " + CurrentDirection);
     }
 
-    public int GetRowNumber() // Возвращает координату z или x лабиринта, где сейчас находится ExcessTile
+    /// <summary>
+    /// Возвращает координату z или x лабиринта, где сейчас находится ExcessTile
+    /// </summary>
+    /// <returns></returns>
+    public int GetRowNumber()
     {
         switch (CurrentDirection)
         {
             case Direction.Down:
-                return extraPosId * 2 + 1;
+                return ExtraPosId * 2 + 1;
             case Direction.Right:
-                return Maze.boardSize - 1 - ((extraPosId - Maze.MovableRowsPerSide) * 2 + 1);
+                return Maze.boardSize - 1 - ((ExtraPosId - Maze.MovableRowsPerSide) * 2 + 1);
             case Direction.Up:
-                return Maze.boardSize - 1 - ((extraPosId - 2 * Maze.MovableRowsPerSide) * 2 + 1);
+                return Maze.boardSize - 1 - ((ExtraPosId - 2 * Maze.MovableRowsPerSide) * 2 + 1);
             case Direction.Left:
-                return (extraPosId - 3 * Maze.MovableRowsPerSide) * 2 + 1;
+                return (ExtraPosId - 3 * Maze.MovableRowsPerSide) * 2 + 1;
             default:
                 throw new System.ArgumentException("Wrong direction in CurrentDirection");
         }
-        
+
     }
 
     /// <summary>
     /// Поворачивает клетку на 90* против часовой стрелки.
+    /// Вызывается при движении клетки против часовой стрелки вокруг лабиринта.
     /// </summary>
     public void RotateCounterclockwise()
     {
-        transform.Rotate(0,-90f, 0);
+        //transform.Rotate(0, -90f, 0);
         Debug.Log("RotateCounterclockwise called");
-        bool wasWallUp = isWallUp;
+        bool wasWallUp = IsWallUp;
 
-        isWallUp = isWallRight;
-        isWallRight = isWallDown;
-        isWallDown = isWallLeft;
-        isWallLeft = wasWallUp;
+        IsWallUp = IsWallRight;
+        IsWallRight = IsWallDown;
+        IsWallDown = IsWallLeft;
+        IsWallLeft = wasWallUp;
     }
 
     public void RotateClockwise()
     {
-        transform.Rotate(0, 90f, 0);
+        //transform.Rotate(0, 90f, 0);
         Debug.Log("RotateClockwise called");
-        bool wasWallUp = isWallUp;
+        bool wasWallUp = IsWallUp;
 
-        isWallUp = isWallLeft;
-        isWallLeft = isWallDown ;
-        isWallDown = isWallRight;
-        isWallRight = wasWallUp;
+        IsWallUp = IsWallLeft;
+        IsWallLeft = IsWallDown;
+        IsWallDown = IsWallRight;
+        IsWallRight = wasWallUp;
     }
 
     /// <summary>
@@ -89,109 +153,12 @@ public class ExcessTile : MonoBehaviour {
     /// </summary>
     public void MoveForward()
     {
-        extraPosId++;
-        if (extraPosId == Maze.MovableRows)
-            extraPosId = 0;
-        Vector3 nextPosition = Maze.extraPositions[extraPosId];
+        ExtraPosId++;
+        if (ExtraPosId == Maze.MovableRows)
+            ExtraPosId = 0;
+        Vector3 nextPosition = Maze.extraPositions[ExtraPosId];
         transform.position = nextPosition;
-        if (extraPosId % 4 == 0)
+        if (ExtraPosId % 4 == 0)
             RotateCounterclockwise();
-    }
-
-    public void GenerateWalls()
-    {
-        if (Random.value <= 0.6)
-        {
-            GenerateOppositeWalls();
-        }
-        else
-        {
-            GenerateCornerWalls();
-        }
-    }
-
-    void GenerateOppositeWalls()
-    {
-        if (Random.value <= 0.5)
-        {
-            // Верхнюю и нижнюю
-            ActivateWalls(true, false, true, false);
-        }
-        else
-        {
-            // Правую и левую
-            ActivateWalls(false, true, false, true);
-        }
-    }
-
-    void GenerateCornerWalls()
-    {
-        if (Random.value <= 0.25)
-        {
-            // Верхнюю и правую
-            ActivateWalls(true, true, false, false);
-        }
-        else if (Random.value <= 0.5)
-        {
-            // Правую и нижнюю
-            ActivateWalls(false, true, true, false);
-        }
-        else if (Random.value <= 0.75)
-        {
-            // Нижнюю и левую
-            ActivateWalls(false, false, true, true);
-        }
-        else
-        {
-            // Левую и верхнюю
-            ActivateWalls(true, false, false, true);
-        }
-    }
-
-    void ActivateWalls(bool up, bool right, bool down, bool left)
-    {
-        isWallUp = up;
-        isWallRight = right;
-        isWallDown = down;
-        isWallLeft = left;
-
-        if (isWallUp)
-        {
-            SetWallVisual("Wall Up", true);
-        }
-        else
-        {
-            SetWallVisual("Wall Up", false);
-        }
-
-        if (isWallRight)
-        {
-            SetWallVisual("Wall Right", true);
-        }
-        else
-        {
-            SetWallVisual("Wall Right", false);
-        }
-        if (isWallDown)
-        {
-            SetWallVisual("Wall Down", true);
-        }
-        else
-        {
-            SetWallVisual("Wall Down", false);
-        }
-        if (isWallLeft)
-        {
-            SetWallVisual("Wall Left", true);
-        }
-        else
-        {
-            SetWallVisual("Wall Left", false);
-        }
-    }
-
-    void SetWallVisual(string wallName, bool set)
-    {
-        transform.Find("Plate Visual").Find(wallName).gameObject.SetActive(set);
     }
 }
