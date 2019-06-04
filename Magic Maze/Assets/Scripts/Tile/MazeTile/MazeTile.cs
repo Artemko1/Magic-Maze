@@ -14,6 +14,11 @@ public class MazeTile : Tile
 
     private void Awake()
     {
+        upWallObject = transform.Find("Plate Visual").Find("Wall Up").gameObject;
+        rightWallObject = transform.Find("Plate Visual").Find("Wall Right").gameObject;
+        downWallObject = transform.Find("Plate Visual").Find("Wall Down").gameObject;
+        leftWallObject = transform.Find("Plate Visual").Find("Wall Left").gameObject;
+
         TileGenerator.GenerateWalls(this);
     }
 
