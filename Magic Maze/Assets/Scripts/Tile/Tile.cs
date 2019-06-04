@@ -24,7 +24,7 @@ public class Tile : MonoBehaviour
         set
         {
             isWallUp = value;
-            Debug.Log("Inside up setter");
+            // Нужно добавить проверку на наличие стенки в переменной.
             upWallObject?.SetActive(value);
         }
     }
@@ -34,7 +34,6 @@ public class Tile : MonoBehaviour
         set
         {
             isWallRight = value;
-            Debug.Log("Inside right setter");
             rightWallObject?.SetActive(value);
         }
     }
@@ -44,7 +43,6 @@ public class Tile : MonoBehaviour
         set
         {
             isWallDown = value;
-            Debug.Log("Inside down setter");
             downWallObject?.SetActive(value);
         }
     }
@@ -54,7 +52,6 @@ public class Tile : MonoBehaviour
         set
         {
             isWallLeft = value;
-            Debug.Log("Inside left setter");
             leftWallObject?.SetActive(value);
         }
     }
