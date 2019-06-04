@@ -8,7 +8,7 @@ public class ExcessTileGenerator
     /// Случайно генерирует стены для переданной клетки.
     /// </summary>
     /// <param name="tile"></param>
-    public static void GenerateWalls(ExcessTile excessTile)
+    public static void GenerateWalls(Tile excessTile)
     {
         if (Random.value <= 0.6)
         {
@@ -20,7 +20,7 @@ public class ExcessTileGenerator
         }
     }
 
-    private static void GenerateOppositeWalls(ExcessTile excessTile)
+    private static void GenerateOppositeWalls(Tile excessTile)
     {
         if (Random.value <= 0.5)
         {
@@ -34,7 +34,7 @@ public class ExcessTileGenerator
         }
     }
 
-    private static void GenerateCornerWalls(ExcessTile excessTile)
+    private static void GenerateCornerWalls(Tile excessTile)
     {
         if (Random.value <= 0.25)
         {
@@ -66,7 +66,7 @@ public class ExcessTileGenerator
     /// <param name="right"></param>
     /// <param name="down"></param>
     /// <param name="left"></param>
-    private static void ActivateWalls(ExcessTile excessTile, bool up, bool right, bool down, bool left)
+    private static void ActivateWalls(Tile excessTile, bool up, bool right, bool down, bool left)
     {
         excessTile.IsWallUp = up;
         excessTile.IsWallRight = right;
@@ -108,7 +108,7 @@ public class ExcessTileGenerator
         }
     }
 
-    private static void SetWallVisual(ExcessTile excessTile, string wallName, bool set)
+    private static void SetWallVisual(Tile excessTile, string wallName, bool set)
     {
         excessTile.transform.Find("Plate Visual").Find(wallName).gameObject.SetActive(set);
     }
