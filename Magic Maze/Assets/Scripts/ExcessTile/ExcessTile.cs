@@ -88,6 +88,8 @@ public class ExcessTile : MonoBehaviour
         rightWallObject = transform.Find("Plate Visual").Find("Wall Right").gameObject;
         downWallObject  = transform.Find("Plate Visual").Find("Wall Down").gameObject;
         leftWallObject = transform.Find("Plate Visual").Find("Wall Left").gameObject;
+
+        ExcessTileGenerator.GenerateWalls(this);
     }
 
     /// <summary>

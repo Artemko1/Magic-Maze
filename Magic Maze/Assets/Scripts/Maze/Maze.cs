@@ -5,7 +5,8 @@ using UnityEngine;
 using UnityEngine.UI;
 
 [RequireComponent(typeof(PlayerGenerator))]
-public class Maze : MonoBehaviour {
+public class Maze : MonoBehaviour 
+{
     /// <summary>
     /// Скрипт лабиринта, прикрепленный к board.
     /// </summary>
@@ -145,8 +146,6 @@ public class Maze : MonoBehaviour {
 
     private void GenerateExcessTile(Vector3 pos)
     {
-        //excessTile.GenerateWalls();
-        ExcessTileGenerator.GenerateWalls(excessTile);
         excessTile.transform.position = pos;
     }
         
