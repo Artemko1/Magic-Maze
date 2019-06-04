@@ -2,64 +2,25 @@
 using System.Collections.Generic;
 using UnityEngine;
 [SelectionBase]
-public class ExcessTile : MonoBehaviour
+public class ExcessTile : Tile
 {
-    private GameObject upWallObject;
-    private GameObject rightWallObject;
-    private GameObject downWallObject;
-    private GameObject leftWallObject;
+    //private GameObject upWallObject;
+    //private GameObject rightWallObject;
+    //private GameObject downWallObject;
+    //private GameObject leftWallObject;
 
-    [SerializeField]
-    private bool isWallUp;
-    [SerializeField]
-    private bool isWallRight;
-    [SerializeField]
-    private bool isWallDown;
-    [SerializeField]
-    private bool isWallLeft;
+    //[SerializeField]
+    //private bool isWallUp;
+    //[SerializeField]
+    //private bool isWallRight;
+    //[SerializeField]
+    //private bool isWallDown;
+    //[SerializeField]
+    //private bool isWallLeft;
     [SerializeField]
     private int extraPosId;
 
-    public bool IsWallUp
-    {
-        get => isWallUp;
-        set
-        {
-            isWallUp = value;
-            Debug.Log("Inside up setter");
-            upWallObject?.SetActive(value);
-        }
-    }
-    public bool IsWallRight
-    {
-        get => isWallRight;
-        set
-        {
-            isWallRight = value;
-            Debug.Log("Inside right setter");
-            rightWallObject?.SetActive(value);
-        }
-    }
-    public bool IsWallDown
-    {
-        get => isWallDown;
-        set
-        {
-            isWallDown = value;
-            Debug.Log("Inside down setter");
-            downWallObject?.SetActive(value);
-        }
-    }
-    public bool IsWallLeft
-    {
-        get => isWallLeft;
-        set
-        {
-            isWallLeft = value;
-            Debug.Log("Inside left setter");
-            leftWallObject?.SetActive(value);
-        }
-    }
+    
 
     public int ExtraPosId { get => extraPosId; set => extraPosId = value; }
     public Direction CurrentDirection

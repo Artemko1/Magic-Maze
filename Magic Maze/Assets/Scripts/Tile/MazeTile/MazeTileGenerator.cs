@@ -10,7 +10,7 @@ public static class TileGenerator
     /// Случайно генерирует стены для переданной клетки.
     /// </summary>
     /// <param name="tile"></param>
-    public static void GenerateWalls(Tile tile)
+    public static void GenerateWalls(MazeTile tile)
     {
         if (Random.value <= 0.6)
         {
@@ -22,7 +22,7 @@ public static class TileGenerator
         }
     }
 
-    static void GenerateOppositeWalls(Tile tile)
+    static void GenerateOppositeWalls(MazeTile tile)
     {
         if (Random.value <= 0.5)
         {
@@ -36,7 +36,7 @@ public static class TileGenerator
         }
     }
 
-    static void GenerateCornerWalls(Tile tile)
+    static void GenerateCornerWalls(MazeTile tile)
     {
         if (Random.value <= 0.25)
         {
@@ -67,14 +67,14 @@ public static class TileGenerator
     /// <param name="right"></param>
     /// <param name="down"></param>
     /// <param name="left"></param>
-    static void ActivateWalls(Tile tile, bool up, bool right, bool down, bool left)
+    static void ActivateWalls(MazeTile tile, bool up, bool right, bool down, bool left)
     {
-        tile.isWallUp = up;
-        tile.isWallRight = right;
-        tile.isWallDown = down;
-        tile.isWallLeft = left;
+        tile.IsWallUp = up;
+        tile.IsWallRight = right;
+        tile.IsWallDown = down;
+        tile.IsWallLeft = left;
 
-        if (tile.isWallUp)
+        if (tile.IsWallUp)
         {
             SetWallVisual(tile, "Wall Up", true);
         }
@@ -83,7 +83,7 @@ public static class TileGenerator
             SetWallVisual(tile, "Wall Up", false);
         }
 
-        if (tile.isWallRight)
+        if (tile.IsWallRight)
         {
             SetWallVisual(tile, "Wall Right", true);
         }
@@ -91,7 +91,7 @@ public static class TileGenerator
         {
             SetWallVisual(tile, "Wall Right", false);
         }
-        if (tile.isWallDown)
+        if (tile.IsWallDown)
         {
             SetWallVisual(tile, "Wall Down", true);
         }
@@ -99,7 +99,7 @@ public static class TileGenerator
         {
             SetWallVisual(tile, "Wall Down", false);
         }
-        if (tile.isWallLeft)
+        if (tile.IsWallLeft)
         {
             SetWallVisual(tile, "Wall Left", true);
         }
@@ -109,7 +109,7 @@ public static class TileGenerator
         }
     }
 
-    static void SetWallVisual(Tile tile, string wallName, bool set)
+    static void SetWallVisual(MazeTile tile, string wallName, bool set)
     {
         tile.transform.Find("Plate Visual").Find(wallName).gameObject.SetActive(set);
     }

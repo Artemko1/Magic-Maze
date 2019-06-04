@@ -6,7 +6,7 @@ public class Player : MonoBehaviour {
 
     public GameObject board;
     public Maze maze;
-    public Tile currentTile;
+    public MazeTile currentTile;
 
     public bool isMovementAllowed;
     public bool isIgnoringWalls;
@@ -30,7 +30,7 @@ public class Player : MonoBehaviour {
             return;
         }
 
-        Tile nextTile = null;
+        MazeTile nextTile = null;
 
         switch (Direction)
         {
@@ -44,7 +44,7 @@ public class Player : MonoBehaviour {
 
                 nextTile = maze.GetTile(currentTile.zIndex - 1, currentTile.xIndex);
 
-                if (!isIgnoringWalls && (currentTile.isWallUp || nextTile.isWallDown))
+                if (!isIgnoringWalls && (currentTile.IsWallUp || nextTile.IsWallDown))
                 {
                     Debug.Log(this + " reached wall up.");
                     return;
@@ -61,7 +61,7 @@ public class Player : MonoBehaviour {
 
                 nextTile = maze.GetTile(currentTile.zIndex, currentTile.xIndex + 1);
 
-                if (!isIgnoringWalls && (currentTile.isWallRight || nextTile.isWallLeft))
+                if (!isIgnoringWalls && (currentTile.IsWallRight || nextTile.IsWallLeft))
                 {
                     Debug.Log(this + " reached wall right.");
                     return;
@@ -78,7 +78,7 @@ public class Player : MonoBehaviour {
 
                 nextTile = maze.GetTile(currentTile.zIndex + 1, currentTile.xIndex);
 
-                if (!isIgnoringWalls && (currentTile.isWallDown || nextTile.isWallUp))
+                if (!isIgnoringWalls && (currentTile.IsWallDown || nextTile.IsWallUp))
                 {
                     Debug.Log(this + " reached wall down.");
                     return;
@@ -95,7 +95,7 @@ public class Player : MonoBehaviour {
 
                 nextTile = maze.GetTile(currentTile.zIndex, currentTile.xIndex - 1);
 
-                if (!isIgnoringWalls && (currentTile.isWallLeft || nextTile.isWallRight))
+                if (!isIgnoringWalls && (currentTile.IsWallLeft || nextTile.IsWallRight))
                 {
                     Debug.Log(this + " reached wall left.");
                     return;

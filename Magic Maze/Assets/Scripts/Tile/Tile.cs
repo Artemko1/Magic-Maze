@@ -1,75 +1,63 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-[SelectionBase]
-public class Tile : MonoBehaviour {
 
-    public bool isWallUp;
-    public bool isWallRight;
-    public bool isWallDown;
-    public bool isWallLeft;
+public class Tile : MonoBehaviour
+{
+    protected GameObject upWallObject;
+    protected GameObject rightWallObject;
+    protected GameObject downWallObject;
+    protected GameObject leftWallObject;
 
-    public byte zIndex;
-    public byte xIndex;
-    
-    public byte respawnNumber;
-    public Player currentPlayer;
-    //public GameObject currentItem;
+    [SerializeField]
+    protected bool isWallUp;
+    [SerializeField]
+    protected bool isWallRight;
+    [SerializeField]
+    protected bool isWallDown;
+    [SerializeField]
+    protected bool isWallLeft;
 
-    private void Awake()
+    public bool IsWallUp
     {
-        TileGenerator.GenerateWalls(this);
+        get => isWallUp;
+        set
+        {
+            isWallUp = value;
+            Debug.Log("Inside up setter");
+            upWallObject?.SetActive(value);
+        }
+    }
+    public bool IsWallRight
+    {
+        get => isWallRight;
+        set
+        {
+            isWallRight = value;
+            Debug.Log("Inside right setter");
+            rightWallObject?.SetActive(value);
+        }
+    }
+    public bool IsWallDown
+    {
+        get => isWallDown;
+        set
+        {
+            isWallDown = value;
+            Debug.Log("Inside down setter");
+            downWallObject?.SetActive(value);
+        }
+    }
+    public bool IsWallLeft
+    {
+        get => isWallLeft;
+        set
+        {
+            isWallLeft = value;
+            Debug.Log("Inside left setter");
+            leftWallObject?.SetActive(value);
+        }
     }
 
-    /// <summary>
-    /// Смещение вверх на расстояние одной клетки
-    /// </summary>
-    public void MoveUp()
-    {
-        transform.Translate(new Vector3(0, 0, 1) * Maze.spacing, Space.World);
-    }
-    /// <summary>
-    /// Смещение вправо на расстояние одной клетки
-    /// </summary>
-    public void MoveRight()
-    {
-        transform.Translate(new Vector3(1, 0, 0) * Maze.spacing, Space.World);
-    }
-    /// <summary>
-    /// Смещение вниз на расстояние одной клетки
-    /// </summary>    
-    public void MoveDown()
-    {
-        transform.Translate(new Vector3(0, 0, -1) * Maze.spacing, Space.World);
-    }
-    /// <summary>
-    /// Смещение влево на расстояние одной клетки
-    /// </summary>
-    public void MoveLeft()
-    {
-        transform.Translate(new Vector3(-1, 0, 0) * Maze.spacing, Space.World);
-    }
 
-    //public void SetCoordinates(byte z, byte x)
-    //{
-    //    zIndex = z;
-    //    xIndex = x;
-    //}
-    /// <summary>
-    /// <c>DoWork</c> is a method in the <c>TestClass</c> class.
-    /// </summary>
-    /// <param name="number"></param>
-    public void CreateRespawn(byte number) 
-    {
-        // 1-4 для респаунов, 0 для нереспаунов
-            respawnNumber = number;
-    }
-    /// <summary>
-    /// Устанавливает, находится ли на данной клетке игрок.
-    /// </summary>
-    /// <param name="Player"></param>
-    public void SetCurrentPlayer(Player Player)
-    {
-        currentPlayer = Player;
-    }
 }

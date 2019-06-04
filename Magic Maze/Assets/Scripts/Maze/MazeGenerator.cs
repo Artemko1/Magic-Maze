@@ -18,10 +18,10 @@ public class MazeGenerator : MonoBehaviour
         maze = GetComponent<Maze>();
     }
 
-    public Tile[] GenerateTiles(int boardSize)
+    public MazeTile[] GenerateTiles(int boardSize)
     {
-        Tile[] tileArray;
-        tileArray = new Tile[boardSize * boardSize];
+        MazeTile[] tileArray;
+        tileArray = new MazeTile[boardSize * boardSize];
         for (byte z = 0; z < boardSize; z++)
         {
             for (byte x = 0; x < boardSize; x++)
@@ -29,9 +29,9 @@ public class MazeGenerator : MonoBehaviour
                 // Создается новая клетка tileObj.
                 Vector3 pos = new Vector3(x, 0, -z) * Maze.spacing;
                 tileObj = Instantiate(tilePrefab, pos, Quaternion.identity, maze.transform);
-                tileObj.name = ("Tile " + z + " " + x);
+                tileObj.name = ("MazeTile " + z + " " + x);
 
-                Tile tile = tileObj.GetComponent<Tile>();
+                MazeTile tile = tileObj.GetComponent<MazeTile>();
                 Maze.SetTile(tileArray, z, x, tile);
 
                 // Изменение свойств клетки

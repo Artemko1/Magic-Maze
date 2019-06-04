@@ -17,7 +17,7 @@ public class PlayerGenerator : MonoBehaviour {
 
     public void GeneratePlayer(byte x, byte z, byte playerNumber)
     {
-        Tile tile = maze.GetTile(z, x);
+        MazeTile tile = maze.GetTile(z, x);
         
         playerObj = Instantiate(playerPrefab, tile.transform.position, Quaternion.identity, board.transform);
         playerObj.name = ("Player " + playerNumber);
