@@ -35,7 +35,6 @@ public class MazeGenerator : MonoBehaviour
                 Maze.SetTile(tileArray, z, x, tile);
 
                 // Изменение свойств клетки
-                TileGenerator.GenerateWalls(tile);
                 tile.zIndex = z;
                 tile.xIndex = x;
             }

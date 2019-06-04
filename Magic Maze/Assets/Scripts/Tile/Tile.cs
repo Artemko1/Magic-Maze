@@ -16,6 +16,11 @@ public class Tile : MonoBehaviour {
     public Player currentPlayer;
     //public GameObject currentItem;
 
+    private void Awake()
+    {
+        TileGenerator.GenerateWalls(this);
+    }
+
     /// <summary>
     /// Смещение вверх на расстояние одной клетки
     /// </summary>
