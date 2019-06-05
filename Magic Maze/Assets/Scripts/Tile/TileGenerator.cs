@@ -8,69 +8,61 @@ public class TileGenerator
     /// Случайно генерирует стены для переданной клетки.
     /// </summary>
     /// <param name="tile"></param>
-    public static void GenerateWalls(Tile excessTile)
+    public static void GenerateWalls(Tile tile)
     {
         if (Random.value <= 0.6)
         {
-            GenerateOppositeWalls(excessTile);
+            GenerateOppositeWalls(tile);
         }
         else
         {
-            GenerateCornerWalls(excessTile);
+            GenerateCornerWalls(tile);
         }
     }
 
-    private static void GenerateOppositeWalls(Tile excessTile)
+    private static void GenerateOppositeWalls(Tile tile)
     {
         if (Random.value <= 0.5)
         {
             // Верхнюю и нижнюю
-            ActivateWalls(excessTile, true, false, true, false);
+            ActivateWalls(tile, true, false, true, false);
         }
         else
         {
             // Правую и левую
-            ActivateWalls(excessTile, false, true, false, true);
+            ActivateWalls(tile, false, true, false, true);
         }
     }
 
-    private static void GenerateCornerWalls(Tile excessTile)
+    private static void GenerateCornerWalls(Tile tile)
     {
         if (Random.value <= 0.25)
         {
             // Верхнюю и правую
-            ActivateWalls(excessTile, true, true, false, false);
+            ActivateWalls(tile, true, true, false, false);
         }
         else if (Random.value <= 0.5)
         {
             // Правую и нижнюю
-            ActivateWalls(excessTile, false, true, true, false);
+            ActivateWalls(tile, false, true, true, false);
         }
         else if (Random.value <= 0.75)
         {
             // Нижнюю и левую
-            ActivateWalls(excessTile, false, false, true, true);
+            ActivateWalls(tile, false, false, true, true);
         }
         else
         {
             // Левую и верхнюю
-            ActivateWalls(excessTile, true, false, false, true);
+            ActivateWalls(tile, true, false, false, true);
         }
     }
 
-    /// <summary>
-    /// Устанавливает булевые переменные и отображает соответствующие стенки.
-    /// </summary>
-    /// <param name="excessTile"></param>
-    /// <param name="up"></param>
-    /// <param name="right"></param>
-    /// <param name="down"></param>
-    /// <param name="left"></param>
-    private static void ActivateWalls(Tile excessTile, bool up, bool right, bool down, bool left)
+    private static void ActivateWalls(Tile tile, bool up, bool right, bool down, bool left)
     {
-        excessTile.IsWallUp = up;
-        excessTile.IsWallRight = right;
-        excessTile.IsWallDown = down;
-        excessTile.IsWallLeft = left;
+        tile.IsWallUp = up;
+        tile.IsWallRight = right;
+        tile.IsWallDown = down;
+        tile.IsWallLeft = left;
     }
 }
