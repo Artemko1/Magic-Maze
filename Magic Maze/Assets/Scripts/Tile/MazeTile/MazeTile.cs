@@ -12,15 +12,6 @@ public class MazeTile : Tile
 
     //public GameObject currentItem;
 
-    private void Awake()
-    {
-        upWallObject = transform.Find("Plate Visual").Find("Wall Up").gameObject;
-        rightWallObject = transform.Find("Plate Visual").Find("Wall Right").gameObject;
-        downWallObject = transform.Find("Plate Visual").Find("Wall Down").gameObject;
-        leftWallObject = transform.Find("Plate Visual").Find("Wall Left").gameObject;
-
-        TileGenerator.GenerateWalls(this);
-    }
 
     /// <summary>
     /// Смещение вверх на расстояние одной клетки

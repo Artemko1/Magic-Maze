@@ -24,8 +24,7 @@ public class Tile : MonoBehaviour
         set
         {
             isWallUp = value;
-            // Нужно добавить проверку на наличие стенки в переменной.
-            upWallObject?.SetActive(value);
+            upWallObject.SetActive(value);
         }
     }
     public bool IsWallRight
@@ -34,7 +33,7 @@ public class Tile : MonoBehaviour
         set
         {
             isWallRight = value;
-            rightWallObject?.SetActive(value);
+            rightWallObject.SetActive(value);
         }
     }
     public bool IsWallDown
@@ -43,7 +42,7 @@ public class Tile : MonoBehaviour
         set
         {
             isWallDown = value;
-            downWallObject?.SetActive(value);
+            downWallObject.SetActive(value);
         }
     }
     public bool IsWallLeft
@@ -52,9 +51,17 @@ public class Tile : MonoBehaviour
         set
         {
             isWallLeft = value;
-            leftWallObject?.SetActive(value);
+            leftWallObject.SetActive(value);
         }
     }
+    protected void Awake()
+    {
+        upWallObject = transform.Find("Plate Visual").Find("Wall Up").gameObject;
+        rightWallObject = transform.Find("Plate Visual").Find("Wall Right").gameObject;
+        downWallObject = transform.Find("Plate Visual").Find("Wall Down").gameObject;
+        leftWallObject = transform.Find("Plate Visual").Find("Wall Left").gameObject;
 
+        TileGenerator.GenerateWalls(this);
+    }
 
 }

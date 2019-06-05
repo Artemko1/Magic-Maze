@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 [SelectionBase]
 public class ExcessTile : Tile
 {
@@ -23,19 +21,10 @@ public class ExcessTile : Tile
                 case 3:
                     return Direction.Left;
                 default:
-                    throw new System.ArgumentException("Parameter can only be 0-3", " extraPosId/Maze.MovableRowsPerSide");
+                    throw new System.ArgumentException("Parameter can only be 0-3",
+                            " extraPosId/Maze.MovableRowsPerSide");
             }
         }
-    }
-
-    private void Awake()
-    {
-        upWallObject    = transform.Find("Plate Visual").Find("Wall Up").gameObject;
-        rightWallObject = transform.Find("Plate Visual").Find("Wall Right").gameObject;
-        downWallObject  = transform.Find("Plate Visual").Find("Wall Down").gameObject;
-        leftWallObject = transform.Find("Plate Visual").Find("Wall Left").gameObject;
-
-        TileGenerator.GenerateWalls(this);
     }
 
     /// <summary>
@@ -74,7 +63,6 @@ public class ExcessTile : Tile
     /// </summary>
     public void RotateCounterclockwise()
     {
-        //transform.Rotate(0, -90f, 0);
         Debug.Log("RotateCounterclockwise called");
         bool wasWallUp = IsWallUp;
 
@@ -86,7 +74,6 @@ public class ExcessTile : Tile
 
     public void RotateClockwise()
     {
-        //transform.Rotate(0, 90f, 0);
         Debug.Log("RotateClockwise called");
         bool wasWallUp = IsWallUp;
 
