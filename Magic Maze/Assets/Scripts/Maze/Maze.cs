@@ -56,14 +56,6 @@ public class Maze : MonoBehaviour
 
     void Start ()
     {
-        GenetareMaze();
-    }
-    /// <summary>
-    /// Базовый скрипт для генерации лабиринта.
-    /// Вызывается из Awake.
-    /// </summary>
-    private void GenetareMaze()
-    {
         tileArray = mazeGenerator.GenerateTiles(boardSize);
         GeneratePlayers();
         GenerateExcessPositions();
