@@ -40,8 +40,6 @@ public class Maze : MonoBehaviour
     [SerializeField]
     public MazeTile[] tileArray;
     
-    public GameObject tilePrefab;
-    private GameObject tileObj;
 
     public ExcessTile excessTile;
     public static Vector3[] extraPositions;
