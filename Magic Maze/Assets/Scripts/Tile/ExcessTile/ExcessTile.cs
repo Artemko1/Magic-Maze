@@ -5,7 +5,15 @@ public class ExcessTile : Tile
     [SerializeField]
     private int extraPosId;
 
-    public int ExtraPosId { get => extraPosId; set => extraPosId = value; }
+    public int ExtraPosId
+    {
+        get => extraPosId;
+        set
+        {
+            extraPosId = value;
+        }
+    }
+
     public Direction CurrentDirection
     {
         get
@@ -46,9 +54,9 @@ public class ExcessTile : Tile
             case Direction.Down:
                 return ExtraPosId * 2 + 1;
             case Direction.Right:
-                return Maze.boardSize - 1 - ((ExtraPosId - Maze.MovableRowsPerSide) * 2 + 1);
+                return Maze.BoardSize - 1 - ((ExtraPosId - Maze.MovableRowsPerSide) * 2 + 1);
             case Direction.Up:
-                return Maze.boardSize - 1 - ((ExtraPosId - 2 * Maze.MovableRowsPerSide) * 2 + 1);
+                return Maze.BoardSize - 1 - ((ExtraPosId - 2 * Maze.MovableRowsPerSide) * 2 + 1);
             case Direction.Left:
                 return (ExtraPosId - 3 * Maze.MovableRowsPerSide) * 2 + 1;
             default:

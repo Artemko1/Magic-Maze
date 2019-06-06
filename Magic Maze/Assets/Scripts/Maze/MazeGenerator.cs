@@ -27,7 +27,7 @@ public class MazeGenerator : MonoBehaviour
             for (byte x = 0; x < boardSize; x++)
             {
                 // Создается новая клетка tileObj.
-                Vector3 pos = new Vector3(x, 0, -z) * Maze.spacing;
+                Vector3 pos = new Vector3(x, 0, -z) * Maze.Spacing;
                 tileObj = Instantiate(tilePrefab, pos, Quaternion.identity, maze.transform);
                 tileObj.name = ("MazeTile " + z + " " + x);
 

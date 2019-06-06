@@ -53,7 +53,7 @@ public class Player : MonoBehaviour {
             case Direction.Right:
                 Debug.Log(this + " Moving Right");
 
-                if (currentTile.xIndex + 1 == Maze.boardSize)
+                if (currentTile.xIndex + 1 == Maze.BoardSize)
                 {
                     Debug.Log(this + "reached board boundary.");
                     return;
@@ -70,7 +70,7 @@ public class Player : MonoBehaviour {
             case Direction.Down:
                 Debug.Log(this + " Moving Down");
 
-                if (currentTile.zIndex + 1 == Maze.boardSize)
+                if (currentTile.zIndex + 1 == Maze.BoardSize)
                 {
                     Debug.Log(this + "reached board boundary.");
                     return;

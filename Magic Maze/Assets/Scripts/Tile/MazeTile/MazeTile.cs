@@ -18,28 +18,28 @@ public class MazeTile : Tile
     /// </summary>
     public void MoveUp()
     {
-        transform.Translate(new Vector3(0, 0, 1) * Maze.spacing, Space.World);
+        transform.Translate(new Vector3(0, 0, 1) * Maze.Spacing, Space.World);
     }
     /// <summary>
     /// Смещение вправо на расстояние одной клетки
     /// </summary>
     public void MoveRight()
     {
-        transform.Translate(new Vector3(1, 0, 0) * Maze.spacing, Space.World);
+        transform.Translate(new Vector3(1, 0, 0) * Maze.Spacing, Space.World);
     }
     /// <summary>
     /// Смещение вниз на расстояние одной клетки
     /// </summary>    
     public void MoveDown()
     {
-        transform.Translate(new Vector3(0, 0, -1) * Maze.spacing, Space.World);
+        transform.Translate(new Vector3(0, 0, -1) * Maze.Spacing, Space.World);
     }
     /// <summary>
     /// Смещение влево на расстояние одной клетки
     /// </summary>
     public void MoveLeft()
     {
-        transform.Translate(new Vector3(-1, 0, 0) * Maze.spacing, Space.World);
+        transform.Translate(new Vector3(-1, 0, 0) * Maze.Spacing, Space.World);
     }
 
     //public void SetCoordinates(byte z, byte x)

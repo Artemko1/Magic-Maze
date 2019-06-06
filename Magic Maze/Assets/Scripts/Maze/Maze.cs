@@ -5,46 +5,45 @@ using UnityEngine;
 using UnityEngine.UI;
 
 [RequireComponent(typeof(PlayerGenerator))]
-public class Maze : MonoBehaviour 
+[RequireComponent(typeof(MazeGenerator))]
+public class Maze : MonoBehaviour
 {
-    /// <summary>
-    /// Скрипт лабиринта, прикрепленный к board.
-    /// </summary>
-    //public static Maze maze;
     private MazeGenerator mazeGenerator;
     private PlayerGenerator playerGenerator;
 
-    public static float spacing = 1.5f;
-    public static int boardSize = 9;
+    private static float spacing = 1.5f;
+
+    /// <summary>
+    /// Хранит в себе ссылки на все клетки лабиринта.
+    /// </summary>
+    [SerializeField]
+    private MazeTile[] tileArray;
+
+    [SerializeField]
+    private ExcessTile excessTile;
+    public static Vector3[] extraPositions;
+
+    [SerializeField]
+    private Button moveExcessTileButton;
+
+    public static int BoardSize { get; } = 9;
     /// <summary>
     /// Количество excess позиций вдоль одной стороны лабиринта.
     /// </summary>
     public static int MovableRowsPerSide
     {
-        get
-        {
-            return (boardSize - 1) / 2;
-        }
-    }
-
-    public static int MovableRows
-    {
-        get
-        {
-            return (boardSize - 1) * 2;
-        }
+        get => (BoardSize - 1) / 2;
     }
     /// <summary>
-    /// Хранит в себе ссылки на все клетки лабиринта.
+    /// Количество возможных позиций для ExcessTile.
     /// </summary>
-    [SerializeField]
-    public MazeTile[] tileArray;
-    
-
-    public ExcessTile excessTile;
-    public static Vector3[] extraPositions;
-
-    public Button MoveExcessTileButton;
+    public static int MovableRows
+    {
+        get => (BoardSize - 1) * 2;
+    }
+    public MazeTile[] TileArray { get => tileArray; set => tileArray = value; }
+    public Button MoveExcessTileButton { get => moveExcessTileButton; set => moveExcessTileButton = value; }
+    public static float Spacing { get => spacing; set => spacing = value; }
 
     void Awake()
     {
@@ -52,26 +51,26 @@ public class Maze : MonoBehaviour
         playerGenerator = GetComponent<PlayerGenerator>();
     }
 
-    void Start ()
+    void Start()
     {
-        tileArray = mazeGenerator.GenerateTiles(boardSize);
+        TileArray = mazeGenerator.GenerateTiles(BoardSize);
         GeneratePlayers();
         GenerateExcessPositions();
         excessTile.transform.position = extraPositions[0];
     }
-    
+
     /// <summary>
     /// Создает всех игроков.
     /// </summary>
     private void GeneratePlayers()
     {
         playerGenerator.GeneratePlayer(0, 0, 1);
-        playerGenerator.GeneratePlayer((byte)(boardSize - 1), 0, 2);
-        playerGenerator.GeneratePlayer((byte)(boardSize - 1), (byte)(boardSize - 1), 3);
-        playerGenerator.GeneratePlayer(0, (byte)(boardSize - 1), 4);
-        
+        playerGenerator.GeneratePlayer((byte)(BoardSize - 1), 0, 2);
+        playerGenerator.GeneratePlayer((byte)(BoardSize - 1), (byte)(BoardSize - 1), 3);
+        playerGenerator.GeneratePlayer(0, (byte)(BoardSize - 1), 4);
+
     }
-    
+
     private void GenerateExcessPositions()
     {
         extraPositions = new Vector3[MovableRows];
@@ -79,23 +78,23 @@ public class Maze : MonoBehaviour
         byte z, x;
 
         x = 1;
-        while (x < boardSize - 1)
+        while (x < BoardSize - 1)
         {
-            SetExtraPosition((byte)(boardSize - 1), x, n, Direction.Down);
+            SetExtraPosition((byte)(BoardSize - 1), x, n, Direction.Down);
             x += 2;
             n++;
         }
 
-        z = (byte)(boardSize - 2);
-        while (z > 0 && z < boardSize)
+        z = (byte)(BoardSize - 2);
+        while (z > 0 && z < BoardSize)
         {
-            SetExtraPosition(z, (byte)(boardSize - 1), n, Direction.Right);
+            SetExtraPosition(z, (byte)(BoardSize - 1), n, Direction.Right);
             z -= 2;
             n++;
         }
 
-        x = (byte)(boardSize - 2);
-        while (x > 0 && x < boardSize)
+        x = (byte)(BoardSize - 2);
+        while (x > 0 && x < BoardSize)
         {
             SetExtraPosition(0, x, n, Direction.Up);
             x -= 2;
@@ -103,7 +102,7 @@ public class Maze : MonoBehaviour
         }
 
         z = 1;
-        while (z < boardSize - 1)
+        while (z < BoardSize - 1)
         {
             SetExtraPosition(z, 0, n, Direction.Left);
             z += 2;
@@ -117,33 +116,33 @@ public class Maze : MonoBehaviour
         {
             //Up
             case Direction.Up:
-                extraPositions[n] = GetTile(z, x).transform.position + new Vector3(0, 0, 1) * spacing;
+                extraPositions[n] = GetTile(z, x).transform.position + new Vector3(0, 0, 1) * Spacing;
                 break;
             //Right
             case Direction.Right:
-                extraPositions[n] = GetTile(z, x).transform.position + new Vector3(1, 0, 0) * spacing;
+                extraPositions[n] = GetTile(z, x).transform.position + new Vector3(1, 0, 0) * Spacing;
                 break;
             //Down
             case Direction.Down:
-                extraPositions[n] = GetTile(z, x).transform.position + new Vector3(0, 0, -1) * spacing;
+                extraPositions[n] = GetTile(z, x).transform.position + new Vector3(0, 0, -1) * Spacing;
                 break;
             //Left
             case Direction.Left:
-                extraPositions[n] = GetTile(z, x).transform.position + new Vector3(-1, 0, 0) * spacing;
+                extraPositions[n] = GetTile(z, x).transform.position + new Vector3(-1, 0, 0) * Spacing;
                 break;
         }
     }
-        
+
     public void GenerateNewTiles() // Генерирует новые стенки всем клеткам лабиринта
     {
-        for (byte z = 0; z < boardSize; z++)
+        for (byte z = 0; z < BoardSize; z++)
         {
-            for (byte x = 0; x < boardSize; x++)
+            for (byte x = 0; x < BoardSize; x++)
             {
                 TileGenerator.GenerateWalls(GetTile(z, x));
             }
         }
-    }    
+    }
     /// <summary>
     /// Смещает ряд клеток.
     /// ExcessTile оказывается с противоположной стороны
@@ -184,7 +183,7 @@ public class Maze : MonoBehaviour
         toBecomeExcessTile.MoveUp();
         Destroy(toBecomeExcessTile);
 
-        for (int z = 1; z < boardSize; z++) // От второй до последней, против направления движения ряда
+        for (int z = 1; z < BoardSize; z++) // От второй до последней, против направления движения ряда
         {
             MazeTile currentTile = GetTile(z, x);
             currentTile.zIndex--;
@@ -193,7 +192,7 @@ public class Maze : MonoBehaviour
         }
 
         // Последний тайл становится обычным вместо эксесс
-        MazeTile toBeReplacedByExcessTile = GetTile(boardSize - 1, x);
+        MazeTile toBeReplacedByExcessTile = GetTile(BoardSize - 1, x);
         MazeTile newTile = excessTile.gameObject.AddComponent<MazeTile>();
 
         newTile.IsWallUp = excessTile.IsWallUp;
@@ -210,7 +209,7 @@ public class Maze : MonoBehaviour
         newTile.xIndex = toBeReplacedByExcessTile.xIndex;
         newTile.MoveUp();
 
-        SetTile(boardSize - 1, x, newTile);
+        SetTile(BoardSize - 1, x, newTile);
         excessTile = newExcessTile;
         excessTile.ExtraPosId = 3 * MovableRowsPerSide - oldExtraPosId - 1;
 
@@ -225,7 +224,7 @@ public class Maze : MonoBehaviour
         int z = excessTile.GetRowNumber();
         int oldExtraPosId = excessTile.ExtraPosId;
         // Последний тайл становится эксесс
-        MazeTile toBecomeExcessTile = GetTile(z, boardSize-1);
+        MazeTile toBecomeExcessTile = GetTile(z, BoardSize - 1);
         ExcessTile newExcessTile = toBecomeExcessTile.gameObject.AddComponent<ExcessTile>();
 
         newExcessTile.IsWallUp = toBecomeExcessTile.IsWallUp;
@@ -235,7 +234,7 @@ public class Maze : MonoBehaviour
         toBecomeExcessTile.MoveRight();
         Destroy(toBecomeExcessTile);
 
-        for (int x = boardSize-2; x >= 0; x--) // От предпоследней до первой, против направления движения ряда
+        for (int x = BoardSize - 2; x >= 0; x--) // От предпоследней до первой, против направления движения ряда
         {
             MazeTile currentTile = GetTile(z, x);
             currentTile.xIndex++;
@@ -274,7 +273,7 @@ public class Maze : MonoBehaviour
         int x = excessTile.GetRowNumber();
         int oldExtraPosId = excessTile.ExtraPosId;
         // Последний тайл становится эксесс
-        MazeTile toBecomeExcessTile = GetTile(boardSize-1, x);
+        MazeTile toBecomeExcessTile = GetTile(BoardSize - 1, x);
         ExcessTile newExcessTile = toBecomeExcessTile.gameObject.AddComponent<ExcessTile>();
 
         newExcessTile.IsWallUp = toBecomeExcessTile.IsWallUp;
@@ -284,7 +283,7 @@ public class Maze : MonoBehaviour
         toBecomeExcessTile.MoveDown();
         Destroy(toBecomeExcessTile);
 
-        for (int z = boardSize-2; z >= 0; z--) // От предпоследней до первой, против направления движения ряда
+        for (int z = BoardSize - 2; z >= 0; z--) // От предпоследней до первой, против направления движения ряда
         {
             MazeTile currentTile = GetTile(z, x);
             currentTile.zIndex++;
@@ -332,7 +331,7 @@ public class Maze : MonoBehaviour
         toBecomeExcessTile.MoveLeft();
         Destroy(toBecomeExcessTile);
 
-        for (int x = 1; x < boardSize; x++) // От второй до последней, против направления движения ряда
+        for (int x = 1; x < BoardSize; x++) // От второй до последней, против направления движения ряда
         {
             MazeTile currentTile = GetTile(z, x);
             currentTile.xIndex--;
@@ -341,7 +340,7 @@ public class Maze : MonoBehaviour
         }
 
         // Последний тайл становится обычным вместо эксесс
-        MazeTile toBeReplacedByExcessTile = GetTile(z, boardSize - 1);
+        MazeTile toBeReplacedByExcessTile = GetTile(z, BoardSize - 1);
         MazeTile newTile = excessTile.gameObject.AddComponent<MazeTile>();
 
         newTile.IsWallUp = excessTile.IsWallUp;
@@ -355,7 +354,7 @@ public class Maze : MonoBehaviour
         newTile.zIndex = toBeReplacedByExcessTile.zIndex;
         newTile.MoveLeft();
 
-        SetTile(z, boardSize - 1, newTile);
+        SetTile(z, BoardSize - 1, newTile);
         excessTile = newExcessTile;
         excessTile.ExtraPosId = 5 * MovableRowsPerSide - oldExtraPosId - 1;
 
@@ -372,7 +371,7 @@ public class Maze : MonoBehaviour
     public void SetTile(int z, int x, MazeTile tile)
     {
         // 2D representation stored in row-major order.
-        tileArray[z * boardSize + x] = tile;
+        TileArray[z * BoardSize + x] = tile;
     }
     /// <summary>
     /// Присваивает переданный tile в переданный массив клеток лабиринта.
@@ -384,7 +383,7 @@ public class Maze : MonoBehaviour
     public static void SetTile(MazeTile[] tileArray, int z, int x, MazeTile tile)
     {
         // 2D representation stored in row-major order.
-        tileArray[z * boardSize + x] = tile;
+        tileArray[z * BoardSize + x] = tile;
     }
     /// <summary>
     /// Возвращает клетку из лабиринта по её координатам.
@@ -394,7 +393,7 @@ public class Maze : MonoBehaviour
     /// <returns></returns>
     public MazeTile GetTile(int z, int x)
     {
-        return tileArray[z * boardSize + x];
+        return TileArray[z * BoardSize + x];
     }
 }
 
