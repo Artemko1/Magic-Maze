@@ -9,8 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 664873475245246378}
-  - component: {fileID: 664873475245246379}
-  - component: {fileID: 664873475245246373}
+  - component: {fileID: 165624179184156990}
+  - component: {fileID: 5292572755011030092}
+  - component: {fileID: 4875213375233417414}
   m_Layer: 0
   m_Name: Board
   m_TagString: Untagged
@@ -32,32 +33,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &664873475245246379
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 664873475245246372}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 08dddba40eed1d6498a5e86ce9ad137a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  PlayerGenerator: {fileID: 0}
-  board: {fileID: 664873475245246372, guid: bf2290b2b0053a843aafeaf70ad7e949, type: 3}
-  TileArray: []
-  tilePrefab: {fileID: 1601930837743718, guid: a5b8cad78bb9d644ca116109bbd6a43a, type: 3}
-  playerPrefab: {fileID: 1593622067508916, guid: 047cbcff827e4804488958170ba04172,
-    type: 3}
-  ExcessTile: {fileID: 0}
-  extraPositions: []
-  extraPosId: 0
-  moveUpButton: {fileID: 0}
-  moveRightButton: {fileID: 0}
-  moveDownButton: {fileID: 0}
-  moveLeftButton: {fileID: 0}
---- !u!114 &664873475245246373
+--- !u!114 &165624179184156990
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -70,6 +46,37 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   board: {fileID: 664873475245246372}
-  maze: {fileID: 664873475245246379}
-  playerPrefab: {fileID: 1593622067508916, guid: 047cbcff827e4804488958170ba04172,
-    type: 3}
+  maze: {fileID: 0}
+  playerPrefab: {fileID: 0}
+  moveUpButton: {fileID: 0}
+  moveRightButton: {fileID: 0}
+  moveDownButton: {fileID: 0}
+  moveLeftButton: {fileID: 0}
+--- !u!114 &5292572755011030092
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 664873475245246372}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c389adbcd3f698d4193efbac1f8373f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tilePrefab: {fileID: 0}
+--- !u!114 &4875213375233417414
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 664873475245246372}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e570f6b3df56764e9bbf61738283fcb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tileArray: []
+  excessTile: {fileID: 0}
+  moveExcessTileButton: {fileID: 0}

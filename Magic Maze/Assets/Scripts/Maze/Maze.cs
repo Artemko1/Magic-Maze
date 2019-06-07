@@ -11,7 +11,7 @@ public class Maze : MonoBehaviour
     private MazeGenerator mazeGenerator;
     private PlayerGenerator playerGenerator;
 
-    private static float spacing = 1.5f;
+    private float spacing = 1.5f;
 
     /// <summary>
     /// Хранит в себе ссылки на все клетки лабиринта.
@@ -43,7 +43,7 @@ public class Maze : MonoBehaviour
     }
     public MazeTile[] TileArray { get => tileArray; set => tileArray = value; }
     public Button MoveExcessTileButton { get => moveExcessTileButton; set => moveExcessTileButton = value; }
-    public static float Spacing { get => spacing; set => spacing = value; }
+    public float Spacing { get => spacing; set => spacing = value; }
 
     void Awake()
     {

@@ -10,6 +10,9 @@ public class Tile : MonoBehaviour
     protected GameObject leftWallObject;
 
     [SerializeField]
+    protected Maze maze;
+
+    [SerializeField]
     protected bool isWallUp;
     [SerializeField]
     protected bool isWallRight;
@@ -60,6 +63,8 @@ public class Tile : MonoBehaviour
         rightWallObject = transform.Find("Plate Visual").Find("Wall Right").gameObject;
         downWallObject = transform.Find("Plate Visual").Find("Wall Down").gameObject;
         leftWallObject = transform.Find("Plate Visual").Find("Wall Left").gameObject;
+
+        maze = GameObject.FindGameObjectWithTag("Board").GetComponent<Maze>();
 
         TileGenerator.GenerateWalls(this);
     }
