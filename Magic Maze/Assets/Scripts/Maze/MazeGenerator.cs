@@ -8,11 +8,6 @@ public class MazeGenerator : MonoBehaviour
     private GameObject tileObj;
     private Maze maze;
 
-    //public MazeGenerator(Maze maze)
-    //{
-    //    this.maze = maze;
-    //}
-
     void Awake()
     {
         maze = GetComponent<Maze>();
