@@ -27,7 +27,7 @@ public class MazeGenerator : MonoBehaviour
                 tileObj.name = ("MazeTile " + z + " " + x);
 
                 MazeTile tile = tileObj.GetComponent<MazeTile>();
-                Maze.SetTile(tileArray, z, x, tile);
+                maze.SetTile(z, x, tile, tileArray);
 
                 // Изменение свойств клетки
                 tile.zIndex = z;

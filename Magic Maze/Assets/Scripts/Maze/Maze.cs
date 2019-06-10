@@ -26,18 +26,18 @@ public class Maze : MonoBehaviour
     [SerializeField]
     private Button moveExcessTileButton;
 
-    public static int BoardSize { get; } = 9;
+    public int BoardSize { get; } = 9;
     /// <summary>
     /// Количество excess позиций вдоль одной стороны лабиринта.
     /// </summary>
-    public static int MovableRowsPerSide
+    public int MovableRowsPerSide
     {
         get => (BoardSize - 1) / 2;
     }
     /// <summary>
     /// Количество возможных позиций для ExcessTile.
     /// </summary>
-    public static int MovableRows
+    public int MovableRows
     {
         get => (BoardSize - 1) * 2;
     }
@@ -380,7 +380,7 @@ public class Maze : MonoBehaviour
     /// <param name="z">Номер строки клетки.</param>
     /// <param name="x">Номер столбца клетки.</param>
     /// <param name="tile"></param>
-    public static void SetTile(MazeTile[] tileArray, int z, int x, MazeTile tile)
+    public void SetTile(int z, int x, MazeTile tile, MazeTile[] tileArray)
     {
         // 2D representation stored in row-major order.
         tileArray[z * BoardSize + x] = tile;

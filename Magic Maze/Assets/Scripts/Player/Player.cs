@@ -2,9 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : MonoBehaviour {
-
-    public GameObject board;
+public class Player : MonoBehaviour
+{
     public Maze maze;
     public MazeTile currentTile;
 
@@ -13,8 +12,7 @@ public class Player : MonoBehaviour {
 
     void Awake()
     {
-        board = GameObject.Find("Board"); // Если убрать, то у объектов пропадает ссылка, хоть в префабе она и указана
-        maze = board.GetComponent<Maze>();
+        maze = GameObject.FindGameObjectWithTag("Board").GetComponent<Maze>();
     }
 
     public void SetCurrentTile(byte x, byte z)
@@ -53,7 +51,7 @@ public class Player : MonoBehaviour {
             case Direction.Right:
                 Debug.Log(this + " Moving Right");
 
-                if (currentTile.xIndex + 1 == Maze.BoardSize)
+                if (currentTile.xIndex + 1 == maze.BoardSize)
                 {
                     Debug.Log(this + "reached board boundary.");
                     return;
@@ -70,7 +68,7 @@ public class Player : MonoBehaviour {
             case Direction.Down:
                 Debug.Log(this + " Moving Down");
 
-                if (currentTile.zIndex + 1 == Maze.BoardSize)
+                if (currentTile.zIndex + 1 == maze.BoardSize)
                 {
                     Debug.Log(this + "reached board boundary.");
                     return;

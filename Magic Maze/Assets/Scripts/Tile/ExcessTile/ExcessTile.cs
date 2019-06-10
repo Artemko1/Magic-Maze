@@ -18,7 +18,7 @@ public class ExcessTile : Tile
     {
         get
         {
-            switch ((ExtraPosId / Maze.MovableRowsPerSide))
+            switch ((ExtraPosId / maze.MovableRowsPerSide))
             {
                 case 0:
                     return Direction.Down;
@@ -54,11 +54,11 @@ public class ExcessTile : Tile
             case Direction.Down:
                 return ExtraPosId * 2 + 1;
             case Direction.Right:
-                return Maze.BoardSize - 1 - ((ExtraPosId - Maze.MovableRowsPerSide) * 2 + 1);
+                return maze.BoardSize - 1 - ((ExtraPosId - maze.MovableRowsPerSide) * 2 + 1);
             case Direction.Up:
-                return Maze.BoardSize - 1 - ((ExtraPosId - 2 * Maze.MovableRowsPerSide) * 2 + 1);
+                return maze.BoardSize - 1 - ((ExtraPosId - 2 * maze.MovableRowsPerSide) * 2 + 1);
             case Direction.Left:
-                return (ExtraPosId - 3 * Maze.MovableRowsPerSide) * 2 + 1;
+                return (ExtraPosId - 3 * maze.MovableRowsPerSide) * 2 + 1;
             default:
                 throw new System.ArgumentException("Wrong direction in CurrentDirection");
         }
@@ -97,7 +97,7 @@ public class ExcessTile : Tile
     public void MoveForward()
     {
         ExtraPosId++;
-        if (ExtraPosId == Maze.MovableRows)
+        if (ExtraPosId == maze.MovableRows)
             ExtraPosId = 0;
         Vector3 nextPosition = Maze.extraPositions[ExtraPosId];
         transform.position = nextPosition;
