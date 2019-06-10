@@ -55,7 +55,7 @@ public class Maze : MonoBehaviour
     {
         TileArray = mazeGenerator.GenerateTiles(BoardSize);
         GeneratePlayers();
-        GenerateExcessPositions();
+        mazeGenerator.GenerateExcessPositions();
         excessTile.transform.position = extraPositions[0];
     }
 
@@ -70,69 +70,6 @@ public class Maze : MonoBehaviour
         playerGenerator.GeneratePlayer(0, (byte)(BoardSize - 1), 4);
 
     }
-
-    private void GenerateExcessPositions()
-    {
-        extraPositions = new Vector3[MovableRows];
-        byte n = 0;
-        byte z, x;
-
-        x = 1;
-        while (x < BoardSize - 1)
-        {
-            SetExtraPosition((byte)(BoardSize - 1), x, n, Direction.Down);
-            x += 2;
-            n++;
-        }
-
-        z = (byte)(BoardSize - 2);
-        while (z > 0 && z < BoardSize)
-        {
-            SetExtraPosition(z, (byte)(BoardSize - 1), n, Direction.Right);
-            z -= 2;
-            n++;
-        }
-
-        x = (byte)(BoardSize - 2);
-        while (x > 0 && x < BoardSize)
-        {
-            SetExtraPosition(0, x, n, Direction.Up);
-            x -= 2;
-            n++;
-        }
-
-        z = 1;
-        while (z < BoardSize - 1)
-        {
-            SetExtraPosition(z, 0, n, Direction.Left);
-            z += 2;
-            n++;
-        }
-    }
-
-    private void SetExtraPosition(byte z, byte x, byte n, Direction direction) // direction - направление смещения позиций.
-    {
-        switch (direction)
-        {
-            //Up
-            case Direction.Up:
-                extraPositions[n] = GetTile(z, x).transform.position + new Vector3(0, 0, 1) * Spacing;
-                break;
-            //Right
-            case Direction.Right:
-                extraPositions[n] = GetTile(z, x).transform.position + new Vector3(1, 0, 0) * Spacing;
-                break;
-            //Down
-            case Direction.Down:
-                extraPositions[n] = GetTile(z, x).transform.position + new Vector3(0, 0, -1) * Spacing;
-                break;
-            //Left
-            case Direction.Left:
-                extraPositions[n] = GetTile(z, x).transform.position + new Vector3(-1, 0, 0) * Spacing;
-                break;
-        }
-    }
-
     public void GenerateNewTiles() // Генерирует новые стенки всем клеткам лабиринта
     {
         for (byte z = 0; z < BoardSize; z++)
