@@ -363,27 +363,27 @@ public class Maze : MonoBehaviour
     }
 
     /// <summary>
-    /// Присваивает переданный tile в массив класса Maze
+    /// Присваивает переданный tile в массив объекта.
     /// </summary>
     /// <param name="z">Номер строки клетки.</param>
     /// <param name="x">Номер столбца клетки.</param>
-    /// <param name="tile"></param>
-    public void SetTile(int z, int x, MazeTile tile)
+    /// <param name="mazeTile"></param>
+    public void SetTile(int z, int x, MazeTile mazeTile)
     {
         // 2D representation stored in row-major order.
-        TileArray[z * BoardSize + x] = tile;
+        TileArray[z * BoardSize + x] = mazeTile;
     }
     /// <summary>
     /// Присваивает переданный tile в переданный массив клеток лабиринта.
     /// </summary>
-    /// <param name="tileArray">Массив, в который присваивается клетка.</param>
     /// <param name="z">Номер строки клетки.</param>
     /// <param name="x">Номер столбца клетки.</param>
-    /// <param name="tile"></param>
-    public void SetTile(int z, int x, MazeTile tile, MazeTile[] tileArray)
+    /// <param name="mazeTile"></param>
+    /// <param name="tileArray">Массив, в который присваивается клетка.</param>
+    public void SetTile(int z, int x, MazeTile mazeTile, MazeTile[] tileArray)
     {
         // 2D representation stored in row-major order.
-        tileArray[z * BoardSize + x] = tile;
+        tileArray[z * BoardSize + x] = mazeTile;
     }
     /// <summary>
     /// Возвращает клетку из лабиринта по её координатам.
