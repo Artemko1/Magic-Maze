@@ -99,7 +99,7 @@ public class ExcessTile : Tile
         ExtraPosId++;
         if (ExtraPosId == maze.MovableRows)
             ExtraPosId = 0;
-        Vector3 nextPosition = Maze.extraPositions[ExtraPosId];
+        Vector3 nextPosition = maze.extraPositions[ExtraPosId];
         transform.position = nextPosition;
         if (ExtraPosId % 4 == 0)
             RotateCounterclockwise();

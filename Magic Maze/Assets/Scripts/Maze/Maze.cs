@@ -21,7 +21,7 @@ public class Maze : MonoBehaviour
 
     [SerializeField]
     private ExcessTile excessTile;
-    public static Vector3[] extraPositions;
+    public Vector3[] extraPositions;
 
     [SerializeField]
     private Button moveExcessTileButton;
