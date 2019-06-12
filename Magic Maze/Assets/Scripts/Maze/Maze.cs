@@ -68,16 +68,7 @@ public class Maze : MonoBehaviour
         playerGenerator.GeneratePlayer(0, (byte)(BoardSize - 1), 4);
 
     }
-    public void GenerateNewTiles() // Генерирует новые стенки всем клеткам лабиринта
-    {
-        for (byte z = 0; z < BoardSize; z++)
-        {
-            for (byte x = 0; x < BoardSize; x++)
-            {
-                TileGenerator.GenerateWalls(GetTile(z, x));
-            }
-        }
-    }
+    
     /// <summary>
     /// Смещает ряд клеток.
     /// ExcessTile оказывается с противоположной стороны

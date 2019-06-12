@@ -37,6 +37,17 @@ public class MazeGenerator : MonoBehaviour
         return tileArray;
     }
 
+    public void GenerateNewTiles() // Генерирует новые стенки всем клеткам лабиринта
+    {
+        for (byte z = 0; z < maze.BoardSize; z++)
+        {
+            for (byte x = 0; x < maze.BoardSize; x++)
+            {
+                TileGenerator.GenerateWalls(maze.GetTile(z, x));
+            }
+        }
+    }
+
     public void GenerateExcessPositions()
     {
         maze.extraPositions = new Vector3[maze.MovableRows];
