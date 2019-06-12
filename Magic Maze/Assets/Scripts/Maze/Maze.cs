@@ -18,7 +18,6 @@ public class Maze : MonoBehaviour
     /// </summary>
     [SerializeField]
     private MazeTile[] tileArray;
-
     [SerializeField]
     private ExcessTile excessTile;
     public Vector3[] extraPositions;
@@ -41,7 +40,6 @@ public class Maze : MonoBehaviour
     {
         get => (BoardSize - 1) * 2;
     }
-    public MazeTile[] TileArray { get => tileArray; set => tileArray = value; }
     public Button MoveExcessTileButton { get => moveExcessTileButton; set => moveExcessTileButton = value; }
     public float Spacing { get => spacing; set => spacing = value; }
 
@@ -53,7 +51,7 @@ public class Maze : MonoBehaviour
 
     void Start()
     {
-        TileArray = mazeGenerator.GenerateTiles(BoardSize);
+        tileArray = mazeGenerator.GenerateTiles(BoardSize);
         GeneratePlayers();
         mazeGenerator.GenerateExcessPositions();
         excessTile.transform.position = extraPositions[0];
@@ -308,7 +306,7 @@ public class Maze : MonoBehaviour
     public void SetTile(int z, int x, MazeTile mazeTile)
     {
         // 2D representation stored in row-major order.
-        TileArray[z * BoardSize + x] = mazeTile;
+        tileArray[z * BoardSize + x] = mazeTile;
     }
     /// <summary>
     /// Присваивает переданный tile в переданный массив клеток лабиринта.
@@ -330,7 +328,7 @@ public class Maze : MonoBehaviour
     /// <returns></returns>
     public MazeTile GetTile(int z, int x)
     {
-        return TileArray[z * BoardSize + x];
+        return tileArray[z * BoardSize + x];
     }
 }
 
