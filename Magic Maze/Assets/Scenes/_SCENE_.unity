@@ -283,7 +283,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 5292572755945071637}
         m_MethodName: GenerateNewTiles
         m_Mode: 1
         m_Arguments:
@@ -705,7 +705,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1914074114}
+      - m_Target: {fileID: 4875213376446695583}
         m_MethodName: MoveColumn
         m_Mode: 1
         m_Arguments:
@@ -3128,30 +3128,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1835000732}
   m_CullTransparentMesh: 0
---- !u!1 &1914074112 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 664873475245246372, guid: bf2290b2b0053a843aafeaf70ad7e949,
-    type: 3}
-  m_PrefabInstance: {fileID: 2018764889}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &1914074113 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 664873475245246378, guid: bf2290b2b0053a843aafeaf70ad7e949,
-    type: 3}
-  m_PrefabInstance: {fileID: 2018764889}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1914074114 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4875213375233417414, guid: bf2290b2b0053a843aafeaf70ad7e949,
-    type: 3}
-  m_PrefabInstance: {fileID: 2018764889}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1914074112}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e570f6b3df56764e9bbf61738283fcb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1924780606
 GameObject:
   m_ObjectHideFlags: 0
@@ -3317,7 +3293,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 1914074113}
+    m_TransformParent: {fileID: 664873475650973683}
     m_Modifications:
     - target: {fileID: 1601930837743718, guid: e9d5a3106061d1a428c608f19c11b867, type: 3}
       propertyPath: m_Name
@@ -3489,12 +3465,12 @@ PrefabInstance:
         type: 3}
       propertyPath: board
       value: 
-      objectReference: {fileID: 1914074112}
+      objectReference: {fileID: 664873475650973693}
     - target: {fileID: 165624179184156990, guid: bf2290b2b0053a843aafeaf70ad7e949,
         type: 3}
       propertyPath: maze
       value: 
-      objectReference: {fileID: 1914074114}
+      objectReference: {fileID: 4875213376446695583}
     - target: {fileID: 165624179184156990, guid: bf2290b2b0053a843aafeaf70ad7e949,
         type: 3}
       propertyPath: playerPrefab
@@ -3539,3 +3515,39 @@ PrefabInstance:
       objectReference: {fileID: 728755252}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bf2290b2b0053a843aafeaf70ad7e949, type: 3}
+--- !u!4 &664873475650973683 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 664873475245246378, guid: bf2290b2b0053a843aafeaf70ad7e949,
+    type: 3}
+  m_PrefabInstance: {fileID: 2018764889}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &664873475650973693 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 664873475245246372, guid: bf2290b2b0053a843aafeaf70ad7e949,
+    type: 3}
+  m_PrefabInstance: {fileID: 2018764889}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &4875213376446695583 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4875213375233417414, guid: bf2290b2b0053a843aafeaf70ad7e949,
+    type: 3}
+  m_PrefabInstance: {fileID: 2018764889}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 664873475650973693}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e570f6b3df56764e9bbf61738283fcb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &5292572755945071637 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5292572755011030092, guid: bf2290b2b0053a843aafeaf70ad7e949,
+    type: 3}
+  m_PrefabInstance: {fileID: 2018764889}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 664873475650973693}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c389adbcd3f698d4193efbac1f8373f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
