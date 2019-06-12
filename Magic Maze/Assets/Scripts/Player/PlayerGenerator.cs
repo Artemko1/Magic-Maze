@@ -3,9 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PlayerGenerator : MonoBehaviour {
-
-    public GameObject board;
+public class PlayerGenerator : MonoBehaviour
+{
     public Maze maze;
     public GameObject playerPrefab;
     GameObject playerObj;
@@ -19,7 +18,7 @@ public class PlayerGenerator : MonoBehaviour {
     {
         MazeTile tile = maze.GetTile(z, x);
         
-        playerObj = Instantiate(playerPrefab, tile.transform.position, Quaternion.identity, board.transform);
+        playerObj = Instantiate(playerPrefab, tile.transform.position, Quaternion.identity, transform);
         playerObj.name = ("Player " + playerNumber);
         playerObj.transform.SetAsFirstSibling();
         
