@@ -36,14 +36,6 @@ public class ExcessTile : Tile
     }
 
     /// <summary>
-    /// Выводит в консоль положение относительно лабиринта.
-    /// </summary>
-    public void DisplayCurrentDirection()
-    {
-        Debug.Log("Current direction is " + CurrentDirection);
-    }
-
-    /// <summary>
     /// Возвращает координату z или x лабиринта, где сейчас находится ExcessTile
     /// </summary>
     /// <returns></returns>
