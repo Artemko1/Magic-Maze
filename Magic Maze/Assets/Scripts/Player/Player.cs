@@ -15,9 +15,11 @@ public class Player : MonoBehaviour
         maze = GameObject.FindGameObjectWithTag("Board").GetComponent<Maze>();
     }
 
-    public void SetCurrentTile(byte x, byte z)
+    public void SetCurrentTile(MazeTile mazeTile)
     {
-        currentTile = maze.GetTile(z, x);
+        currentTile.currentPlayer = null;
+        currentTile = mazeTile;
+        currentTile.currentPlayer = this;
         
     }
 

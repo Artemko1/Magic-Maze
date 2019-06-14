@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 [RequireComponent(typeof(PlayerGenerator))]
@@ -62,7 +59,7 @@ public class Maze : MonoBehaviour
         playerGenerator.GeneratePlayer(0, (byte)(BoardSize - 1), 4);
 
     }
-    
+
     /// <summary>
     /// Смещает ряд клеток.
     /// ExcessTile оказывается с противоположной стороны
@@ -96,11 +93,15 @@ public class Maze : MonoBehaviour
         MazeTile toBecomeExcessTile = GetTile(0, x);
         ExcessTile newExcessTile = toBecomeExcessTile.gameObject.AddComponent<ExcessTile>();
 
+        MazeTile newTile = excessTile.gameObject.AddComponent<MazeTile>();
+
         newExcessTile.IsWallUp = toBecomeExcessTile.IsWallUp;
         newExcessTile.IsWallRight = toBecomeExcessTile.IsWallRight;
         newExcessTile.IsWallDown = toBecomeExcessTile.IsWallDown;
         newExcessTile.IsWallLeft = toBecomeExcessTile.IsWallLeft;
         toBecomeExcessTile.MoveUp();
+        
+
         Destroy(toBecomeExcessTile);
 
         for (int z = 1; z < BoardSize; z++) // От второй до последней, против направления движения ряда
@@ -109,16 +110,20 @@ public class Maze : MonoBehaviour
             currentTile.zIndex--;
             SetTile(z - 1, x, currentTile);
             currentTile.MoveUp();
+            if (currentTile.currentPlayer != null)
+            {
+                currentTile.currentPlayer.transform.position = currentTile.transform.position;
+            }
         }
 
         // Последний тайл становится обычным вместо эксесс
         MazeTile toBeReplacedByExcessTile = GetTile(BoardSize - 1, x);
-        MazeTile newTile = excessTile.gameObject.AddComponent<MazeTile>();
 
         newTile.IsWallUp = excessTile.IsWallUp;
         newTile.IsWallRight = excessTile.IsWallRight;
         newTile.IsWallDown = excessTile.IsWallDown;
         newTile.IsWallLeft = excessTile.IsWallLeft;
+
         Destroy(excessTile);
 
         // Индекс уменьшался, чтобы перезаписать тайл в другую клетку.
@@ -128,6 +133,12 @@ public class Maze : MonoBehaviour
         newTile.zIndex++;
         newTile.xIndex = toBeReplacedByExcessTile.xIndex;
         newTile.MoveUp();
+
+        if (toBecomeExcessTile.currentPlayer != null)
+        {
+            toBecomeExcessTile.currentPlayer.transform.position = newTile.transform.position;
+            toBecomeExcessTile.currentPlayer.SetCurrentTile(newTile);
+        }
 
         SetTile(BoardSize - 1, x, newTile);
         excessTile = newExcessTile;
@@ -147,6 +158,8 @@ public class Maze : MonoBehaviour
         MazeTile toBecomeExcessTile = GetTile(z, BoardSize - 1);
         ExcessTile newExcessTile = toBecomeExcessTile.gameObject.AddComponent<ExcessTile>();
 
+        MazeTile newTile = excessTile.gameObject.AddComponent<MazeTile>();
+
         newExcessTile.IsWallUp = toBecomeExcessTile.IsWallUp;
         newExcessTile.IsWallRight = toBecomeExcessTile.IsWallRight;
         newExcessTile.IsWallDown = toBecomeExcessTile.IsWallDown;
@@ -160,11 +173,14 @@ public class Maze : MonoBehaviour
             currentTile.xIndex++;
             SetTile(z, x + 1, currentTile);
             currentTile.MoveRight();
+            if (currentTile.currentPlayer != null)
+            {
+                currentTile.currentPlayer.transform.position = currentTile.transform.position;
+            }
         }
 
         // Первый тайл становится обычным вместо эксесс
         MazeTile toBeReplacedByExcessTile = GetTile(z, 0);
-        MazeTile newTile = excessTile.gameObject.AddComponent<MazeTile>();
 
         newTile.IsWallUp = excessTile.IsWallUp;
         newTile.IsWallRight = excessTile.IsWallRight;
@@ -177,6 +193,11 @@ public class Maze : MonoBehaviour
         newTile.xIndex--;
         newTile.MoveRight();
 
+        if (toBecomeExcessTile.currentPlayer != null)
+        {
+            toBecomeExcessTile.currentPlayer.transform.position = newTile.transform.position;
+            toBecomeExcessTile.currentPlayer.SetCurrentTile(newTile);
+        }
 
         SetTile(z, 0, newTile);
         excessTile = newExcessTile;
@@ -196,6 +217,8 @@ public class Maze : MonoBehaviour
         MazeTile toBecomeExcessTile = GetTile(BoardSize - 1, x);
         ExcessTile newExcessTile = toBecomeExcessTile.gameObject.AddComponent<ExcessTile>();
 
+        MazeTile newTile = excessTile.gameObject.AddComponent<MazeTile>();
+
         newExcessTile.IsWallUp = toBecomeExcessTile.IsWallUp;
         newExcessTile.IsWallRight = toBecomeExcessTile.IsWallRight;
         newExcessTile.IsWallDown = toBecomeExcessTile.IsWallDown;
@@ -209,11 +232,14 @@ public class Maze : MonoBehaviour
             currentTile.zIndex++;
             SetTile(z + 1, x, currentTile);
             currentTile.MoveDown();
+            if (currentTile.currentPlayer != null)
+            {
+                currentTile.currentPlayer.transform.position = currentTile.transform.position;
+            }
         }
 
         // Первый тайл становится обычным вместо эксесс
         MazeTile toBeReplacedByExcessTile = GetTile(0, x);
-        MazeTile newTile = excessTile.gameObject.AddComponent<MazeTile>();
 
         newTile.IsWallUp = excessTile.IsWallUp;
         newTile.IsWallRight = excessTile.IsWallRight;
@@ -225,6 +251,12 @@ public class Maze : MonoBehaviour
         newTile.zIndex--;
         newTile.xIndex = toBeReplacedByExcessTile.xIndex;
         newTile.MoveDown();
+
+        if (toBecomeExcessTile.currentPlayer != null)
+        {
+            toBecomeExcessTile.currentPlayer.transform.position = newTile.transform.position;
+            toBecomeExcessTile.currentPlayer.SetCurrentTile(newTile);
+        }
 
         SetTile(0, x, newTile);
         excessTile = newExcessTile;
@@ -244,6 +276,8 @@ public class Maze : MonoBehaviour
         MazeTile toBecomeExcessTile = GetTile(z, 0);
         ExcessTile newExcessTile = toBecomeExcessTile.gameObject.AddComponent<ExcessTile>();
 
+        MazeTile newTile = excessTile.gameObject.AddComponent<MazeTile>();
+
         newExcessTile.IsWallUp = toBecomeExcessTile.IsWallUp;
         newExcessTile.IsWallRight = toBecomeExcessTile.IsWallRight;
         newExcessTile.IsWallDown = toBecomeExcessTile.IsWallDown;
@@ -257,11 +291,14 @@ public class Maze : MonoBehaviour
             currentTile.xIndex--;
             SetTile(z, x - 1, currentTile);
             currentTile.MoveLeft();
+            if (currentTile.currentPlayer != null)
+            {
+                currentTile.currentPlayer.transform.position = currentTile.transform.position;
+            }
         }
 
         // Последний тайл становится обычным вместо эксесс
         MazeTile toBeReplacedByExcessTile = GetTile(z, BoardSize - 1);
-        MazeTile newTile = excessTile.gameObject.AddComponent<MazeTile>();
 
         newTile.IsWallUp = excessTile.IsWallUp;
         newTile.IsWallRight = excessTile.IsWallRight;
@@ -273,6 +310,12 @@ public class Maze : MonoBehaviour
         newTile.xIndex++;
         newTile.zIndex = toBeReplacedByExcessTile.zIndex;
         newTile.MoveLeft();
+
+        if (toBecomeExcessTile.currentPlayer != null)
+        {
+            toBecomeExcessTile.currentPlayer.transform.position = newTile.transform.position;
+            toBecomeExcessTile.currentPlayer.SetCurrentTile(newTile);
+        }
 
         SetTile(z, BoardSize - 1, newTile);
         excessTile = newExcessTile;
