@@ -29,17 +29,11 @@ public class Maze : MonoBehaviour
     /// <summary>
     /// Количество excess позиций вдоль одной стороны лабиринта.
     /// </summary>
-    public int MovableRowsPerSide
-    {
-        get => (BoardSize - 1) / 2;
-    }
+    public int MovableRowsPerSide => (BoardSize - 1) / 2;
     /// <summary>
     /// Количество возможных позиций для ExcessTile.
     /// </summary>
-    public int MovableRows
-    {
-        get => (BoardSize - 1) * 2;
-    }
+    public int MovableRows => (BoardSize - 1) * 2;
     public Button MoveExcessTileButton { get => moveExcessTileButton; set => moveExcessTileButton = value; }
     public float Spacing { get => spacing; set => spacing = value; }
 
