@@ -74,7 +74,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 419bd73280d68d549971de3be9d4c572, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  board: {fileID: 664873475245246372}
   maze: {fileID: 0}
   playerPrefab: {fileID: 0}
   moveUpButton: {fileID: 0}
