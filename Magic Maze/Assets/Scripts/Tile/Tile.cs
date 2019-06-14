@@ -69,4 +69,14 @@ public class Tile : MonoBehaviour
         TileGenerator.GenerateWalls(this);
     }
 
+    private void OnValidate()
+    {
+        if (maze != null)
+        {
+            IsWallUp = isWallUp;
+            IsWallRight = isWallRight;
+            IsWallDown = isWallDown;
+            IsWallLeft = isWallLeft;
+        }
+    }
 }
