@@ -136,8 +136,8 @@ public class Maze : MonoBehaviour
 
         if (toBecomeExcessTile.currentPlayer != null)
         {
-            toBecomeExcessTile.currentPlayer.transform.position = newTile.transform.position;
-            toBecomeExcessTile.currentPlayer.SetCurrentTile(newTile);
+            toBecomeExcessTile.currentPlayer.ChangeCurrentTile(newTile);
+            newTile.currentPlayer.transform.position = newTile.transform.position;
         }
 
         SetTile(BoardSize - 1, x, newTile);
@@ -195,8 +195,8 @@ public class Maze : MonoBehaviour
 
         if (toBecomeExcessTile.currentPlayer != null)
         {
-            toBecomeExcessTile.currentPlayer.transform.position = newTile.transform.position;
-            toBecomeExcessTile.currentPlayer.SetCurrentTile(newTile);
+            toBecomeExcessTile.currentPlayer.ChangeCurrentTile(newTile);
+            newTile.currentPlayer.transform.position = newTile.transform.position;
         }
 
         SetTile(z, 0, newTile);
@@ -254,8 +254,8 @@ public class Maze : MonoBehaviour
 
         if (toBecomeExcessTile.currentPlayer != null)
         {
-            toBecomeExcessTile.currentPlayer.transform.position = newTile.transform.position;
-            toBecomeExcessTile.currentPlayer.SetCurrentTile(newTile);
+            toBecomeExcessTile.currentPlayer.ChangeCurrentTile(newTile);
+            newTile.currentPlayer.transform.position = newTile.transform.position;
         }
 
         SetTile(0, x, newTile);
@@ -313,8 +313,8 @@ public class Maze : MonoBehaviour
 
         if (toBecomeExcessTile.currentPlayer != null)
         {
-            toBecomeExcessTile.currentPlayer.transform.position = newTile.transform.position;
-            toBecomeExcessTile.currentPlayer.SetCurrentTile(newTile);
+            toBecomeExcessTile.currentPlayer.ChangeCurrentTile(newTile);
+            newTile.currentPlayer.transform.position = newTile.transform.position;
         }
 
         SetTile(z, BoardSize - 1, newTile);

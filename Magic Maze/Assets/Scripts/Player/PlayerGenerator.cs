@@ -24,7 +24,7 @@ public class PlayerGenerator : MonoBehaviour
         
         tile.CreateRespawn(playerNumber);
         Player player = playerObj.GetComponent<Player>();
-        tile.SetCurrentPlayer(player);
+        tile.currentPlayer = player;
         player.currentTile = tile;
         InitializeMovement(player);
         if (playerNumber != 1)

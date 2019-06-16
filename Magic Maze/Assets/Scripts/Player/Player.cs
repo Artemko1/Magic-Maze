@@ -15,7 +15,12 @@ public class Player : MonoBehaviour
         maze = GameObject.FindGameObjectWithTag("Board").GetComponent<Maze>();
     }
 
-    public void SetCurrentTile(MazeTile mazeTile)
+    /// <summary>
+    /// Убирает текущего игрока у текущей клетки
+    /// и добавляет его переданной клетке.
+    /// </summary>
+    /// <param name="mazeTile"></param>
+    public void ChangeCurrentTile(MazeTile mazeTile)
     {
         currentTile.currentPlayer = null;
         currentTile = mazeTile;
@@ -25,11 +30,8 @@ public class Player : MonoBehaviour
 
     public void Move(Direction Direction)
     {
-        if (isMovementAllowed == false)
-        {
-            return;
-        }
-
+        if (!isMovementAllowed) { return; }
+        
         MazeTile nextTile = null;
 
         switch (Direction)
@@ -106,9 +108,7 @@ public class Player : MonoBehaviour
                 break;
         }
         
-        currentTile.currentPlayer = null;
-        currentTile = nextTile;
-        currentTile.currentPlayer = this;
+        ChangeCurrentTile(nextTile);
         transform.position = currentTile.transform.position;
     }
 
