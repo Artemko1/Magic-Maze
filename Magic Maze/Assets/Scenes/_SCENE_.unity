@@ -2186,8 +2186,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: MoveForward
+      - m_Target: {fileID: 595071254}
+        m_MethodName: MoveBackward
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3301,6 +3301,16 @@ PrefabInstance:
       propertyPath: moveExcessTileButton
       value: 
       objectReference: {fileID: 728755252}
+    - target: {fileID: 4875213375233417414, guid: bf2290b2b0053a843aafeaf70ad7e949,
+        type: 3}
+      propertyPath: moveExcessTileForwardButton
+      value: 
+      objectReference: {fileID: 728755252}
+    - target: {fileID: 4875213375233417414, guid: bf2290b2b0053a843aafeaf70ad7e949,
+        type: 3}
+      propertyPath: moveExcessTileBackwardButton
+      value: 
+      objectReference: {fileID: 1428977347}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bf2290b2b0053a843aafeaf70ad7e949, type: 3}
 --- !u!4 &664873475650973683 stripped
