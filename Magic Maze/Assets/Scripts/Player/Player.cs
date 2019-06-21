@@ -32,7 +32,7 @@ public class Player : MonoBehaviour
         switch (Direction)
         {
             case Direction.Up:
-                Debug.Log(this + " Moving Up");
+                //Debug.Log(this + " Moving Up");
                 if (currentTile.zIndex == 0)
                 {
                     Debug.Log(this + " reached board boundary.");
@@ -48,7 +48,7 @@ public class Player : MonoBehaviour
                 }
                 break;
             case Direction.Right:
-                Debug.Log(this + " Moving Right");
+                //Debug.Log(this + " Moving Right");
 
                 if (currentTile.xIndex + 1 == maze.BoardSize)
                 {
@@ -65,7 +65,7 @@ public class Player : MonoBehaviour
                 }
                 break;
             case Direction.Down:
-                Debug.Log(this + " Moving Down");
+                //Debug.Log(this + " Moving Down");
 
                 if (currentTile.zIndex + 1 == maze.BoardSize)
                 {
@@ -82,7 +82,7 @@ public class Player : MonoBehaviour
                 }
                 break;
             case Direction.Left:
-                Debug.Log(this + " Moving Left");
+                //Debug.Log(this + " Moving Left");
 
                 if (currentTile.xIndex == 0)
                 {
