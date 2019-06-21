@@ -5,13 +5,11 @@
 public class MazeGenerator : MonoBehaviour
 {
     public GameObject tilePrefab;
+
     private GameObject tileObj;
     private Maze maze;
 
-    void Awake()
-    {
-        maze = GetComponent<Maze>();
-    }
+    
 
     public MazeTile[] GenerateTiles(int boardSize)
     {
@@ -108,5 +106,9 @@ public class MazeGenerator : MonoBehaviour
                 maze.extraPositions[n] = maze.GetTile(z, x).transform.position + new Vector3(-1, 0, 0) * maze.Spacing;
                 break;
         }
+    }
+    void Awake()
+    {
+        maze = GetComponent<Maze>();
     }
 }

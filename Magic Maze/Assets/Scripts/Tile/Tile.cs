@@ -73,10 +73,14 @@ public class Tile : MonoBehaviour
     {
         if (maze != null)
         {
-            IsWallUp = isWallUp;
-            IsWallRight = isWallRight;
-            IsWallDown = isWallDown;
-            IsWallLeft = isWallLeft;
+            //IsWallUp = isWallUp;
+            //IsWallRight = isWallRight;
+            //IsWallDown = isWallDown;
+            //IsWallLeft = isWallLeft;
+            upWallObject.SetActive(isWallUp);
+            rightWallObject.SetActive(IsWallRight);
+            downWallObject.SetActive(isWallDown);
+            leftWallObject.SetActive(isWallLeft);
         }
     }
 }

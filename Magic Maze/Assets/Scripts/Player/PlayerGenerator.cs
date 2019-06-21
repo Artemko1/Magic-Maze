@@ -7,13 +7,27 @@ public class PlayerGenerator : MonoBehaviour
 {
     public Maze maze;
     public GameObject playerPrefab;
-    GameObject playerObj;
 
     public Button moveUpButton;
     public Button moveRightButton;
     public Button moveDownButton;
     public Button moveLeftButton;
 
+    private GameObject playerObj;
+
+    /// <summary>
+    /// Привязывает функции передвижения к кнопкам GUI.
+    /// </summary>
+    /// <param name="player">Игрок, для которого делается привязка.</param>
+    public void InitializeMovement(Player player)
+    {
+        moveUpButton.onClick.AddListener(() => player.Move(Direction.Up));
+        moveRightButton.onClick.AddListener(() => player.Move(Direction.Right));
+        moveDownButton.onClick.AddListener(() => player.Move(Direction.Down));
+        moveLeftButton.onClick.AddListener(() => player.Move(Direction.Left));
+        player.AllowMovement();
+        //Debug.Log("Movement initialized for " + player);
+    }
 
     /// <summary>
     /// Создает всех игроков.
@@ -46,18 +60,5 @@ public class PlayerGenerator : MonoBehaviour
         }
 
         player.isIgnoringWalls = true;
-    }
-    /// <summary>
-    /// Привязывает функции передвижения к кнопкам GUI.
-    /// </summary>
-    /// <param name="player">Игрок, для которого делается привязка.</param>
-    public void InitializeMovement(Player player)
-    {
-        moveUpButton.onClick.AddListener(() => player.Move(Direction.Up));
-        moveRightButton.onClick.AddListener(() => player.Move(Direction.Right));
-        moveDownButton.onClick.AddListener(() => player.Move(Direction.Down));
-        moveLeftButton.onClick.AddListener(() => player.Move(Direction.Left));
-        player.AllowMovement();
-        //Debug.Log("Movement initialized for " + player);
     }
 }

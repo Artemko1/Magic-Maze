@@ -5,23 +5,6 @@ using UnityEngine.UI;
 [RequireComponent(typeof(MazeGenerator))]
 public class Maze : MonoBehaviour
 {
-    private MazeGenerator mazeGenerator;
-    private PlayerGenerator playerGenerator;
-
-    private float spacing = 1.5f;
-
-    /// <summary>
-    /// Хранит в себе ссылки на все клетки лабиринта.
-    /// </summary>
-    [SerializeField]
-    private MazeTile[] tileArray;
-    [SerializeField]
-    private ExcessTile excessTile;
-    public Vector3[] extraPositions;
-
-    [SerializeField]
-    private Button moveExcessTileButton;
-
     public int BoardSize { get; } = 9;
     /// <summary>
     /// Количество excess позиций вдоль одной стороны лабиринта.
@@ -34,18 +17,53 @@ public class Maze : MonoBehaviour
     public Button MoveExcessTileButton { get => moveExcessTileButton; set => moveExcessTileButton = value; }
     public float Spacing { get => spacing; set => spacing = value; }
 
-    void Awake()
-    {
-        mazeGenerator = GetComponent<MazeGenerator>();
-        playerGenerator = GetComponent<PlayerGenerator>();
-    }
+    public Vector3[] extraPositions;
 
-    void Start()
+    private MazeGenerator mazeGenerator;
+    private PlayerGenerator playerGenerator;
+
+    private float spacing = 1.5f;
+
+    /// <summary>
+    /// Хранит в себе ссылки на все клетки лабиринта.
+    /// </summary>
+    [SerializeField] private MazeTile[] tileArray;
+    [SerializeField] private ExcessTile excessTile;
+
+    [SerializeField] private Button moveExcessTileButton;
+
+    /// <summary>
+    /// Присваивает переданный tile в массив объекта.
+    /// </summary>
+    /// <param name="z">Номер строки клетки.</param>
+    /// <param name="x">Номер столбца клетки.</param>
+    /// <param name="mazeTile"></param>
+    public void SetTile(int z, int x, MazeTile mazeTile)
     {
-        tileArray = mazeGenerator.GenerateTiles(BoardSize);
-        playerGenerator.GeneratePlayers();
-        mazeGenerator.GenerateExcessPositions();
-        excessTile.transform.position = extraPositions[0];
+        // 2D representation stored in row-major order.
+        tileArray[z * BoardSize + x] = mazeTile;
+    }
+    /// <summary>
+    /// Присваивает переданный tile в переданный массив клеток лабиринта.
+    /// </summary>
+    /// <param name="z">Номер строки клетки.</param>
+    /// <param name="x">Номер столбца клетки.</param>
+    /// <param name="mazeTile"></param>
+    /// <param name="tileArray">Массив, в который присваивается клетка.</param>
+    public void SetTile(int z, int x, MazeTile mazeTile, MazeTile[] tileArray)
+    {
+        // 2D representation stored in row-major order.
+        tileArray[z * BoardSize + x] = mazeTile;
+    }
+    /// <summary>
+    /// Возвращает клетку из лабиринта по её координатам.
+    /// </summary>
+    /// <param name="z">Номер строки клетки.</param>
+    /// <param name="x">Номер столбца клетки.</param>
+    /// <returns></returns>
+    public MazeTile GetTile(int z, int x)
+    {
+        return tileArray[z * BoardSize + x];
     }
 
 
@@ -71,6 +89,22 @@ public class Maze : MonoBehaviour
                 break;
         }
     }
+
+    void Awake()
+    {
+        mazeGenerator = GetComponent<MazeGenerator>();
+        playerGenerator = GetComponent<PlayerGenerator>();
+    }
+
+    void Start()
+    {
+        tileArray = mazeGenerator.GenerateTiles(BoardSize);
+        playerGenerator.GeneratePlayers();
+        mazeGenerator.GenerateExcessPositions();
+        excessTile.transform.position = extraPositions[0];
+    }
+
+
     /// <summary>
     /// Смещает ряд клеток вверх.
     /// </summary>
@@ -314,39 +348,7 @@ public class Maze : MonoBehaviour
         MoveExcessTileButton.onClick.AddListener(() => excessTile.MoveForward());
     }
 
-    /// <summary>
-    /// Присваивает переданный tile в массив объекта.
-    /// </summary>
-    /// <param name="z">Номер строки клетки.</param>
-    /// <param name="x">Номер столбца клетки.</param>
-    /// <param name="mazeTile"></param>
-    public void SetTile(int z, int x, MazeTile mazeTile)
-    {
-        // 2D representation stored in row-major order.
-        tileArray[z * BoardSize + x] = mazeTile;
-    }
-    /// <summary>
-    /// Присваивает переданный tile в переданный массив клеток лабиринта.
-    /// </summary>
-    /// <param name="z">Номер строки клетки.</param>
-    /// <param name="x">Номер столбца клетки.</param>
-    /// <param name="mazeTile"></param>
-    /// <param name="tileArray">Массив, в который присваивается клетка.</param>
-    public void SetTile(int z, int x, MazeTile mazeTile, MazeTile[] tileArray)
-    {
-        // 2D representation stored in row-major order.
-        tileArray[z * BoardSize + x] = mazeTile;
-    }
-    /// <summary>
-    /// Возвращает клетку из лабиринта по её координатам.
-    /// </summary>
-    /// <param name="z">Номер строки клетки.</param>
-    /// <param name="x">Номер столбца клетки.</param>
-    /// <returns></returns>
-    public MazeTile GetTile(int z, int x)
-    {
-        return tileArray[z * BoardSize + x];
-    }
+    
 }
 
 

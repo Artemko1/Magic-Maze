@@ -2,16 +2,10 @@
 [SelectionBase]
 public class ExcessTile : Tile
 {
-    [SerializeField]
-    private int extraPosId;
-
     public int ExtraPosId
     {
         get => extraPosId;
-        set
-        {
-            extraPosId = value;
-        }
+        set => extraPosId = value;
     }
 
     public Direction CurrentDirection
@@ -34,6 +28,8 @@ public class ExcessTile : Tile
             }
         }
     }
+
+    [SerializeField] private int extraPosId;
 
     /// <summary>
     /// Возвращает координату z или x лабиринта, где сейчас находится ExcessTile

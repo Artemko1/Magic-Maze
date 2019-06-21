@@ -10,10 +10,6 @@ public class Player : MonoBehaviour
     public bool isMovementAllowed;
     public bool isIgnoringWalls;
 
-    void Awake()
-    {
-        maze = GameObject.FindGameObjectWithTag("Board").GetComponent<Maze>();
-    }
 
     /// <summary>
     /// Убирает текущего игрока у текущей клетки
@@ -24,8 +20,7 @@ public class Player : MonoBehaviour
     {
         currentTile.currentPlayer = null;
         currentTile = mazeTile;
-        currentTile.currentPlayer = this;
-        
+        currentTile.currentPlayer = this;        
     }
 
     public void Move(Direction Direction)
@@ -119,5 +114,9 @@ public class Player : MonoBehaviour
     public void DisallowMovement()
     {
         isMovementAllowed = false;
+    }
+    void Awake()
+    {
+        maze = GameObject.FindGameObjectWithTag("Board").GetComponent<Maze>();
     }
 }
