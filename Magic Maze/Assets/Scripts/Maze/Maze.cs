@@ -43,22 +43,11 @@ public class Maze : MonoBehaviour
     void Start()
     {
         tileArray = mazeGenerator.GenerateTiles(BoardSize);
-        GeneratePlayers();
+        playerGenerator.GeneratePlayers();
         mazeGenerator.GenerateExcessPositions();
         excessTile.transform.position = extraPositions[0];
     }
 
-    /// <summary>
-    /// Создает всех игроков.
-    /// </summary>
-    private void GeneratePlayers()
-    {
-        playerGenerator.GeneratePlayer(0, 0, 1);
-        playerGenerator.GeneratePlayer((byte)(BoardSize - 1), 0, 2);
-        playerGenerator.GeneratePlayer((byte)(BoardSize - 1), (byte)(BoardSize - 1), 3);
-        playerGenerator.GeneratePlayer(0, (byte)(BoardSize - 1), 4);
-
-    }
 
     /// <summary>
     /// Смещает ряд клеток.
