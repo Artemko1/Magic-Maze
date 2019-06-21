@@ -5,7 +5,17 @@ public class ExcessTile : Tile
     public int ExtraPosId
     {
         get => extraPosId;
-        set => extraPosId = value;
+        set
+        {
+            if (value < 0)
+            {
+                extraPosId = maze.MovableRows + (value % maze.MovableRows);
+            }
+            else 
+            {
+                extraPosId = value % maze.MovableRows;
+            }
+        }
     }
 
     public Direction CurrentDirection
@@ -59,7 +69,7 @@ public class ExcessTile : Tile
     /// </summary>
     public void RotateCounterclockwise()
     {
-        Debug.Log("RotateCounterclockwise called");
+        //Debug.Log("RotateCounterclockwise called");
         bool wasWallUp = IsWallUp;
 
         IsWallUp = IsWallRight;
@@ -70,7 +80,7 @@ public class ExcessTile : Tile
 
     public void RotateClockwise()
     {
-        Debug.Log("RotateClockwise called");
+        //Debug.Log("RotateClockwise called");
         bool wasWallUp = IsWallUp;
 
         IsWallUp = IsWallLeft;
@@ -85,11 +95,25 @@ public class ExcessTile : Tile
     public void MoveForward()
     {
         ExtraPosId++;
-        if (ExtraPosId == maze.MovableRows)
-            ExtraPosId = 0;
         Vector3 nextPosition = maze.extraPositions[ExtraPosId];
         transform.position = nextPosition;
-        if (ExtraPosId % 4 == 0)
+        if (ExtraPosId % maze.MovableRowsPerSide == 0)
+        {
             RotateCounterclockwise();
+        }
+    }
+
+    /// <summary>
+    /// Двигает клетку на предыдущую позицию
+    /// </summary>
+    public void MoveBackward()
+    {
+        if ((ExtraPosId % maze.MovableRowsPerSide) == 0)
+        {
+            RotateClockwise();
+        }
+        ExtraPosId--;
+        Vector3 nextPosition = maze.extraPositions[ExtraPosId];
+        transform.position = nextPosition;        
     }
 }
