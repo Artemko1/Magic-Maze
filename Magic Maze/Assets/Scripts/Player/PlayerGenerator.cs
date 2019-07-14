@@ -8,26 +8,7 @@ public class PlayerGenerator : MonoBehaviour
     public Maze maze;
     public GameObject playerPrefab;
 
-    public Button moveUpButton;
-    public Button moveRightButton;
-    public Button moveDownButton;
-    public Button moveLeftButton;
-
     private GameObject playerObj;
-
-    /// <summary>
-    /// Привязывает функции передвижения к кнопкам GUI.
-    /// </summary>
-    /// <param name="player">Игрок, для которого делается привязка.</param>
-    public void InitializeMovement(Player player)
-    {
-        moveUpButton.onClick.AddListener(() => player.Move(Direction.Up));
-        moveRightButton.onClick.AddListener(() => player.Move(Direction.Right));
-        moveDownButton.onClick.AddListener(() => player.Move(Direction.Down));
-        moveLeftButton.onClick.AddListener(() => player.Move(Direction.Left));
-        player.AllowMovement();
-        //Debug.Log("Movement initialized for " + player);
-    }
 
     /// <summary>
     /// Создает всех игроков.
@@ -38,7 +19,6 @@ public class PlayerGenerator : MonoBehaviour
         GeneratePlayer((byte)(maze.BoardSize - 1), 0, 2);
         GeneratePlayer((byte)(maze.BoardSize - 1), (byte)(maze.BoardSize - 1), 3);
         GeneratePlayer(0, (byte)(maze.BoardSize - 1), 4);
-
     }
 
     private void GeneratePlayer(byte x, byte z, byte playerNumber)
@@ -53,11 +33,11 @@ public class PlayerGenerator : MonoBehaviour
         Player player = playerObj.GetComponent<Player>();
         tile.currentPlayer = player;
         player.currentTile = tile;
-        InitializeMovement(player);
-        if (playerNumber != 1)
-        {
-            player.DisallowMovement();
-        }
+        player.AllowMovement();
+        //if (playerNumber != 1)
+        //{
+        //    player.DisallowMovement();
+        //}
 
         player.isIgnoringWalls = true;
     }

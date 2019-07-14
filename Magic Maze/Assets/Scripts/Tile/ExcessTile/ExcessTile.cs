@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+
 [SelectionBase]
 public class ExcessTile : Tile
 {
@@ -40,6 +41,7 @@ public class ExcessTile : Tile
     }
 
     [SerializeField] private int extraPosId;
+    private Buttons buttons;
 
     /// <summary>
     /// Возвращает координату z или x лабиринта, где сейчас находится ExcessTile
@@ -116,4 +118,20 @@ public class ExcessTile : Tile
         Vector3 nextPosition = maze.extraPositions[ExtraPosId];
         transform.position = nextPosition;        
     }
+
+
+    private void OnEnable()
+    {
+        buttons = maze.GetComponent<Buttons>();
+        buttons.moveExcessTileForward.onClick.AddListener(MoveForward);
+        buttons.moveExcessTileBackward.onClick.AddListener(MoveBackward);
+    }
+
+    private void OnDisable()
+    {
+        buttons.moveExcessTileForward.onClick.RemoveListener(MoveForward);
+        buttons.moveExcessTileBackward.onClick.RemoveListener(MoveBackward);
+    }
+
+
 }

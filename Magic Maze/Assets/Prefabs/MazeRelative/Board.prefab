@@ -45,10 +45,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e570f6b3df56764e9bbf61738283fcb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  extraPositions: []
   tileArray: []
   excessTile: {fileID: 0}
-  extraPositions: []
-  moveExcessTileButton: {fileID: 0}
+  moveExcessTileForwardButton: {fileID: 0}
+  moveExcessTileBackwardButton: {fileID: 0}
 --- !u!114 &5292572755011030092
 MonoBehaviour:
   m_ObjectHideFlags: 0

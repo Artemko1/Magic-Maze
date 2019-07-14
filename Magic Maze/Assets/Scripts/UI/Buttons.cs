@@ -1,0 +1,13 @@
+﻿using UnityEngine;
+using UnityEngine.UI;
+
+public class Buttons : MonoBehaviour
+{
+    public Button moveExcessTileForward;
+    public Button moveExcessTileBackward;
+
+    public Button movePlayerUpButton;
+    public Button movePlayerRightButton;
+    public Button movePlayerDownButton;
+    public Button movePlayerLeftButton;
+}

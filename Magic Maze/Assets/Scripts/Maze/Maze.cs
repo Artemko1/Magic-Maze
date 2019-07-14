@@ -29,9 +29,6 @@ public class Maze : MonoBehaviour
     [SerializeField] private MazeTile[] tileArray;
     [SerializeField] private ExcessTile excessTile;
 
-    [SerializeField] private Button moveExcessTileForwardButton;
-    [SerializeField] private Button moveExcessTileBackwardButton;
-
     /// <summary>
     /// Присваивает переданный tile в массив объекта.
     /// </summary>
@@ -166,11 +163,6 @@ public class Maze : MonoBehaviour
         SetTile(BoardSize - 1, x, newTile);
         excessTile = newExcessTile;
         excessTile.ExtraPosId = 3 * MovableRowsPerSide - oldExtraPosId - 1;
-
-        moveExcessTileForwardButton.onClick.RemoveAllListeners();
-        moveExcessTileForwardButton.onClick.AddListener(() => excessTile.MoveForward());
-        moveExcessTileBackwardButton.onClick.RemoveAllListeners();
-        moveExcessTileBackwardButton.onClick.AddListener(() => excessTile.MoveBackward());
     }
     /// <summary>
     /// Смещает ряд клеток вправо.
@@ -227,11 +219,6 @@ public class Maze : MonoBehaviour
         SetTile(z, 0, newTile);
         excessTile = newExcessTile;
         excessTile.ExtraPosId = 5 * MovableRowsPerSide - oldExtraPosId - 1;
-
-        moveExcessTileForwardButton.onClick.RemoveAllListeners();
-        moveExcessTileForwardButton.onClick.AddListener(() => excessTile.MoveForward());
-        moveExcessTileBackwardButton.onClick.RemoveAllListeners();
-        moveExcessTileBackwardButton.onClick.AddListener(() => excessTile.MoveBackward());
     }
     /// <summary>
     /// Смещает ряд клеток вниз.
@@ -288,11 +275,6 @@ public class Maze : MonoBehaviour
         SetTile(0, x, newTile);
         excessTile = newExcessTile;
         excessTile.ExtraPosId = 3 * MovableRowsPerSide - oldExtraPosId - 1;
-
-        moveExcessTileForwardButton.onClick.RemoveAllListeners();
-        moveExcessTileForwardButton.onClick.AddListener(() => excessTile.MoveForward());
-        moveExcessTileBackwardButton.onClick.RemoveAllListeners();
-        moveExcessTileBackwardButton.onClick.AddListener(() => excessTile.MoveBackward());
     }
     /// <summary>
     /// Смещает ряд клеток влево.
@@ -349,14 +331,7 @@ public class Maze : MonoBehaviour
         SetTile(z, BoardSize - 1, newTile);
         excessTile = newExcessTile;
         excessTile.ExtraPosId = 5 * MovableRowsPerSide - oldExtraPosId - 1;
-
-        moveExcessTileForwardButton.onClick.RemoveAllListeners();
-        moveExcessTileForwardButton.onClick.AddListener(() => excessTile.MoveForward());
-        moveExcessTileBackwardButton.onClick.RemoveAllListeners();
-        moveExcessTileBackwardButton.onClick.AddListener(() => excessTile.MoveBackward());
     }
-
-    
 }
 
 
