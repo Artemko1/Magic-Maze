@@ -7,7 +7,6 @@ public class MazeTile : Tile
     public byte zIndex;
     public byte xIndex;
     
-    public byte respawnNumber;
     public Player currentPlayer;
 
     //public GameObject currentItem;
@@ -29,10 +28,4 @@ public class MazeTile : Tile
     /// Смещение влево на расстояние одной клетки
     /// </summary>
     public void MoveLeft() => transform.Translate(new Vector3(-1, 0, 0) * maze.Spacing, Space.World);
-
-    public void CreateRespawn(byte number) 
-    {
-        // 1-4 для респаунов, 0 для нереспаунов
-            respawnNumber = number;
-    }
 }

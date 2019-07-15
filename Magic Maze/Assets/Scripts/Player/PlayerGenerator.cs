@@ -29,7 +29,6 @@ public class PlayerGenerator : MonoBehaviour
         playerObj.name = ("Player " + playerNumber);
         playerObj.transform.SetAsFirstSibling();
         
-        tile.CreateRespawn(playerNumber);
         Player player = playerObj.GetComponent<Player>();
         tile.currentPlayer = player;
         player.currentTile = tile;
