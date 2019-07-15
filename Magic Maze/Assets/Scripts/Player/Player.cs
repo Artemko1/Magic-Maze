@@ -116,7 +116,7 @@ public class Player : MonoBehaviour
     }
     void Awake()
     {
-        maze = GameObject.FindGameObjectWithTag("Board").GetComponent<Maze>();
+        maze = transform.parent.GetComponent<Maze>();
     }
 
     private void OnEnable()

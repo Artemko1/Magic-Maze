@@ -64,7 +64,7 @@ public class Tile : MonoBehaviour
         downWallObject = transform.Find("Plate Visual").Find("Wall Down").gameObject;
         leftWallObject = transform.Find("Plate Visual").Find("Wall Left").gameObject;
 
-        maze = GameObject.FindGameObjectWithTag("Board").GetComponent<Maze>();
+        maze = transform.parent.GetComponent<Maze>();
 
         TileGenerator.GenerateWalls(this);
     }
