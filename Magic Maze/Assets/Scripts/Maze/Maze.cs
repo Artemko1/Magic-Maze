@@ -88,6 +88,9 @@ public class Maze : MonoBehaviour
     {
         mazeGenerator = GetComponent<MazeGenerator>();
         playerGenerator = GetComponent<PlayerGenerator>();
+
+        Buttons buttons = GetComponent<Buttons>();
+        buttons.moveColumn.onClick.AddListener(MoveColumn);
     }
 
     private void Start()
