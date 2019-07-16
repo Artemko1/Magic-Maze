@@ -1,11 +1,11 @@
 ﻿using UnityEngine;
-using UnityEngine.UI;
 
 [RequireComponent(typeof(PlayerGenerator))]
 [RequireComponent(typeof(MazeGenerator))]
 public class Maze : MonoBehaviour
 {
     public int BoardSize { get; } = 9;
+    public float Spacing { get; } = 1.5f;
     /// <summary>
     /// Количество excess позиций вдоль одной стороны лабиринта.
     /// </summary>
@@ -14,14 +14,11 @@ public class Maze : MonoBehaviour
     /// Количество возможных позиций для ExcessTile.
     /// </summary>
     public int MovableRows => (BoardSize - 1) * 2;
-    public float Spacing { get => spacing; set => spacing = value; }
 
     public Vector3[] extraPositions;
 
     private MazeGenerator mazeGenerator;
     private PlayerGenerator playerGenerator;
-
-    private float spacing = 1.5f;
 
     /// <summary>
     /// Хранит в себе ссылки на все клетки лабиринта.
@@ -87,13 +84,13 @@ public class Maze : MonoBehaviour
         }
     }
 
-    void Awake()
+    private void Awake()
     {
         mazeGenerator = GetComponent<MazeGenerator>();
         playerGenerator = GetComponent<PlayerGenerator>();
     }
 
-    void Start()
+    private void Start()
     {
         tileArray = mazeGenerator.GenerateTiles(BoardSize);
         playerGenerator.GeneratePlayers();

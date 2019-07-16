@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Tile : MonoBehaviour
 {
@@ -73,10 +71,6 @@ public class Tile : MonoBehaviour
     {
         if (maze != null)
         {
-            //IsWallUp = isWallUp;
-            //IsWallRight = isWallRight;
-            //IsWallDown = isWallDown;
-            //IsWallLeft = isWallLeft;
             upWallObject.SetActive(isWallUp);
             rightWallObject.SetActive(IsWallRight);
             downWallObject.SetActive(isWallDown);

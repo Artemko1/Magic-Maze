@@ -85,6 +85,11 @@ public class MazeGenerator : MonoBehaviour
         }
     }
 
+    private void Awake()
+    {
+        maze = GetComponent<Maze>();
+    }
+
     private void SetExtraPosition(byte z, byte x, byte n, Direction direction) // direction - направление смещения позиций.
     {
         switch (direction)
@@ -107,8 +112,5 @@ public class MazeGenerator : MonoBehaviour
                 break;
         }
     }
-    void Awake()
-    {
-        maze = GetComponent<Maze>();
-    }
+
 }

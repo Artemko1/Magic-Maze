@@ -1,14 +1,10 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.UI;
+﻿using UnityEngine;
 
 public class PlayerGenerator : MonoBehaviour
 {
-    public Maze maze;
     public GameObject playerPrefab;
 
-    private GameObject playerObj;
+    private Maze maze;
 
     /// <summary>
     /// Создает всех игроков.
@@ -21,11 +17,16 @@ public class PlayerGenerator : MonoBehaviour
         GeneratePlayer(0, (byte)(maze.BoardSize - 1), 4);
     }
 
+    private void Awake()
+    {
+        maze = GetComponent<Maze>();
+    }
+
     private void GeneratePlayer(byte x, byte z, byte playerNumber)
     {
         MazeTile tile = maze.GetTile(z, x);
-        
-        playerObj = Instantiate(playerPrefab, tile.transform.position, Quaternion.identity, transform);
+
+        GameObject playerObj = Instantiate(playerPrefab, tile.transform.position, Quaternion.identity, transform);
         playerObj.name = ("Player " + playerNumber);
         playerObj.transform.SetAsFirstSibling();
         

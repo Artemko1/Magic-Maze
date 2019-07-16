@@ -114,7 +114,8 @@ public class Player : MonoBehaviour
     {
         isMovementAllowed = false;
     }
-    void Awake()
+
+    private void Awake()
     {
         maze = transform.parent.GetComponent<Maze>();
     }
