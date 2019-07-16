@@ -34,8 +34,8 @@ public class ExcessTile : Tile
                 case 3:
                     return Direction.Left;
                 default:
-                    throw new System.ArgumentException("Parameter can only be 0-3",
-                            " extraPosId/Maze.MovableRowsPerSide");
+                    throw new System.ArgumentException("Parameter can only be 0-3, " +
+                        $"but it's {ExtraPosId / maze.MovableRowsPerSide}");
             }
         }
     }
@@ -71,7 +71,6 @@ public class ExcessTile : Tile
     /// </summary>
     public void RotateCounterclockwise()
     {
-        //Debug.Log("RotateCounterclockwise called");
         bool wasWallUp = IsWallUp;
 
         IsWallUp = IsWallRight;
@@ -82,7 +81,6 @@ public class ExcessTile : Tile
 
     public void RotateClockwise()
     {
-        //Debug.Log("RotateClockwise called");
         bool wasWallUp = IsWallUp;
 
         IsWallUp = IsWallLeft;
