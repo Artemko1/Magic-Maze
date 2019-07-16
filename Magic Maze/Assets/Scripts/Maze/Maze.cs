@@ -92,7 +92,8 @@ public class Maze : MonoBehaviour
 
     private void Start()
     {
-        tileArray = mazeGenerator.GenerateTiles(BoardSize);
+        tileArray = new MazeTile[BoardSize * BoardSize];
+        tileArray = mazeGenerator.GenerateTiles(tileArray);
         playerGenerator.GeneratePlayers();
         mazeGenerator.GenerateExcessPositions();
         excessTile.transform.position = extraPositions[0];

@@ -11,13 +11,11 @@ public class MazeGenerator : MonoBehaviour
 
     
 
-    public MazeTile[] GenerateTiles(int boardSize)
+    public MazeTile[] GenerateTiles(MazeTile[] tileArray)
     {
-        MazeTile[] tileArray;
-        tileArray = new MazeTile[boardSize * boardSize];
-        for (byte z = 0; z < boardSize; z++)
+        for (byte z = 0; z < maze.BoardSize; z++)
         {
-            for (byte x = 0; x < boardSize; x++)
+            for (byte x = 0; x < maze.BoardSize; x++)
             {
                 // Создается новая клетка tileObj.
                 Vector3 pos = new Vector3(x, 0, -z) * maze.Spacing;
