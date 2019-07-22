@@ -1,0 +1,2 @@
+
+[RequireComponent(typeof(Maze))]

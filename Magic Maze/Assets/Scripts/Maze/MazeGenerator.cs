@@ -1,4 +1,6 @@
 ﻿using UnityEngine;
+
+[RequireComponent(typeof(Maze))]
 /// <summary>
 /// Класс инкапсулирует начальную генерацию лабиринта.
 /// </summary>

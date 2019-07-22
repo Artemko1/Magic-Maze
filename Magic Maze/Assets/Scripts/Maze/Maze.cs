@@ -2,6 +2,8 @@
 
 [RequireComponent(typeof(PlayerGenerator))]
 [RequireComponent(typeof(MazeGenerator))]
+[RequireComponent(typeof(ItemGenerator))]
+[RequireComponent(typeof(Buttons))]
 public class Maze : MonoBehaviour
 {
     public int BoardSize { get; } = 9;

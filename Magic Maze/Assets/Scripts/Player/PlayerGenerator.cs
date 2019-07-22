@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 
+[RequireComponent(typeof(Maze))]
 public class PlayerGenerator : MonoBehaviour
 {
     public GameObject playerPrefab;
