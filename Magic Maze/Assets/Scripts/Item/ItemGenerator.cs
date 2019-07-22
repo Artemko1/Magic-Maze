@@ -40,7 +40,7 @@ public class ItemGenerator : MonoBehaviour
                 tileList.RemoveAt(index);
                 Item item = itemObj.GetComponent<Item>();
                 tile.currentItem = item;
-                item.currentTile = tile;
+                item.ChangeCurrentTile(tile);
             }
         }
     }

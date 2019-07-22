@@ -3,7 +3,7 @@
 public class Player : MonoBehaviour
 {
     public Maze maze;
-    public MazeTile currentTile;
+    public MazeTile CurrentTile { get; private set; }
 
     public bool isMovementAllowed;
     public bool isIgnoringWalls;
@@ -17,9 +17,12 @@ public class Player : MonoBehaviour
     /// <param name="mazeTile"></param>
     public void ChangeCurrentTile(MazeTile mazeTile)
     {
-        currentTile.currentPlayer = null;
-        currentTile = mazeTile;
-        currentTile.currentPlayer = this;        
+        if (CurrentTile != null)
+        {
+            CurrentTile.currentPlayer = null;
+        }
+        CurrentTile = mazeTile;
+        CurrentTile.currentPlayer = this;        
     }
 
     public void Move(Direction Direction)
@@ -32,15 +35,15 @@ public class Player : MonoBehaviour
         {
             case Direction.Up:
                 //Debug.Log(this + " Moving Up");
-                if (currentTile.zIndex == 0)
+                if (CurrentTile.zIndex == 0)
                 {
                     Debug.Log(this + " reached board boundary.");
                     return;
                 }
 
-                nextTile = maze.GetTile(currentTile.zIndex - 1, currentTile.xIndex);
+                nextTile = maze.GetTile(CurrentTile.zIndex - 1, CurrentTile.xIndex);
 
-                if (!isIgnoringWalls && (currentTile.IsWallUp || nextTile.IsWallDown))
+                if (!isIgnoringWalls && (CurrentTile.IsWallUp || nextTile.IsWallDown))
                 {
                     Debug.Log(this + " reached wall up.");
                     return;
@@ -49,15 +52,15 @@ public class Player : MonoBehaviour
             case Direction.Right:
                 //Debug.Log(this + " Moving Right");
 
-                if (currentTile.xIndex + 1 == maze.BoardSize)
+                if (CurrentTile.xIndex + 1 == maze.BoardSize)
                 {
                     Debug.Log(this + "reached board boundary.");
                     return;
                 }
 
-                nextTile = maze.GetTile(currentTile.zIndex, currentTile.xIndex + 1);
+                nextTile = maze.GetTile(CurrentTile.zIndex, CurrentTile.xIndex + 1);
 
-                if (!isIgnoringWalls && (currentTile.IsWallRight || nextTile.IsWallLeft))
+                if (!isIgnoringWalls && (CurrentTile.IsWallRight || nextTile.IsWallLeft))
                 {
                     Debug.Log(this + " reached wall right.");
                     return;
@@ -66,15 +69,15 @@ public class Player : MonoBehaviour
             case Direction.Down:
                 //Debug.Log(this + " Moving Down");
 
-                if (currentTile.zIndex + 1 == maze.BoardSize)
+                if (CurrentTile.zIndex + 1 == maze.BoardSize)
                 {
                     Debug.Log(this + "reached board boundary.");
                     return;
                 }
 
-                nextTile = maze.GetTile(currentTile.zIndex + 1, currentTile.xIndex);
+                nextTile = maze.GetTile(CurrentTile.zIndex + 1, CurrentTile.xIndex);
 
-                if (!isIgnoringWalls && (currentTile.IsWallDown || nextTile.IsWallUp))
+                if (!isIgnoringWalls && (CurrentTile.IsWallDown || nextTile.IsWallUp))
                 {
                     Debug.Log(this + " reached wall down.");
                     return;
@@ -83,15 +86,15 @@ public class Player : MonoBehaviour
             case Direction.Left:
                 //Debug.Log(this + " Moving Left");
 
-                if (currentTile.xIndex == 0)
+                if (CurrentTile.xIndex == 0)
                 {
                     Debug.Log(this + "reached board boundary.");
                     return;
                 }
 
-                nextTile = maze.GetTile(currentTile.zIndex, currentTile.xIndex - 1);
+                nextTile = maze.GetTile(CurrentTile.zIndex, CurrentTile.xIndex - 1);
 
-                if (!isIgnoringWalls && (currentTile.IsWallLeft || nextTile.IsWallRight))
+                if (!isIgnoringWalls && (CurrentTile.IsWallLeft || nextTile.IsWallRight))
                 {
                     Debug.Log(this + " reached wall left.");
                     return;
@@ -103,7 +106,7 @@ public class Player : MonoBehaviour
         }
         
         ChangeCurrentTile(nextTile);
-        transform.position = currentTile.transform.position;
+        transform.position = CurrentTile.transform.position;
     }
 
     public void AllowMovement()

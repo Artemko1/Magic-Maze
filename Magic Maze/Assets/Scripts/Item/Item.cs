@@ -4,7 +4,7 @@ using UnityEngine;
 [SelectionBase]
 public class Item : MonoBehaviour
 {
-    public MazeTile currentTile;
+    public MazeTile CurrentTile { get; private set; }
 
     /// <summary>
     /// Убирает текущего игрока у текущей клетки
@@ -13,8 +13,11 @@ public class Item : MonoBehaviour
     /// <param name="mazeTile"></param>
     public void ChangeCurrentTile(MazeTile mazeTile)
     {
-        currentTile.currentItem = null;
-        currentTile = mazeTile;
-        currentTile.currentItem = this;
+        if (CurrentTile != null)
+        {
+            CurrentTile.currentItem = null;
+        }
+        CurrentTile = mazeTile;
+        CurrentTile.currentItem = this;
     }
 }

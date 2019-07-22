@@ -37,7 +37,7 @@ public class PlayerGenerator : MonoBehaviour
         
         Player player = playerObj.GetComponent<Player>();
         tile.currentPlayer = player;
-        player.currentTile = tile;
+        player.ChangeCurrentTile(tile);
         player.AllowMovement();
         //if (playerNumber != 1)
         //{
