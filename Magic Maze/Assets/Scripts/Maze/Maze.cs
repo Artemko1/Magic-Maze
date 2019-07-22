@@ -1,7 +1,10 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 [RequireComponent(typeof(PlayerGenerator))]
 [RequireComponent(typeof(MazeGenerator))]
+[RequireComponent(typeof(ItemGenerator))]
+[RequireComponent(typeof(Buttons))]
 public class Maze : MonoBehaviour
 {
     public int BoardSize { get; } = 9;
@@ -14,15 +17,15 @@ public class Maze : MonoBehaviour
     /// Количество возможных позиций для ExcessTile.
     /// </summary>
     public int MovableRows => (BoardSize - 1) * 2;
+    public int NumberOfTiles => tileArray.Length;
 
     public Vector3[] extraPositions;
+    [Range(1, 77)] public int NumberOfItems;
 
     private MazeGenerator mazeGenerator;
     private PlayerGenerator playerGenerator;
+    private ItemGenerator itemGenerator;
 
-    /// <summary>
-    /// Хранит в себе ссылки на все клетки лабиринта.
-    /// </summary>
     [SerializeField] private MazeTile[] tileArray;
     [SerializeField] private ExcessTile excessTile;
 
@@ -59,6 +62,10 @@ public class Maze : MonoBehaviour
     {
         return tileArray[z * BoardSize + x];
     }
+    public MazeTile GetTile((int, int) p)
+    {
+        return tileArray[p.Item1 * BoardSize + p.Item2];
+    }
 
 
     /// <summary>
@@ -88,6 +95,7 @@ public class Maze : MonoBehaviour
     {
         mazeGenerator = GetComponent<MazeGenerator>();
         playerGenerator = GetComponent<PlayerGenerator>();
+        itemGenerator = GetComponent<ItemGenerator>();
 
         Buttons buttons = GetComponent<Buttons>();
         buttons.moveColumn.onClick.AddListener(MoveColumn);
@@ -100,6 +108,7 @@ public class Maze : MonoBehaviour
         playerGenerator.GeneratePlayers();
         mazeGenerator.GenerateExcessPositions();
         excessTile.transform.position = extraPositions[0];
+        itemGenerator.GenerateItems(NumberOfItems);
     }
 
 
@@ -135,6 +144,10 @@ public class Maze : MonoBehaviour
             {
                 currentTile.currentPlayer.transform.position = currentTile.transform.position;
             }
+            if (currentTile.currentItem != null)
+            {
+                currentTile.currentItem.transform.position = currentTile.transform.position;
+            }
         }
 
         // Последний тайл становится обычным вместо эксесс
@@ -159,6 +172,11 @@ public class Maze : MonoBehaviour
         {
             toBecomeExcessTile.currentPlayer.ChangeCurrentTile(newTile);
             newTile.currentPlayer.transform.position = newTile.transform.position;
+        }
+        if (toBecomeExcessTile.currentItem != null)
+        {
+            toBecomeExcessTile.currentItem.ChangeCurrentTile(newTile);
+            newTile.currentItem.transform.position = newTile.transform.position;
         }
 
         SetTile(BoardSize - 1, x, newTile);
@@ -195,6 +213,10 @@ public class Maze : MonoBehaviour
             {
                 currentTile.currentPlayer.transform.position = currentTile.transform.position;
             }
+            if (currentTile.currentItem != null)
+            {
+                currentTile.currentItem.transform.position = currentTile.transform.position;
+            }
         }
 
         // Первый тайл становится обычным вместо эксесс
@@ -215,6 +237,11 @@ public class Maze : MonoBehaviour
         {
             toBecomeExcessTile.currentPlayer.ChangeCurrentTile(newTile);
             newTile.currentPlayer.transform.position = newTile.transform.position;
+        }
+        if (toBecomeExcessTile.currentItem != null)
+        {
+            toBecomeExcessTile.currentItem.ChangeCurrentTile(newTile);
+            newTile.currentItem.transform.position = newTile.transform.position;
         }
 
         SetTile(z, 0, newTile);
@@ -251,6 +278,10 @@ public class Maze : MonoBehaviour
             {
                 currentTile.currentPlayer.transform.position = currentTile.transform.position;
             }
+            if (currentTile.currentItem != null)
+            {
+                currentTile.currentItem.transform.position = currentTile.transform.position;
+            }
         }
 
         // Первый тайл становится обычным вместо эксесс
@@ -271,6 +302,11 @@ public class Maze : MonoBehaviour
         {
             toBecomeExcessTile.currentPlayer.ChangeCurrentTile(newTile);
             newTile.currentPlayer.transform.position = newTile.transform.position;
+        }
+        if (toBecomeExcessTile.currentItem != null)
+        {
+            toBecomeExcessTile.currentItem.ChangeCurrentTile(newTile);
+            newTile.currentItem.transform.position = newTile.transform.position;
         }
 
         SetTile(0, x, newTile);
@@ -307,6 +343,10 @@ public class Maze : MonoBehaviour
             {
                 currentTile.currentPlayer.transform.position = currentTile.transform.position;
             }
+            if (currentTile.currentItem != null)
+            {
+                currentTile.currentItem.transform.position = currentTile.transform.position;
+            }
         }
 
         // Последний тайл становится обычным вместо эксесс
@@ -327,6 +367,11 @@ public class Maze : MonoBehaviour
         {
             toBecomeExcessTile.currentPlayer.ChangeCurrentTile(newTile);
             newTile.currentPlayer.transform.position = newTile.transform.position;
+        }
+        if (toBecomeExcessTile.currentItem != null)
+        {
+            toBecomeExcessTile.currentItem.ChangeCurrentTile(newTile);
+            newTile.currentItem.transform.position = newTile.transform.position;
         }
 
         SetTile(z, BoardSize - 1, newTile);

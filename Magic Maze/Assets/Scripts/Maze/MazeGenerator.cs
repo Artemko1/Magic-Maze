@@ -1,4 +1,6 @@
 ﻿using UnityEngine;
+
+[RequireComponent(typeof(Maze))]
 /// <summary>
 /// Класс инкапсулирует начальную генерацию лабиринта.
 /// </summary>
@@ -6,7 +8,6 @@ public class MazeGenerator : MonoBehaviour
 {
     public GameObject tilePrefab;
 
-    private GameObject tileObj;
     private Maze maze;
 
     
@@ -19,12 +20,12 @@ public class MazeGenerator : MonoBehaviour
             {
                 // Создается новая клетка tileObj.
                 Vector3 pos = new Vector3(x, 0, -z) * maze.Spacing;
-                tileObj = Instantiate(
+                GameObject tileObj = Instantiate(
                         tilePrefab,
                         maze.transform.position + pos,
                         Quaternion.identity,
                         maze.transform);
-                tileObj.name = "MazeTile " + z + " " + x;
+                tileObj.name = $"MazeTile {z} {x}";
 
                 MazeTile tile = tileObj.GetComponent<MazeTile>();
                 maze.SetTile(z, x, tile, tileArray);

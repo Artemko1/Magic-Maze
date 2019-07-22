@@ -8,9 +8,7 @@ public class MazeTile : Tile
     public byte xIndex;
     
     public Player currentPlayer;
-
-    //public GameObject currentItem;
-
+    public Item currentItem;
 
     /// <summary>
     /// Смещение вверх на расстояние одной клетки

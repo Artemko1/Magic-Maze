@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 4875213375233417414}
   - component: {fileID: 5292572755011030092}
   - component: {fileID: 165624179184156990}
+  - component: {fileID: 4708362419299807496}
   - component: {fileID: 7625486815254710930}
   m_Layer: 0
   m_Name: Board
@@ -77,6 +78,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerPrefab: {fileID: 1593622067508916, guid: 047cbcff827e4804488958170ba04172,
     type: 3}
+--- !u!114 &4708362419299807496
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 664873475245246372}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 398d0d45f49797d448348b5d968fc4a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ItemPrefab: {fileID: 3621934545447805422, guid: 1cd15c369245f7a4ca313b7e1a3abd1f,
+    type: 3}
 --- !u!114 &7625486815254710930
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -91,6 +106,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveExcessTileForward: {fileID: 0}
   moveExcessTileBackward: {fileID: 0}
+  moveColumn: {fileID: 0}
   movePlayerUpButton: {fileID: 0}
   movePlayerRightButton: {fileID: 0}
   movePlayerDownButton: {fileID: 0}

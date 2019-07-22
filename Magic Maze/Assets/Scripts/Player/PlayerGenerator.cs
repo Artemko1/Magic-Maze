@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 
+[RequireComponent(typeof(Maze))]
 public class PlayerGenerator : MonoBehaviour
 {
     public GameObject playerPrefab;
@@ -26,7 +27,11 @@ public class PlayerGenerator : MonoBehaviour
     {
         MazeTile tile = maze.GetTile(z, x);
 
-        GameObject playerObj = Instantiate(playerPrefab, tile.transform.position, Quaternion.identity, transform);
+        GameObject playerObj = Instantiate(
+            playerPrefab,
+            tile.transform.position,
+            Quaternion.identity,
+            transform);
         playerObj.name = ("Player " + playerNumber);
         playerObj.transform.SetAsFirstSibling();
         
