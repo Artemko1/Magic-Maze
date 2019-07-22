@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-[SelectionBase]
+
 public class MazeTile : Tile
 {
     public byte zIndex;

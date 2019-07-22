@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-
+[SelectionBase]
 public class Tile : MonoBehaviour
 {
     protected GameObject upWallObject;

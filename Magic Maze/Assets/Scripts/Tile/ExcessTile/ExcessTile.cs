@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-[SelectionBase]
+
 public class ExcessTile : Tile
 {
     public int ExtraPosId
