@@ -5,6 +5,7 @@ public class Buttons : MonoBehaviour
 {
     public Button moveExcessTileForward;
     public Button moveExcessTileBackward;
+    public Button RotateExcessTile;
 
     public Button moveColumn;
 
