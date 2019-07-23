@@ -41,18 +41,6 @@ public class Maze : MonoBehaviour
         tileArray[z * BoardSize + x] = mazeTile;
     }
     /// <summary>
-    /// Присваивает переданный tile в переданный массив клеток лабиринта.
-    /// </summary>
-    /// <param name="z">Номер строки клетки.</param>
-    /// <param name="x">Номер столбца клетки.</param>
-    /// <param name="mazeTile"></param>
-    /// <param name="tileArray">Массив, в который присваивается клетка.</param>
-    public void SetTile(int z, int x, MazeTile mazeTile, MazeTile[] tileArray)
-    {
-        // 2D representation stored in row-major order.
-        tileArray[z * BoardSize + x] = mazeTile;
-    }
-    /// <summary>
     /// Возвращает клетку из лабиринта по её координатам.
     /// </summary>
     /// <param name="z">Номер строки клетки.</param>
@@ -104,7 +92,7 @@ public class Maze : MonoBehaviour
     private void Start()
     {
         tileArray = new MazeTile[BoardSize * BoardSize];
-        tileArray = mazeGenerator.GenerateTiles(tileArray);
+        mazeGenerator.GenerateTiles(tileArray);
         playerGenerator.GeneratePlayers();
         mazeGenerator.GenerateExcessPositions();
         excessTile.transform.position = extraPositions[0];

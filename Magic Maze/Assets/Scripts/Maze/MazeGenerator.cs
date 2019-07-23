@@ -12,13 +12,12 @@ public class MazeGenerator : MonoBehaviour
 
     
 
-    public MazeTile[] GenerateTiles(MazeTile[] tileArray)
+    public void GenerateTiles(MazeTile[] tileArray)
     {
         for (byte z = 0; z < maze.BoardSize; z++)
         {
             for (byte x = 0; x < maze.BoardSize; x++)
             {
-                // Создается новая клетка tileObj.
                 Vector3 pos = new Vector3(x, 0, -z) * maze.Spacing;
                 GameObject tileObj = Instantiate(
                         tilePrefab,
@@ -28,14 +27,12 @@ public class MazeGenerator : MonoBehaviour
                 tileObj.name = $"MazeTile {z} {x}";
 
                 MazeTile tile = tileObj.GetComponent<MazeTile>();
-                maze.SetTile(z, x, tile, tileArray);
+                maze.SetTile(z, x, tile);
 
-                // Изменение свойств клетки
                 tile.zIndex = z;
                 tile.xIndex = x;
             }
         }
-        return tileArray;
     }
 
     public void GenerateNewTiles() // Генерирует новые стенки всем клеткам лабиринта
