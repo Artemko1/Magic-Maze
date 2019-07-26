@@ -26,6 +26,9 @@ public class Maze : MonoBehaviour
     private PlayerGenerator playerGenerator;
     private ItemGenerator itemGenerator;
 
+    [SerializeField] private bool spawnPlayers;
+    [SerializeField] private bool spawnItems;
+
     [SerializeField] private MazeTile[] tileArray;
     [SerializeField] private ExcessTile excessTile;
 
@@ -93,10 +96,16 @@ public class Maze : MonoBehaviour
     {
         tileArray = new MazeTile[BoardSize * BoardSize];
         mazeGenerator.GenerateTiles(tileArray);
-        playerGenerator.GeneratePlayers();
+        if (spawnPlayers)
+        {
+            playerGenerator.GeneratePlayers();
+        }
         mazeGenerator.GenerateExcessPositions();
         excessTile.transform.position = extraPositions[0];
-        itemGenerator.GenerateItems(NumberOfItems);
+        if (spawnItems)
+        {
+            itemGenerator.GenerateItems(NumberOfItems);
+        }
     }
 
 

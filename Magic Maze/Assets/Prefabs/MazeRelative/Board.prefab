@@ -49,6 +49,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   extraPositions: []
+  NumberOfItems: 0
+  spawnPlayers: 1
+  spawnItems: 1
   tileArray: []
   excessTile: {fileID: 1419061577357838062}
 --- !u!114 &5292572755011030092
@@ -106,6 +109,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveExcessTileForward: {fileID: 0}
   moveExcessTileBackward: {fileID: 0}
+  RotateExcessTile: {fileID: 0}
   moveColumn: {fileID: 0}
   movePlayerUpButton: {fileID: 0}
   movePlayerRightButton: {fileID: 0}
