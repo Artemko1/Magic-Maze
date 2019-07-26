@@ -1,14 +1,43 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
 public class TileGenerator
 {
+    public static void GenerateCornerWalls(Tile tile, Direction upDownDirection, Direction leftRightDirection)
+    {
+        ActivateWalls(tile, upDownDirection == Direction.Up, leftRightDirection == Direction.Right,
+          leftRightDirection == Direction.Down, leftRightDirection == Direction.Left);
+    }
+    public static void GenerateNoWalls(Tile tile)
+    {
+        ActivateWalls(tile, false, false, false, false);
+    }
+
+    public static void GenerateOneWall(Tile tile)
+    {
+        if (Random.value <= 0.25)
+        {
+            ActivateWalls(tile, true, false, false, false);
+        }
+        else if (Random.value <= 0.5)
+        {
+            ActivateWalls(tile, false, true, false, false);
+        }
+        else if (Random.value <= 0.75)
+        {
+            ActivateWalls(tile, false, false, true, false);
+        }
+        else
+        {
+            ActivateWalls(tile, false, false, false, true);
+        }
+    }
+
     /// <summary>
     /// Случайно генерирует стены для переданной клетки.
     /// </summary>
     /// <param name="tile"></param>
-    public static void GenerateWalls(Tile tile)
+    public static void GenerateRandomWalls(Tile tile)
     {
         if (Random.value <= 0.6)
         {

@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 [RequireComponent(typeof(Maze))]
 /// <summary>
@@ -10,38 +11,40 @@ public class MazeGenerator : MonoBehaviour
 
     private Maze maze;
 
-    
-
     public void GenerateTiles(MazeTile[] tileArray)
     {
         for (byte z = 0; z < maze.BoardSize; z++)
         {
             for (byte x = 0; x < maze.BoardSize; x++)
             {
-                Vector3 pos = new Vector3(x, 0, -z) * maze.Spacing;
-                GameObject tileObj = Instantiate(
-                        tilePrefab,
-                        maze.transform.position + pos,
-                        Quaternion.identity,
-                        maze.transform);
-                tileObj.name = $"MazeTile {z} {x}";
+                MazeTile tile = CreateTile(z, x);
 
-                MazeTile tile = tileObj.GetComponent<MazeTile>();
+                if (IsCorner(z, x, out Direction upDownDirection, out Direction leftRightDirection))
+                {
+                    TileGenerator.GenerateCornerWalls(tile, upDownDirection, leftRightDirection);
+                }
+                else if (!IsMovable(z, x))
+                {
+                    TileGenerator.GenerateNoWalls(tile);
+                }
+                else
+                {
+                    TileGenerator.GenerateRandomWalls(tile);
+                }
+
                 maze.SetTile(z, x, tile);
-
                 tile.zIndex = z;
                 tile.xIndex = x;
             }
         }
     }
-
     public void GenerateNewTiles() // Генерирует новые стенки всем клеткам лабиринта
     {
         for (byte z = 0; z < maze.BoardSize; z++)
         {
             for (byte x = 0; x < maze.BoardSize; x++)
             {
-                TileGenerator.GenerateWalls(maze.GetTile(z, x));
+                TileGenerator.GenerateRandomWalls(maze.GetTile(z, x));
             }
         }
     }
@@ -83,6 +86,64 @@ public class MazeGenerator : MonoBehaviour
             z += 2;
             n++;
         }
+    }
+
+    private bool IsCorner(byte z, byte x, out Direction upDownDirection, out Direction leftRightDirection)
+    {
+        if (z == 0 && x == 0)
+        {
+            upDownDirection = Direction.Up;
+            leftRightDirection = Direction.Left;
+        }
+        else if (z == 0 && x == maze.BoardSize - 1)
+        {
+            upDownDirection = Direction.Up;
+            leftRightDirection = Direction.Right;
+        }
+        else if (z == maze.BoardSize - 1 && x == 0)
+        {
+            upDownDirection = Direction.Down;
+            leftRightDirection = Direction.Left;
+        }
+        else if (z == maze.BoardSize - 1 && x == maze.BoardSize - 1)
+        {
+            upDownDirection = Direction.Down;
+            leftRightDirection = Direction.Right;
+        }
+        else
+        {
+            upDownDirection = (Direction)5;
+            leftRightDirection = (Direction)5;
+        }
+
+        return (z == 0 || z == maze.BoardSize - 1) && (x == 0 || x == maze.BoardSize - 1);
+    }
+
+    private bool IsMovable(byte z, byte x)
+    {
+        if (z % 2 != 0 || x % 2 != 0)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+    private MazeTile CreateTile(byte z, byte x)
+    {
+        Vector3 pos = new Vector3(x, 0, -z) * maze.Spacing;
+        GameObject tileObj = Instantiate(
+                tilePrefab,
+                maze.transform.position + pos,
+                Quaternion.identity,
+                maze.transform);
+        tileObj.name = $"MazeTile {z} {x}";
+
+        MazeTile tile = tileObj.GetComponent<MazeTile>();
+
+        return tile;
     }
 
     private void Awake()

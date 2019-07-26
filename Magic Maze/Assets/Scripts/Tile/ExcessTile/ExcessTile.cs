@@ -117,6 +117,10 @@ public class ExcessTile : Tile
         transform.position = nextPosition;        
     }
 
+    private void Start()
+    {
+        TileGenerator.GenerateRandomWalls(this);
+    }
 
     private void OnEnable()
     {
