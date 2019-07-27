@@ -1,9 +1,6 @@
 ﻿using System;
 using UnityEngine;
 
-[RequireComponent(typeof(PlayerGenerator))]
-[RequireComponent(typeof(MazeGenerator))]
-[RequireComponent(typeof(ItemGenerator))]
 [RequireComponent(typeof(Buttons))]
 public class Maze : MonoBehaviour
 {
@@ -95,16 +92,16 @@ public class Maze : MonoBehaviour
     private void Start()
     {
         tileArray = new MazeTile[BoardSize * BoardSize];
-        mazeGenerator.GenerateTiles(tileArray);
+        mazeGenerator?.GenerateTiles(tileArray);
         if (spawnPlayers)
         {
-            playerGenerator.GeneratePlayers();
+            playerGenerator?.GeneratePlayers();
         }
-        mazeGenerator.GenerateExcessPositions();
+        mazeGenerator?.GenerateExcessPositions();
         excessTile.transform.position = extraPositions[0];
         if (spawnItems)
         {
-            itemGenerator.GenerateItems(ItemsPerPlayer);
+            itemGenerator?.GenerateItems(ItemsPerPlayer);
         }
     }
 
