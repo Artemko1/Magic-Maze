@@ -128,18 +128,18 @@ public class Player : MonoBehaviour
     private void OnEnable()
     {
         buttons = maze.GetComponent<Buttons>();
-        buttons.movePlayerUpButton.onClick.AddListener(()    =>  Move(Direction.Up));
-        buttons.movePlayerRightButton.onClick.AddListener(() =>  Move(Direction.Right));
-        buttons.movePlayerDownButton.onClick.AddListener(()  =>  Move(Direction.Down));
-        buttons.movePlayerLeftButton.onClick.AddListener(()  =>  Move(Direction.Left));
+        buttons.movePlayerUpButton?.onClick.AddListener(()    =>  Move(Direction.Up));
+        buttons.movePlayerRightButton?.onClick.AddListener(() =>  Move(Direction.Right));
+        buttons.movePlayerDownButton?.onClick.AddListener(()  =>  Move(Direction.Down));
+        buttons.movePlayerLeftButton?.onClick.AddListener(()  =>  Move(Direction.Left));
     }
 
     private void OnDisable()
     {
-        buttons.movePlayerUpButton.onClick.RemoveListener(() => Move(Direction.Up));
-        buttons.movePlayerRightButton.onClick.RemoveListener(() => Move(Direction.Right));
-        buttons.movePlayerDownButton.onClick.RemoveListener(() => Move(Direction.Down));
-        buttons.movePlayerLeftButton.onClick.RemoveListener(() => Move(Direction.Left));
+        buttons.movePlayerUpButton?.onClick.RemoveListener(() => Move(Direction.Up));
+        buttons.movePlayerRightButton?.onClick.RemoveListener(() => Move(Direction.Right));
+        buttons.movePlayerDownButton?.onClick.RemoveListener(() => Move(Direction.Down));
+        buttons.movePlayerLeftButton?.onClick.RemoveListener(() => Move(Direction.Left));
     }
 
 }

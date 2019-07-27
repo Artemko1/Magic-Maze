@@ -125,16 +125,16 @@ public class ExcessTile : Tile
     private void OnEnable()
     {
         buttons = maze.GetComponent<Buttons>();
-        buttons.moveExcessTileForward.onClick.AddListener(MoveForward);
-        buttons.moveExcessTileBackward.onClick.AddListener(MoveBackward);
-        buttons.RotateExcessTile.onClick.AddListener(RotateClockwise);
+        buttons.moveExcessTileForward?.onClick.AddListener(MoveForward);
+        buttons.moveExcessTileBackward?.onClick.AddListener(MoveBackward);
+        buttons.RotateExcessTile?.onClick.AddListener(RotateClockwise);
     }
 
     private void OnDisable()
     {
-        buttons.moveExcessTileForward.onClick.RemoveListener(MoveForward);
-        buttons.moveExcessTileBackward.onClick.RemoveListener(MoveBackward);
-        buttons.RotateExcessTile.onClick.RemoveListener(RotateClockwise);
+        buttons.moveExcessTileForward?.onClick.RemoveListener(MoveForward);
+        buttons.moveExcessTileBackward?.onClick.RemoveListener(MoveBackward);
+        buttons.RotateExcessTile?.onClick.RemoveListener(RotateClockwise);
     }
 
 
