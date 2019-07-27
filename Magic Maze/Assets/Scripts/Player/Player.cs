@@ -1,8 +1,10 @@
 ﻿using UnityEngine;
 
+[SelectionBase]
 public class Player : MonoBehaviour
 {
     public Maze maze;
+    [field: SerializeField]
     public MazeTile CurrentTile { get; private set; }
 
     public bool isMovementAllowed;
