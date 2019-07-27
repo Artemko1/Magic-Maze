@@ -38,10 +38,14 @@ public class ItemGenerator : MonoBehaviour
                     Quaternion.identity,
                     maze.transform);
                 itemObj.name = $"Item {tileList[index]}";
-                tileList.RemoveAt(index);
                 Item item = itemObj.GetComponent<Item>();
                 tile.currentItem = item;
                 item.ChangeCurrentTile(tile);
+            }
+            tileList.RemoveAt(index);
+            if (tileList.Count == 0)
+            {
+                break;
             }
         }
     }
