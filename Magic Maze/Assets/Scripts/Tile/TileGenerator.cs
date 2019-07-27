@@ -6,7 +6,7 @@ public class TileGenerator
     public static void GenerateCornerWalls(Tile tile, Direction upDownDirection, Direction leftRightDirection)
     {
         ActivateWalls(tile, upDownDirection == Direction.Up, leftRightDirection == Direction.Right,
-          leftRightDirection == Direction.Down, leftRightDirection == Direction.Left);
+          upDownDirection == Direction.Down, leftRightDirection == Direction.Left);
     }
     public static void GenerateNoWalls(Tile tile)
     {
