@@ -8,7 +8,7 @@ public class ItemGenerator : MonoBehaviour
 
     private Maze maze;
 
-    public void GenerateItems(int numberOfItems)
+    public void GenerateItems(int ItemsPerPlayer)
     {
         // Кортеж координат (0,0), (0,1), (0,2) и т.д.
         List<(int, int)> tileList = new List<(int, int)>();
@@ -20,6 +20,7 @@ public class ItemGenerator : MonoBehaviour
             }
         }
 
+        int numberOfItems = ItemsPerPlayer * 4;
 
         for (int i = 0; i < numberOfItems; i++)
         {

@@ -20,7 +20,7 @@ public class Maze : MonoBehaviour
     public int NumberOfTiles => tileArray.Length;
 
     public Vector3[] extraPositions;
-    [Range(1, 77)] public int NumberOfItems;
+    [Range(1, 18)] public int ItemsPerPlayer;
 
     private MazeGenerator mazeGenerator;
     private PlayerGenerator playerGenerator;
@@ -104,7 +104,7 @@ public class Maze : MonoBehaviour
         excessTile.transform.position = extraPositions[0];
         if (spawnItems)
         {
-            itemGenerator.GenerateItems(NumberOfItems);
+            itemGenerator.GenerateItems(ItemsPerPlayer);
         }
     }
 
