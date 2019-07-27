@@ -88,7 +88,7 @@ GameObject:
   - component: {fileID: 4175445170729612}
   - component: {fileID: 2939442759948430986}
   m_Layer: 0
-  m_Name: Tile-Prefab
+  m_Name: MazeTile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -121,14 +121,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b54d32989547cc645b0bb92f104366b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isWallUp: 0
-  isWallRight: 0
-  isWallDown: 0
-  isWallLeft: 0
+  upWallObject: {fileID: 1451027229979612}
+  rightWallObject: {fileID: 1846041508793268}
+  downWallObject: {fileID: 1645757733451110}
+  leftWallObject: {fileID: 1778137283223896}
+  maze: {fileID: 0}
+  isWallUp: 1
+  isWallRight: 1
+  isWallDown: 1
+  isWallLeft: 1
   zIndex: 0
   xIndex: 0
-  respawnNumber: 0
   currentPlayer: {fileID: 0}
+  currentItem: {fileID: 0}
 --- !u!1 &1645757733451110
 GameObject:
   m_ObjectHideFlags: 0
