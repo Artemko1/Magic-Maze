@@ -2,10 +2,10 @@
 [SelectionBase]
 public class Tile : MonoBehaviour
 {
-    [SerializeField] protected GameObject upWallObject;
-    [SerializeField] protected GameObject rightWallObject;
-    [SerializeField] protected GameObject downWallObject;
-    [SerializeField] protected GameObject leftWallObject;
+    protected GameObject upWallObject;
+    protected GameObject rightWallObject;
+    protected GameObject downWallObject;
+    protected GameObject leftWallObject;
 
     [SerializeField]
     protected Maze maze;
@@ -57,11 +57,21 @@ public class Tile : MonoBehaviour
     }
     protected void Awake()
     {
+        upWallObject = upWallObject ?? transform.Find("Plate Visual").Find("Wall Up").gameObject;
+        rightWallObject = rightWallObject ?? transform.Find("Plate Visual").Find("Wall Right").gameObject;
+        downWallObject = downWallObject ?? transform.Find("Plate Visual").Find("Wall Down").gameObject;
+        leftWallObject = leftWallObject ?? transform.Find("Plate Visual").Find("Wall Left").gameObject;
+
         maze = transform.parent.GetComponent<Maze>();
     }
 
     private void OnValidate()
     {
+        upWallObject = upWallObject ?? transform.Find("Plate Visual").Find("Wall Up").gameObject;
+        rightWallObject = rightWallObject ?? transform.Find("Plate Visual").Find("Wall Right").gameObject;
+        downWallObject = downWallObject ?? transform.Find("Plate Visual").Find("Wall Down").gameObject;
+        leftWallObject = leftWallObject ?? transform.Find("Plate Visual").Find("Wall Left").gameObject;
+
         upWallObject.SetActive(isWallUp);
         rightWallObject.SetActive(IsWallRight);
         downWallObject.SetActive(isWallDown);

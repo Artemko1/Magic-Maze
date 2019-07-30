@@ -95,12 +95,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ItemPrefab: {fileID: 3621934545447805422, guid: 1cd15c369245f7a4ca313b7e1a3abd1f,
     type: 3}
-  Items:
-  - {fileID: 3621934545447805422, guid: 759b4e61acf271d48b6b9be9e25af0a2, type: 3}
-  - {fileID: 3621934545447805422, guid: 97e9150db13f6774d96d4ed08a1c00c2, type: 3}
-  - {fileID: 3621934545447805422, guid: 624d6359e3196734dbc5870e1be4c482, type: 3}
-  - {fileID: 3621934545447805422, guid: c5e195975d27a724c909e638e56a743a, type: 3}
-  - {fileID: 3621934545447805422, guid: f9822403585d24743a3d9b8f657b4714, type: 3}
 --- !u!114 &7625486815254710930
 MonoBehaviour:
   m_ObjectHideFlags: 0
