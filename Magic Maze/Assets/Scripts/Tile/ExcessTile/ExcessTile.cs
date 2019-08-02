@@ -73,7 +73,7 @@ namespace Tile.ExcessTile
         /// </summary>
         public void RotateCounterclockwise()
         {
-            bool wasWallUp = IsWallUp;
+            var wasWallUp = IsWallUp;
 
             IsWallUp = IsWallRight;
             IsWallRight = IsWallDown;
@@ -83,7 +83,7 @@ namespace Tile.ExcessTile
 
         public void RotateClockwise()
         {
-            bool wasWallUp = IsWallUp;
+            var wasWallUp = IsWallUp;
 
             IsWallUp = IsWallLeft;
             IsWallLeft = IsWallDown;
@@ -97,7 +97,7 @@ namespace Tile.ExcessTile
         public void MoveForward()
         {
             ExtraPosId++;
-            Vector3 nextPosition = maze.extraPositions[ExtraPosId];
+            var nextPosition = maze.extraPositions[ExtraPosId];
             transform.position = nextPosition;
             if (ExtraPosId % maze.MovableRowsPerSide == 0)
             {
@@ -115,7 +115,7 @@ namespace Tile.ExcessTile
                 RotateClockwise();
             }
             ExtraPosId--;
-            Vector3 nextPosition = maze.extraPositions[ExtraPosId];
+            var nextPosition = maze.extraPositions[ExtraPosId];
             transform.position = nextPosition;        
         }
 

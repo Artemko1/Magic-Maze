@@ -91,7 +91,7 @@ namespace Maze
             playerGenerator = GetComponent<PlayerGenerator>();
             itemGenerator = GetComponent<ItemGenerator>();
 
-            Buttons buttons = GetComponent<Buttons>();
+            var buttons = GetComponent<Buttons>();
             buttons.moveColumn?.onClick.AddListener(MoveColumn);
         }
 
@@ -117,13 +117,13 @@ namespace Maze
         /// </summary>
         private void MoveColumnUp()
         {
-            int x = excessTile.GetRowNumber();
-            int oldExtraPosId = excessTile.ExtraPosId;
+            var x = excessTile.GetRowNumber();
+            var oldExtraPosId = excessTile.ExtraPosId;
             // Первый тайл становится эксесс
-            MazeTile toBecomeExcessTile = GetTile(0, x);
-            ExcessTile newExcessTile = toBecomeExcessTile.gameObject.AddComponent<ExcessTile>();
+            var toBecomeExcessTile = GetTile(0, x);
+            var newExcessTile = toBecomeExcessTile.gameObject.AddComponent<ExcessTile>();
 
-            MazeTile newTile = excessTile.gameObject.AddComponent<MazeTile>();
+            var newTile = excessTile.gameObject.AddComponent<MazeTile>();
 
             newExcessTile.IsWallUp = toBecomeExcessTile.IsWallUp;
             newExcessTile.IsWallRight = toBecomeExcessTile.IsWallRight;
@@ -134,9 +134,9 @@ namespace Maze
 
             Destroy(toBecomeExcessTile);
 
-            for (int z = 1; z < BoardSize; z++) // От второй до последней, против направления движения ряда
+            for (var z = 1; z < BoardSize; z++) // От второй до последней, против направления движения ряда
             {
-                MazeTile currentTile = GetTile(z, x);
+                var currentTile = GetTile(z, x);
                 currentTile.zIndex--;
                 SetTile(z - 1, x, currentTile);
                 currentTile.MoveUp();
@@ -151,7 +151,7 @@ namespace Maze
             }
 
             // Последний тайл становится обычным вместо эксесс
-            MazeTile toBeReplacedByExcessTile = GetTile(BoardSize - 1, x);
+            var toBeReplacedByExcessTile = GetTile(BoardSize - 1, x);
 
             newTile.IsWallUp = excessTile.IsWallUp;
             newTile.IsWallRight = excessTile.IsWallRight;
@@ -188,13 +188,13 @@ namespace Maze
         /// </summary>
         private void MoveColumnRight()
         {
-            int z = excessTile.GetRowNumber();
-            int oldExtraPosId = excessTile.ExtraPosId;
+            var z = excessTile.GetRowNumber();
+            var oldExtraPosId = excessTile.ExtraPosId;
             // Последний тайл становится эксесс
-            MazeTile toBecomeExcessTile = GetTile(z, BoardSize - 1);
-            ExcessTile newExcessTile = toBecomeExcessTile.gameObject.AddComponent<ExcessTile>();
+            var toBecomeExcessTile = GetTile(z, BoardSize - 1);
+            var newExcessTile = toBecomeExcessTile.gameObject.AddComponent<ExcessTile>();
 
-            MazeTile newTile = excessTile.gameObject.AddComponent<MazeTile>();
+            var newTile = excessTile.gameObject.AddComponent<MazeTile>();
 
             newExcessTile.IsWallUp = toBecomeExcessTile.IsWallUp;
             newExcessTile.IsWallRight = toBecomeExcessTile.IsWallRight;
@@ -203,9 +203,9 @@ namespace Maze
             toBecomeExcessTile.MoveRight();
             Destroy(toBecomeExcessTile);
 
-            for (int x = BoardSize - 2; x >= 0; x--) // От предпоследней до первой, против направления движения ряда
+            for (var x = BoardSize - 2; x >= 0; x--) // От предпоследней до первой, против направления движения ряда
             {
-                MazeTile currentTile = GetTile(z, x);
+                var currentTile = GetTile(z, x);
                 currentTile.xIndex++;
                 SetTile(z, x + 1, currentTile);
                 currentTile.MoveRight();
@@ -220,7 +220,7 @@ namespace Maze
             }
 
             // Первый тайл становится обычным вместо эксесс
-            MazeTile toBeReplacedByExcessTile = GetTile(z, 0);
+            var toBeReplacedByExcessTile = GetTile(z, 0);
 
             newTile.IsWallUp = excessTile.IsWallUp;
             newTile.IsWallRight = excessTile.IsWallRight;
@@ -253,13 +253,13 @@ namespace Maze
         /// </summary>
         private void MoveColumnDown()
         {
-            int x = excessTile.GetRowNumber();
-            int oldExtraPosId = excessTile.ExtraPosId;
+            var x = excessTile.GetRowNumber();
+            var oldExtraPosId = excessTile.ExtraPosId;
             // Последний тайл становится эксесс
-            MazeTile toBecomeExcessTile = GetTile(BoardSize - 1, x);
-            ExcessTile newExcessTile = toBecomeExcessTile.gameObject.AddComponent<ExcessTile>();
+            var toBecomeExcessTile = GetTile(BoardSize - 1, x);
+            var newExcessTile = toBecomeExcessTile.gameObject.AddComponent<ExcessTile>();
 
-            MazeTile newTile = excessTile.gameObject.AddComponent<MazeTile>();
+            var newTile = excessTile.gameObject.AddComponent<MazeTile>();
 
             newExcessTile.IsWallUp = toBecomeExcessTile.IsWallUp;
             newExcessTile.IsWallRight = toBecomeExcessTile.IsWallRight;
@@ -268,9 +268,9 @@ namespace Maze
             toBecomeExcessTile.MoveDown();
             Destroy(toBecomeExcessTile);
 
-            for (int z = BoardSize - 2; z >= 0; z--) // От предпоследней до первой, против направления движения ряда
+            for (var z = BoardSize - 2; z >= 0; z--) // От предпоследней до первой, против направления движения ряда
             {
-                MazeTile currentTile = GetTile(z, x);
+                var currentTile = GetTile(z, x);
                 currentTile.zIndex++;
                 SetTile(z + 1, x, currentTile);
                 currentTile.MoveDown();
@@ -285,7 +285,7 @@ namespace Maze
             }
 
             // Первый тайл становится обычным вместо эксесс
-            MazeTile toBeReplacedByExcessTile = GetTile(0, x);
+            var toBeReplacedByExcessTile = GetTile(0, x);
 
             newTile.IsWallUp = excessTile.IsWallUp;
             newTile.IsWallRight = excessTile.IsWallRight;
@@ -318,13 +318,13 @@ namespace Maze
         /// </summary>
         private void MoveColumnLeft()
         {
-            int z = excessTile.GetRowNumber();
-            int oldExtraPosId = excessTile.ExtraPosId;
+            var z = excessTile.GetRowNumber();
+            var oldExtraPosId = excessTile.ExtraPosId;
             // Первый тайл становится эксесс
-            MazeTile toBecomeExcessTile = GetTile(z, 0);
-            ExcessTile newExcessTile = toBecomeExcessTile.gameObject.AddComponent<ExcessTile>();
+            var toBecomeExcessTile = GetTile(z, 0);
+            var newExcessTile = toBecomeExcessTile.gameObject.AddComponent<ExcessTile>();
 
-            MazeTile newTile = excessTile.gameObject.AddComponent<MazeTile>();
+            var newTile = excessTile.gameObject.AddComponent<MazeTile>();
 
             newExcessTile.IsWallUp = toBecomeExcessTile.IsWallUp;
             newExcessTile.IsWallRight = toBecomeExcessTile.IsWallRight;
@@ -333,9 +333,9 @@ namespace Maze
             toBecomeExcessTile.MoveLeft();
             Destroy(toBecomeExcessTile);
 
-            for (int x = 1; x < BoardSize; x++) // От второй до последней, против направления движения ряда
+            for (var x = 1; x < BoardSize; x++) // От второй до последней, против направления движения ряда
             {
-                MazeTile currentTile = GetTile(z, x);
+                var currentTile = GetTile(z, x);
                 currentTile.xIndex--;
                 SetTile(z, x - 1, currentTile);
                 currentTile.MoveLeft();
@@ -350,7 +350,7 @@ namespace Maze
             }
 
             // Последний тайл становится обычным вместо эксесс
-            MazeTile toBeReplacedByExcessTile = GetTile(z, BoardSize - 1);
+            var toBeReplacedByExcessTile = GetTile(z, BoardSize - 1);
 
             newTile.IsWallUp = excessTile.IsWallUp;
             newTile.IsWallRight = excessTile.IsWallRight;

@@ -28,9 +28,9 @@ namespace Player
 
         private void GeneratePlayer(byte x, byte z, byte playerNumber)
         {
-            MazeTile tile = maze.GetTile(z, x);
+            var tile = maze.GetTile(z, x);
 
-            GameObject playerObj = Instantiate(
+            var playerObj = Instantiate(
                 playerPrefab,
                 tile.transform.position,
                 Quaternion.identity,
@@ -38,7 +38,7 @@ namespace Player
             playerObj.name = ("Player " + playerNumber);
             playerObj.transform.SetAsFirstSibling();
         
-            Player player = playerObj.GetComponent<Player>();
+            var player = playerObj.GetComponent<Player>();
             tile.currentPlayer = player;
             player.ChangeCurrentTile(tile);
             player.AllowMovement();

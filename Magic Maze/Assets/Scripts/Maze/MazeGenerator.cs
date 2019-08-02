@@ -17,9 +17,9 @@ namespace Maze
             {
                 for (byte x = 0; x < maze.BoardSize; x++)
                 {
-                    MazeTile tile = CreateTile(z, x);
+                    var tile = CreateTile(z, x);
 
-                    if (IsCorner(z, x, out Direction upDownDirection, out Direction leftRightDirection))
+                    if (IsCorner(z, x, out var upDownDirection, out var leftRightDirection))
                     {
                         TileGenerator.GenerateCornerWalls(tile, upDownDirection, leftRightDirection);
                     }
@@ -133,15 +133,15 @@ namespace Maze
 
         private MazeTile CreateTile(byte z, byte x)
         {
-            Vector3 pos = new Vector3(x, 0, -z) * maze.Spacing;
-            GameObject tileObj = Instantiate(
+            var pos = new Vector3(x, 0, -z) * maze.Spacing;
+            var tileObj = Instantiate(
                 tilePrefab,
                 maze.transform.position + pos,
                 Quaternion.identity,
                 maze.transform);
             tileObj.name = $"MazeTile {z} {x}";
 
-            MazeTile tile = tileObj.GetComponent<MazeTile>();
+            var tile = tileObj.GetComponent<MazeTile>();
 
             return tile;
         }
