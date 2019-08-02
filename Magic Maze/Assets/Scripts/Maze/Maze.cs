@@ -66,7 +66,7 @@ namespace Maze
         /// Смещает ряд клеток.
         /// ExcessTile оказывается с противоположной стороны
         /// </summary>
-        public void MoveColumn()
+        private void MoveColumn()
         {
             switch (excessTile.CurrentDirection)
             {

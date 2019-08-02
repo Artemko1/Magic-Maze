@@ -31,13 +31,13 @@ namespace Player
             currentTile.currentPlayer = this;        
         }
 
-        public void Move(Direction Direction)
+        public void Move(Direction direction)
         {
             if (!isMovementAllowed) { return; }
         
             MazeTile nextTile = null;
 
-            switch (Direction)
+            switch (direction)
             {
                 case Direction.Up:
                     //Debug.Log(this + " Moving Up");

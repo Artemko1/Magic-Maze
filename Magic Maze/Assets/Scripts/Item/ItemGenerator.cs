@@ -11,7 +11,7 @@ namespace Item
 
         private Maze.Maze maze;
 
-        public void GenerateItems(int ItemsPerPlayer)
+        public void GenerateItems(int itemsPerPlayer)
         {
             // Кортеж координат (0,0), (0,1), (0,2) и т.д.
             var tileList = new List<(int, int)>();
@@ -23,7 +23,7 @@ namespace Item
                 }
             }
 
-            var numberOfItems = ItemsPerPlayer * 4;
+            var numberOfItems = itemsPerPlayer * 4;
 
             for (var i = 0; i < numberOfItems; i++)
             {
