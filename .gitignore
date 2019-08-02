@@ -35,3 +35,9 @@ sysinfo.txt
 # Builds
 *.apk
 *.unitypackage
+
+# JB Rider files
+.idea/
+
+# All plugins for now
+Magic Maze/Assets/Plugins*
