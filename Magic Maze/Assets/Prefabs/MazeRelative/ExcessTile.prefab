@@ -121,10 +121,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: acc9a021a1bcdd34fb1d44853442624d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  upWallObject: {fileID: 1451027229979612}
-  rightWallObject: {fileID: 1846041508793268}
-  downWallObject: {fileID: 1645757733451110}
-  leftWallObject: {fileID: 1778137283223896}
   maze: {fileID: 0}
   isWallUp: 1
   isWallRight: 1
