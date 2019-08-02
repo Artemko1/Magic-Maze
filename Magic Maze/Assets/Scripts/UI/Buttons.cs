@@ -1,16 +1,19 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
-public class Buttons : MonoBehaviour
+namespace UI
 {
-    public Button moveExcessTileForward;
-    public Button moveExcessTileBackward;
-    public Button RotateExcessTile;
+    public class Buttons : MonoBehaviour
+    {
+        public Button moveExcessTileForward;
+        public Button moveExcessTileBackward;
+        public Button RotateExcessTile;
 
-    public Button moveColumn;
+        public Button moveColumn;
 
-    public Button movePlayerUpButton;
-    public Button movePlayerRightButton;
-    public Button movePlayerDownButton;
-    public Button movePlayerLeftButton;
+        public Button movePlayerUpButton;
+        public Button movePlayerRightButton;
+        public Button movePlayerDownButton;
+        public Button movePlayerLeftButton;
+    }
 }

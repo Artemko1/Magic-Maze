@@ -1,22 +1,26 @@
-﻿using UnityEngine;
+﻿using Tile.MazeTile;
+using UnityEngine;
 
-[SelectionBase]
-public class Item : MonoBehaviour
+namespace Item
 {
-    public MazeTile CurrentTile { get; private set; }
-
-    /// <summary>
-    /// Убирает текущего игрока у текущей клетки
-    /// и добавляет его переданной клетке.
-    /// </summary>
-    /// <param name="mazeTile"></param>
-    public void ChangeCurrentTile(MazeTile mazeTile)
+    [SelectionBase]
+    public class Item : MonoBehaviour
     {
-        if (CurrentTile != null)
+        public MazeTile CurrentTile { get; private set; }
+
+        /// <summary>
+        /// Убирает текущего игрока у текущей клетки
+        /// и добавляет его переданной клетке.
+        /// </summary>
+        /// <param name="mazeTile"></param>
+        public void ChangeCurrentTile(MazeTile mazeTile)
         {
-            CurrentTile.currentItem = null;
+            if (CurrentTile != null)
+            {
+                CurrentTile.currentItem = null;
+            }
+            CurrentTile = mazeTile;
+            CurrentTile.currentItem = this;
         }
-        CurrentTile = mazeTile;
-        CurrentTile.currentItem = this;
     }
 }
