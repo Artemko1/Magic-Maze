@@ -4,17 +4,17 @@ namespace Tile
 {
     public static class TileGenerator
     {
-        public static void GenerateCornerWalls(global::Tile.Tile tile, Direction upDownDirection, Direction leftRightDirection)
+        public static void GenerateCornerWalls(Tile tile, Direction upDownDirection, Direction leftRightDirection)
         {
             ActivateWalls(tile, upDownDirection == Direction.Up, leftRightDirection == Direction.Right,
                 upDownDirection == Direction.Down, leftRightDirection == Direction.Left);
         }
-        public static void GenerateNoWalls(global::Tile.Tile tile)
+        public static void GenerateNoWalls(Tile tile)
         {
             ActivateWalls(tile, false, false, false, false);
         }
 
-        public static void GenerateOneWall(global::Tile.Tile tile)
+        public static void GenerateOneWall(Tile tile)
         {
             if (Random.value <= 0.25)
             {
@@ -38,7 +38,7 @@ namespace Tile
         /// Случайно генерирует стены для переданной клетки.
         /// </summary>
         /// <param name="tile"></param>
-        public static void GenerateRandomWalls(global::Tile.Tile tile)
+        public static void GenerateRandomWalls(Tile tile)
         {
             if (Random.value <= 0.6)
             {
@@ -50,7 +50,7 @@ namespace Tile
             }
         }
 
-        private static void GenerateOppositeWalls(global::Tile.Tile tile)
+        private static void GenerateOppositeWalls(Tile tile)
         {
             if (Random.value <= 0.5)
             {
@@ -64,7 +64,7 @@ namespace Tile
             }
         }
 
-        private static void GenerateCornerWalls(global::Tile.Tile tile)
+        private static void GenerateCornerWalls(Tile tile)
         {
             if (Random.value <= 0.25)
             {
@@ -88,7 +88,7 @@ namespace Tile
             }
         }
 
-        private static void ActivateWalls(global::Tile.Tile tile, bool up, bool right, bool down, bool left)
+        private static void ActivateWalls(Tile tile, bool up, bool right, bool down, bool left)
         {
             tile.IsWallUp = up;
             tile.IsWallRight = right;

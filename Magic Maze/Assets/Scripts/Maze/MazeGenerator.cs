@@ -4,12 +4,12 @@ using UnityEngine;
 
 namespace Maze
 {
-    [RequireComponent(typeof(global::Maze.Maze))]
+    [RequireComponent(typeof(Maze))]
     public class MazeGenerator : MonoBehaviour
     {
         public GameObject tilePrefab;
 
-        private global::Maze.Maze maze;
+        private Maze maze;
 
         public void GenerateTiles(MazeTile[] tileArray)
         {
@@ -148,7 +148,7 @@ namespace Maze
 
         private void Awake()
         {
-            maze = GetComponent<global::Maze.Maze>();
+            maze = GetComponent<Maze>();
         }
 
         private void SetExtraPosition(byte z, byte x, byte n, Direction direction) // direction - направление смещения позиций.

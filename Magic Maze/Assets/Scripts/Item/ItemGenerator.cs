@@ -41,7 +41,7 @@ namespace Item
                         Quaternion.identity,
                         maze.transform);
                     itemObj.name = $"Item {tileList[index]}";
-                    global::Item.Item item = itemObj.GetComponent<global::Item.Item>();
+                    Item item = itemObj.GetComponent<Item>();
                     tile.currentItem = item;
                     item.ChangeCurrentTile(tile);
                 }

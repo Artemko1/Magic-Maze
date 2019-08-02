@@ -38,7 +38,7 @@ namespace Player
             playerObj.name = ("Player " + playerNumber);
             playerObj.transform.SetAsFirstSibling();
         
-            global::Player.Player player = playerObj.GetComponent<global::Player.Player>();
+            Player player = playerObj.GetComponent<Player>();
             tile.currentPlayer = player;
             player.ChangeCurrentTile(tile);
             player.AllowMovement();
