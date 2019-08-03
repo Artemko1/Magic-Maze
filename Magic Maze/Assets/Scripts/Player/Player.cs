@@ -9,7 +9,7 @@ namespace Player
     public class Player : MonoBehaviour
     {
         public Maze.Maze maze;
-        [FormerlySerializedAs("CurrentTile")] [field: SerializeField] private MazeTile currentTile;
+        [field: SerializeField] private MazeTile currentTile;
 
         public bool isMovementAllowed;
         public bool isIgnoringWalls;
@@ -31,7 +31,7 @@ namespace Player
             currentTile.currentPlayer = this;        
         }
 
-        public void Move(Direction direction)
+        private void Move(Direction direction)
         {
             if (!isMovementAllowed) { return; }
         
