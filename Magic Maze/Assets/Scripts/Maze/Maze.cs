@@ -29,8 +29,8 @@ namespace Maze
         private PlayerGenerator playerGenerator;
         private ItemGenerator itemGenerator;
 
-        [SerializeField] private bool spawnPlayers;
-        [SerializeField] private bool spawnItems;
+        [SerializeField] private bool spawnPlayers = true;
+        [SerializeField] private bool spawnItems = true;
 
         [SerializeField] private MazeTile[] tileArray;
         [SerializeField] private ExcessTile excessTile;
