@@ -23,14 +23,13 @@ namespace Maze
         public int NumberOfTiles => tileArray.Length;
 
         public Vector3[] extraPositions;
-        [Range(1, 18)] public int ItemsPerPlayer;
+        [Range(0, 18)] public int ItemsPerPlayer;
 
         private MazeGenerator mazeGenerator;
         private PlayerGenerator playerGenerator;
         private ItemGenerator itemGenerator;
 
         [SerializeField] private bool spawnPlayers = true;
-        [SerializeField] private bool spawnItems = true;
 
         [SerializeField] private MazeTile[] tileArray;
         [SerializeField] private ExcessTile excessTile;
@@ -105,10 +104,9 @@ namespace Maze
             }
             mazeGenerator?.GenerateExcessPositions();
             excessTile.transform.position = extraPositions[0];
-            if (spawnItems)
-            {
-                itemGenerator?.GenerateItems(ItemsPerPlayer);
-            }
+            
+            itemGenerator?.GenerateItems(ItemsPerPlayer);
+            
         }
 
 

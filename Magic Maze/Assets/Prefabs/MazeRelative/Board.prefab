@@ -51,7 +51,6 @@ MonoBehaviour:
   extraPositions: []
   ItemsPerPlayer: 0
   spawnPlayers: 1
-  spawnItems: 1
   tileArray: []
   excessTile: {fileID: 1419061577357838062}
 --- !u!114 &5292572755011030092

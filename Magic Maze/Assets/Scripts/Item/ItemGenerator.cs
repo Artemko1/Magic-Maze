@@ -13,6 +13,11 @@ namespace Item
 
         public void GenerateItems(int itemsPerPlayer)
         {
+            if (itemsPerPlayer == 0)
+            {
+                return;
+            }
+            
             // Кортеж координат (0,0), (0,1), (0,2) и т.д.
             var tileList = new List<(int, int)>();
             for (var i = 0; i < maze.BoardSize; i++)
