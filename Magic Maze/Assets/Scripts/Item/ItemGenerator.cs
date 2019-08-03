@@ -40,15 +40,8 @@ namespace Item
                 }
                 else
                 {
-                    var itemObj = Instantiate(
-                        ItemPrefab,
-                        tile.transform.position,
-                        Quaternion.identity,
-                        maze.transform);
-                    itemObj.name = $"Item {tileList[index]}";
-                    var item = itemObj.GetComponent<Item>();
-                    tile.currentItem = item;
-                    item.ChangeCurrentTile(tile);
+                    var itemName = $"{tileList[index]}";
+                    CreateItem(tile, itemName);
                 }
                 tileList.RemoveAt(index);
                 if (tileList.Count == 0)
@@ -56,6 +49,21 @@ namespace Item
                     break;
                 }
             }
+
+        }
+
+        private void CreateItem(MazeTile tile, string itemName)
+        {
+            var itemObj = Instantiate(
+                ItemPrefab,
+                tile.transform.position,
+                Quaternion.identity,
+                maze.transform);
+            itemObj.name = itemName;
+            
+            var item = itemObj.GetComponent<Item>();
+            tile.currentItem = item;
+            item.ChangeCurrentTile(tile);
         }
 
         private void Awake()
