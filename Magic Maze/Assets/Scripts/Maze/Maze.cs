@@ -1,4 +1,5 @@
-﻿using Item;
+﻿using System.Collections.Generic;
+using Item;
 using Player;
 using Tile.ExcessTile;
 using Tile.MazeTile;
@@ -20,16 +21,15 @@ namespace Maze
         /// Количество возможных позиций для ExcessTile.
         /// </summary>
         public int MovableRows => (BoardSize - 1) * 2;
-        public int NumberOfTiles => tileArray.Length;
 
         public Vector3[] extraPositions;
         [Range(0, 18)] public int ItemsPerPlayer;
+        public int NumberOfPlayers;
+        public List<Item.Item> Items { get; } = new List<Item.Item>();
 
         private MazeGenerator mazeGenerator;
         private PlayerGenerator playerGenerator;
         private ItemGenerator itemGenerator;
-
-        [SerializeField] private bool spawnPlayers = true;
 
         [SerializeField] private MazeTile[] tileArray;
         [SerializeField] private ExcessTile excessTile;
@@ -57,7 +57,8 @@ namespace Maze
         }
         public MazeTile GetTile((int, int) p)
         {
-            return tileArray[p.Item1 * BoardSize + p.Item2];
+            var (z, x) = p;
+            return tileArray[z * BoardSize + x];
         }
 
 
@@ -98,10 +99,9 @@ namespace Maze
         {
             tileArray = new MazeTile[BoardSize * BoardSize];
             mazeGenerator?.GenerateTiles(tileArray);
-            if (spawnPlayers)
-            {
-                playerGenerator?.GeneratePlayers();
-            }
+            
+            playerGenerator?.GeneratePlayers(NumberOfPlayers);
+            
             mazeGenerator?.GenerateExcessPositions();
             excessTile.transform.position = extraPositions[0];
             

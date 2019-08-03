@@ -50,7 +50,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   extraPositions: []
   ItemsPerPlayer: 0
-  spawnPlayers: 1
+  NumberOfPlayers: 0
   tileArray: []
   excessTile: {fileID: 1419061577357838062}
 --- !u!114 &5292572755011030092
@@ -92,8 +92,37 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 398d0d45f49797d448348b5d968fc4a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ItemPrefab: {fileID: 3621934545447805422, guid: 1cd15c369245f7a4ca313b7e1a3abd1f,
-    type: 3}
+  ItemPrefabs:
+  - {fileID: -3895473922690447333, guid: cf3b90ded4cd689498a8149351bd2e8e, type: 3}
+  - {fileID: -3895473922690447333, guid: 759b4e61acf271d48b6b9be9e25af0a2, type: 3}
+  - {fileID: -3895473922690447333, guid: 97e9150db13f6774d96d4ed08a1c00c2, type: 3}
+  - {fileID: -3895473922690447333, guid: 624d6359e3196734dbc5870e1be4c482, type: 3}
+  - {fileID: -3895473922690447333, guid: c5e195975d27a724c909e638e56a743a, type: 3}
+  - {fileID: -3895473922690447333, guid: f9822403585d24743a3d9b8f657b4714, type: 3}
+  - {fileID: -3895473922690447333, guid: c69c3e48a9a6ce14d8fecc5d5e7bd9aa, type: 3}
+  - {fileID: -3895473922690447333, guid: 1077911d138d81a4d874d2aacbe5a7d7, type: 3}
+  - {fileID: -3895473922690447333, guid: dfbcb2f549670a54580ffd64d760de02, type: 3}
+  - {fileID: -3895473922690447333, guid: fca104e14833db3439e35924cb17a6a3, type: 3}
+  - {fileID: -3895473922690447333, guid: 0005ef5b3084b73438f3a38e307a209c, type: 3}
+  - {fileID: -3895473922690447333, guid: ee7eb7201354f9340826bbe0542bc059, type: 3}
+  - {fileID: -3895473922690447333, guid: 94f5d6e4c51cd5443a79656748ace4a4, type: 3}
+  - {fileID: -3895473922690447333, guid: bd568f8b35bd2e04da84c1e0468837eb, type: 3}
+  - {fileID: -3895473922690447333, guid: 232d7943797bac14db762e773e01bf32, type: 3}
+  - {fileID: -3895473922690447333, guid: 2b75d1500f122a64b9207e19fbfd5185, type: 3}
+  - {fileID: -3895473922690447333, guid: 676953586db6c684cbdb6243fb1a1bda, type: 3}
+  - {fileID: -3895473922690447333, guid: 9899ef99a432f8c41bc3be8d969c9978, type: 3}
+  - {fileID: -3895473922690447333, guid: 844220d5becc8874fb3251fa3394471f, type: 3}
+  - {fileID: -3895473922690447333, guid: 58f98d9def27ed540941efc3460a698a, type: 3}
+  - {fileID: -3895473922690447333, guid: 2e5c78f94073cff4bb63e751b4499162, type: 3}
+  - {fileID: -3895473922690447333, guid: f7e5fbe4e2858534593fc17057d6d8ab, type: 3}
+  - {fileID: -3895473922690447333, guid: 1205bad856b050e4297814ac4953efc4, type: 3}
+  - {fileID: -3895473922690447333, guid: 1aa15cb0874e9db46b975674c8a73ee6, type: 3}
+  - {fileID: -3895473922690447333, guid: d6ebc2f72671381458be0dab23663682, type: 3}
+  - {fileID: -3895473922690447333, guid: 1bedde2e10a14f0498e2bad6b0b95615, type: 3}
+  - {fileID: -3895473922690447333, guid: 3a6b4e6cfed943c4997d81305baa64aa, type: 3}
+  - {fileID: -3895473922690447333, guid: e64cec9e00f24f24cbaf8a81e2793d53, type: 3}
+  - {fileID: -3895473922690447333, guid: 5f3d1704bac9bf148837fdf0325df0cf, type: 3}
+  - {fileID: -3895473922690447333, guid: 870318e4ab81fd8489fc553f0d3a8789, type: 3}
 --- !u!114 &7625486815254710930
 MonoBehaviour:
   m_ObjectHideFlags: 0

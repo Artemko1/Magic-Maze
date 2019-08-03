@@ -6,7 +6,21 @@ namespace Item
     [SelectionBase]
     public class Item : MonoBehaviour
     {
-        public MazeTile CurrentTile { get; private set; }
+        public int Id
+        {
+            get => id;
+            set
+            {
+                if (value == 0)
+                {
+                    id = value;
+                }
+            }
+        }
+            
+        [SerializeField] private MazeTile currentTile;
+        [SerializeField] private int id;
+
 
         /// <summary>
         /// Убирает текущего игрока у текущей клетки
@@ -15,12 +29,12 @@ namespace Item
         /// <param name="mazeTile"></param>
         public void ChangeCurrentTile(MazeTile mazeTile)
         {
-            if (CurrentTile != null)
+            if (currentTile != null)
             {
-                CurrentTile.currentItem = null;
+                currentTile.currentItem = null;
             }
-            CurrentTile = mazeTile;
-            CurrentTile.currentItem = this;
+            currentTile = mazeTile;
+            currentTile.currentItem = this;
         }
     }
 }

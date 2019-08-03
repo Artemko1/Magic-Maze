@@ -7,8 +7,9 @@ namespace Item
     [RequireComponent(typeof(Maze.Maze))]
     public class ItemGenerator : MonoBehaviour
     {
-        public GameObject ItemPrefab;
-
+        
+        public Item[] ItemPrefabs;
+        
         private Maze.Maze maze;
 
         public void GenerateItems(int itemsPerPlayer)
@@ -40,30 +41,31 @@ namespace Item
                 }
                 else
                 {
-                    var itemName = $"{tileList[index]}";
-                    CreateItem(tile, itemName);
+                    CreateItem(tile, i);
                 }
                 tileList.RemoveAt(index);
                 if (tileList.Count == 0)
                 {
                     break;
                 }
+                Debug.Log(maze.Items[i]);
             }
-
         }
 
-        private void CreateItem(MazeTile tile, string itemName)
+        private void CreateItem(MazeTile tile, int itemId)
         {
             var itemObj = Instantiate(
-                ItemPrefab,
+                ItemPrefabs[itemId],
                 tile.transform.position,
                 Quaternion.identity,
                 maze.transform);
-            itemObj.name = itemName;
+            
             
             var item = itemObj.GetComponent<Item>();
             tile.currentItem = item;
             item.ChangeCurrentTile(tile);
+            item.Id = itemId;
+            maze.Items.Add(item);
         }
 
         private void Awake()
