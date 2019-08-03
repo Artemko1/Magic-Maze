@@ -28,7 +28,7 @@ namespace Item
                 }
             }
 
-            var numberOfItems = itemsPerPlayer * 4;
+            var numberOfItems = itemsPerPlayer * maze.NumberOfPlayers;
 
             for (var i = 0; i < numberOfItems; i++)
             {
