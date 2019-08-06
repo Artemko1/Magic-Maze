@@ -5,6 +5,8 @@ namespace Tile
     [SelectionBase]
     public class Tile : MonoBehaviour
     {
+        #region Variables
+
         protected GameObject upWallObject;
         protected GameObject rightWallObject;
         protected GameObject downWallObject;
@@ -58,6 +60,11 @@ namespace Tile
                 leftWallObject.SetActive(value);
             }
         }
+
+        #endregion
+
+        #region Unity Methods
+
         protected void Awake()
         {
             upWallObject = upWallObject ?? transform.Find("Plate Visual").Find("Wall Up").gameObject;
@@ -80,5 +87,7 @@ namespace Tile
             downWallObject.SetActive(isWallDown);
             leftWallObject.SetActive(isWallLeft);
         }
+
+        #endregion
     }
 }

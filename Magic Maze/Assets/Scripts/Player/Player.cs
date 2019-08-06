@@ -8,13 +8,44 @@ namespace Player
     [SelectionBase]
     public class Player : MonoBehaviour
     {
+        #region Variables
+
         public Maze.Maze maze;
         [field: SerializeField] private MazeTile currentTile;
 
         public bool isMovementAllowed;
         public bool isIgnoringWalls;
+        public List<Item.Item> ItemsToCollect = new List<Item.Item>();
 
         private Buttons buttons;
+
+        #endregion
+
+        #region Unity Methods
+
+        private void Awake()
+        {
+            maze = transform.parent.GetComponent<Maze.Maze>();
+        }
+
+        private void OnEnable()
+        {
+            buttons = maze.GetComponent<Buttons>();
+            buttons.movePlayerUpButton?.onClick.AddListener(()    =>  Move(Direction.Up));
+            buttons.movePlayerRightButton?.onClick.AddListener(() =>  Move(Direction.Right));
+            buttons.movePlayerDownButton?.onClick.AddListener(()  =>  Move(Direction.Down));
+            buttons.movePlayerLeftButton?.onClick.AddListener(()  =>  Move(Direction.Left));
+        }
+
+        private void OnDisable()
+        {
+            buttons.movePlayerUpButton?.onClick.RemoveListener(() => Move(Direction.Up));
+            buttons.movePlayerRightButton?.onClick.RemoveListener(() => Move(Direction.Right));
+            buttons.movePlayerDownButton?.onClick.RemoveListener(() => Move(Direction.Down));
+            buttons.movePlayerLeftButton?.onClick.RemoveListener(() => Move(Direction.Left));
+        }
+
+        #endregion
 
         /// <summary>
         /// Убирает текущего игрока у текущей клетки
@@ -119,32 +150,10 @@ namespace Player
         {
             isMovementAllowed = true;
         }
+
         public void DisallowMovement()
         {
             isMovementAllowed = false;
         }
-
-        private void Awake()
-        {
-            maze = transform.parent.GetComponent<Maze.Maze>();
-        }
-
-        private void OnEnable()
-        {
-            buttons = maze.GetComponent<Buttons>();
-            buttons.movePlayerUpButton?.onClick.AddListener(()    =>  Move(Direction.Up));
-            buttons.movePlayerRightButton?.onClick.AddListener(() =>  Move(Direction.Right));
-            buttons.movePlayerDownButton?.onClick.AddListener(()  =>  Move(Direction.Down));
-            buttons.movePlayerLeftButton?.onClick.AddListener(()  =>  Move(Direction.Left));
-        }
-
-        private void OnDisable()
-        {
-            buttons.movePlayerUpButton?.onClick.RemoveListener(() => Move(Direction.Up));
-            buttons.movePlayerRightButton?.onClick.RemoveListener(() => Move(Direction.Right));
-            buttons.movePlayerDownButton?.onClick.RemoveListener(() => Move(Direction.Down));
-            buttons.movePlayerLeftButton?.onClick.RemoveListener(() => Move(Direction.Left));
-        }
-
     }
 }

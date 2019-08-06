@@ -11,6 +11,8 @@ namespace Maze
     [RequireComponent(typeof(Buttons))]
     public class Maze : MonoBehaviour
     {
+        #region Variables
+
         public int BoardSize { get; } = 9;
         public float Spacing { get; } = 1.5f;
         /// <summary>
@@ -33,6 +35,36 @@ namespace Maze
 
         [SerializeField] private MazeTile[] tileArray;
         [SerializeField] private ExcessTile excessTile;
+
+        #endregion
+
+        #region Unity Methods
+
+        private void Awake()
+        {
+            mazeGenerator = GetComponent<MazeGenerator>();
+            playerGenerator = GetComponent<PlayerGenerator>();
+            itemGenerator = GetComponent<ItemGenerator>();
+
+            var buttons = GetComponent<Buttons>();
+            buttons.moveColumn?.onClick.AddListener(MoveColumn);
+        }
+
+        private void Start()
+        {
+            tileArray = new MazeTile[BoardSize * BoardSize];
+            mazeGenerator?.GenerateTiles(tileArray);
+            
+            playerGenerator?.GeneratePlayers(NumberOfPlayers);
+            
+            mazeGenerator?.GenerateExcessPositions();
+            excessTile.transform.position = extraPositions[0];
+            
+            itemGenerator?.GenerateItems(ItemsPerPlayer);
+            
+        }
+
+        #endregion
 
         /// <summary>
         /// Присваивает переданный tile в массив объекта.
@@ -84,31 +116,6 @@ namespace Maze
                     break;
             }
         }
-
-        private void Awake()
-        {
-            mazeGenerator = GetComponent<MazeGenerator>();
-            playerGenerator = GetComponent<PlayerGenerator>();
-            itemGenerator = GetComponent<ItemGenerator>();
-
-            var buttons = GetComponent<Buttons>();
-            buttons.moveColumn?.onClick.AddListener(MoveColumn);
-        }
-
-        private void Start()
-        {
-            tileArray = new MazeTile[BoardSize * BoardSize];
-            mazeGenerator?.GenerateTiles(tileArray);
-            
-            playerGenerator?.GeneratePlayers(NumberOfPlayers);
-            
-            mazeGenerator?.GenerateExcessPositions();
-            excessTile.transform.position = extraPositions[0];
-            
-            itemGenerator?.GenerateItems(ItemsPerPlayer);
-            
-        }
-
 
         /// <summary>
         /// Смещает ряд клеток вверх.

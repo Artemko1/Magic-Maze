@@ -7,9 +7,22 @@ namespace Maze
     [RequireComponent(typeof(Maze))]
     public class MazeGenerator : MonoBehaviour
     {
+        #region Variables
+
         public GameObject tilePrefab;
 
         private Maze maze;
+
+        #endregion
+
+        #region Unity Methods
+
+        private void Awake()
+        {
+            maze = GetComponent<Maze>();
+        }
+
+        #endregion
 
         public void GenerateTiles(MazeTile[] tileArray)
         {
@@ -38,6 +51,7 @@ namespace Maze
                 }
             }
         }
+
         public void GenerateNewTiles() // Генерирует новые стенки всем клеткам лабиринта
         {
             for (byte z = 0; z < maze.BoardSize; z++)
@@ -144,11 +158,6 @@ namespace Maze
             var tile = tileObj.GetComponent<MazeTile>();
 
             return tile;
-        }
-
-        private void Awake()
-        {
-            maze = GetComponent<Maze>();
         }
 
         private void SetExtraPosition(byte z, byte x, byte n, Direction direction) // direction - направление смещения позиций.

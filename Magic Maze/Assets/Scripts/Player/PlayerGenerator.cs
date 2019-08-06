@@ -5,10 +5,27 @@ namespace Player
     [RequireComponent(typeof(Maze.Maze))]
     public class PlayerGenerator : MonoBehaviour
     {
+        #region Variables
+
         public GameObject playerPrefab;
 
         private Maze.Maze maze;
         private readonly (int, int)[] spawnPositions = new (int, int)[4];
+
+        #endregion
+
+        #region Unity Methods
+
+        private void Awake()
+        {
+            maze = GetComponent<Maze.Maze>();
+            spawnPositions[0] = (0, 0);
+            spawnPositions[1] = (0, maze.BoardSize - 1);
+            spawnPositions[2] = (maze.BoardSize - 1, 0);
+            spawnPositions[3] = (maze.BoardSize - 1, maze.BoardSize - 1);
+        }
+
+        #endregion
 
         /// <summary>
         /// Создает всех игроков.
@@ -24,15 +41,6 @@ namespace Player
                 }
                 CreatePlayer(spawnPositions[i], "Player "+i);
             }
-        }
-
-        private void Awake()
-        {
-            maze = GetComponent<Maze.Maze>();
-            spawnPositions[0] = (0, 0);
-            spawnPositions[1] = (0, maze.BoardSize - 1);
-            spawnPositions[2] = (maze.BoardSize - 1, 0);
-            spawnPositions[3] = (maze.BoardSize - 1, maze.BoardSize - 1);
         }
 
         private void CreatePlayer((int,int) p, string playerName = "Player")

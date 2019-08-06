@@ -4,11 +4,15 @@ namespace Tile.MazeTile
 {
     public class MazeTile : Tile
     {
+        #region Variables
+
         public byte zIndex;
         public byte xIndex;
     
         public Player.Player currentPlayer;
         public Item.Item currentItem;
+
+        #endregion
 
         /// <summary>
         /// Смещение вверх на расстояние одной клетки

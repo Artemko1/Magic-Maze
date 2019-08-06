@@ -6,6 +6,8 @@ namespace Item
     [SelectionBase]
     public class Item : MonoBehaviour
     {
+        #region Variables
+
         public int Id
         {
             get => id;
@@ -20,6 +22,8 @@ namespace Item
             
         [SerializeField] private MazeTile currentTile;
         [SerializeField] private int id;
+
+        #endregion
 
 
         /// <summary>

@@ -12,6 +12,16 @@ namespace Item
         
         private Maze.Maze maze;
 
+
+        #region Unity Methods
+
+        private void Awake()
+        {
+            maze = GetComponent<Maze.Maze>();
+        }
+
+        #endregion
+
         public void GenerateItems(int itemsPerPlayer)
         {
             if (itemsPerPlayer == 0)
@@ -52,6 +62,7 @@ namespace Item
             }
         }
 
+
         private void CreateItem(MazeTile tile, int itemId)
         {
             var itemObj = Instantiate(
@@ -66,11 +77,6 @@ namespace Item
             item.ChangeCurrentTile(tile);
             item.Id = itemId;
             maze.Items.Add(item);
-        }
-
-        private void Awake()
-        {
-            maze = GetComponent<Maze.Maze>();
         }
     }
 }

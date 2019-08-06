@@ -5,6 +5,8 @@ namespace Tile.ExcessTile
 {
     public class ExcessTile : Tile
     {
+        #region Variables
+
         public int ExtraPosId
         {
             get => extraPosId;
@@ -44,6 +46,32 @@ namespace Tile.ExcessTile
 
         [SerializeField] private int extraPosId;
         private Buttons buttons;
+
+        #endregion
+
+        #region Unity Methods
+
+        private void Start()
+        {
+            TileGenerator.GenerateRandomWalls(this);
+        }
+
+        private void OnEnable()
+        {
+            buttons = maze.GetComponent<Buttons>();
+            buttons.moveExcessTileForward?.onClick.AddListener(MoveForward);
+            buttons.moveExcessTileBackward?.onClick.AddListener(MoveBackward);
+            buttons.RotateExcessTile?.onClick.AddListener(RotateClockwise);
+        }
+
+        private void OnDisable()
+        {
+            buttons.moveExcessTileForward?.onClick.RemoveListener(MoveForward);
+            buttons.moveExcessTileBackward?.onClick.RemoveListener(MoveBackward);
+            buttons.RotateExcessTile?.onClick.RemoveListener(RotateClockwise);
+        }
+
+        #endregion
 
         /// <summary>
         /// Возвращает координату z или x лабиринта, где сейчас находится ExcessTile
@@ -118,27 +146,5 @@ namespace Tile.ExcessTile
             var nextPosition = maze.extraPositions[ExtraPosId];
             transform.position = nextPosition;        
         }
-
-        private void Start()
-        {
-            TileGenerator.GenerateRandomWalls(this);
-        }
-
-        private void OnEnable()
-        {
-            buttons = maze.GetComponent<Buttons>();
-            buttons.moveExcessTileForward?.onClick.AddListener(MoveForward);
-            buttons.moveExcessTileBackward?.onClick.AddListener(MoveBackward);
-            buttons.RotateExcessTile?.onClick.AddListener(RotateClockwise);
-        }
-
-        private void OnDisable()
-        {
-            buttons.moveExcessTileForward?.onClick.RemoveListener(MoveForward);
-            buttons.moveExcessTileBackward?.onClick.RemoveListener(MoveBackward);
-            buttons.RotateExcessTile?.onClick.RemoveListener(RotateClockwise);
-        }
-
-
     }
 }
