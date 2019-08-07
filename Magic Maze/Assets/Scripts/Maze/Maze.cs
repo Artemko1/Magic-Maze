@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using Item;
 using Player;
 using Tile.ExcessTile;
@@ -9,6 +10,7 @@ using UnityEngine;
 namespace Maze
 {
     [RequireComponent(typeof(Buttons))]
+    [SuppressMessage("ReSharper", "Unity.NoNullPropagation")]
     public class Maze : MonoBehaviour
     {
         #region Variables
