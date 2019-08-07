@@ -14,6 +14,8 @@ GameObject:
   - component: {fileID: 165624179184156990}
   - component: {fileID: 4708362419299807496}
   - component: {fileID: 7625486815254710930}
+  - component: {fileID: 8551154413111668940}
+  - component: {fileID: 4669651115151884724}
   m_Layer: 0
   m_Name: Board
   m_TagString: Untagged
@@ -143,6 +145,32 @@ MonoBehaviour:
   movePlayerRightButton: {fileID: 0}
   movePlayerDownButton: {fileID: 0}
   movePlayerLeftButton: {fileID: 0}
+--- !u!114 &8551154413111668940
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 664873475245246372}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 792fc545dda7a1d4fbe2c8a524f79cc0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  players: []
+--- !u!114 &4669651115151884724
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 664873475245246372}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9abc0fbbf023f214cba62fc33c77f708, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UnassignedItems: []
 --- !u!1001 &829868868312495552
 PrefabInstance:
   m_ObjectHideFlags: 0
