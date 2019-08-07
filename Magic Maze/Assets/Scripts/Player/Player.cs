@@ -1,4 +1,5 @@
-﻿using Tile.MazeTile;
+﻿using System.Collections.Generic;
+using Tile.MazeTile;
 using UI;
 using UnityEngine;
 using UnityEngine.Serialization;
