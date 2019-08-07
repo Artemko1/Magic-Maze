@@ -2,6 +2,7 @@
 using System.Diagnostics.CodeAnalysis;
 using Item;
 using Player;
+using Tile;
 using Tile.ExcessTile;
 using Tile.MazeTile;
 using UI;
@@ -61,6 +62,7 @@ namespace Maze
             
             mazeGenerator?.GenerateExcessPositions();
             excessTile.transform.position = extraPositions[0];
+            TileGenerator.GenerateRandomWalls(excessTile);
             
             itemGenerator?.GenerateItems(ItemsPerPlayer);
             

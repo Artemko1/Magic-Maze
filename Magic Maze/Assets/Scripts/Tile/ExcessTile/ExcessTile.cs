@@ -51,11 +51,6 @@ namespace Tile.ExcessTile
 
         #region Unity Methods
 
-        private void Start()
-        {
-            TileGenerator.GenerateRandomWalls(this);
-        }
-
         private void OnEnable()
         {
             buttons = maze.GetComponent<Buttons>();
