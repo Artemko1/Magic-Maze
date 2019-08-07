@@ -30,11 +30,12 @@ namespace Maze
         public Vector3[] extraPositions;
         
         public int NumberOfPlayers;
-        public List<Item.Item> Items { get; } = new List<Item.Item>();
+        
 
         private MazeGenerator mazeGenerator;
         private PlayerGenerator playerGenerator;
         private ItemGenerator itemGenerator;
+        private PlayerManager playerManager;
 
         [SerializeField] private MazeTile[] tileArray;
         [SerializeField] private ExcessTile excessTile;
@@ -48,7 +49,8 @@ namespace Maze
             mazeGenerator = GetComponent<MazeGenerator>();
             playerGenerator = GetComponent<PlayerGenerator>();
             itemGenerator = GetComponent<ItemGenerator>();
-
+            playerManager = GetComponent<PlayerManager>();
+            
             var buttons = GetComponent<Buttons>();
             buttons.moveColumn?.onClick.AddListener(MoveColumn);
         }
@@ -65,7 +67,9 @@ namespace Maze
             playerGenerator?.GeneratePlayers(NumberOfPlayers);
 
             itemGenerator?.GenerateItems();
-            
+
+            playerManager.AssignItemsToCollect();
+
         }
 
         #endregion
@@ -179,12 +183,12 @@ namespace Maze
 
             if (toBecomeExcessTile.currentPlayer != null)
             {
-                toBecomeExcessTile.currentPlayer.ChangeCurrentTile(newTile);
+                toBecomeExcessTile.currentPlayer.CurrentTile = newTile;
                 newTile.currentPlayer.transform.position = newTile.transform.position;
             }
             if (toBecomeExcessTile.currentItem != null)
             {
-                toBecomeExcessTile.currentItem.ChangeCurrentTile(newTile);
+                toBecomeExcessTile.currentItem.CurrentTile = newTile;
                 newTile.currentItem.transform.position = newTile.transform.position;
             }
 
@@ -244,12 +248,12 @@ namespace Maze
 
             if (toBecomeExcessTile.currentPlayer != null)
             {
-                toBecomeExcessTile.currentPlayer.ChangeCurrentTile(newTile);
+                toBecomeExcessTile.currentPlayer.CurrentTile = newTile;
                 newTile.currentPlayer.transform.position = newTile.transform.position;
             }
             if (toBecomeExcessTile.currentItem != null)
             {
-                toBecomeExcessTile.currentItem.ChangeCurrentTile(newTile);
+                toBecomeExcessTile.currentItem.CurrentTile = newTile;
                 newTile.currentItem.transform.position = newTile.transform.position;
             }
 
@@ -309,12 +313,12 @@ namespace Maze
 
             if (toBecomeExcessTile.currentPlayer != null)
             {
-                toBecomeExcessTile.currentPlayer.ChangeCurrentTile(newTile);
+                toBecomeExcessTile.currentPlayer.CurrentTile = newTile;
                 newTile.currentPlayer.transform.position = newTile.transform.position;
             }
             if (toBecomeExcessTile.currentItem != null)
             {
-                toBecomeExcessTile.currentItem.ChangeCurrentTile(newTile);
+                toBecomeExcessTile.currentItem.CurrentTile = newTile;
                 newTile.currentItem.transform.position = newTile.transform.position;
             }
 
@@ -374,12 +378,12 @@ namespace Maze
 
             if (toBecomeExcessTile.currentPlayer != null)
             {
-                toBecomeExcessTile.currentPlayer.ChangeCurrentTile(newTile);
+                toBecomeExcessTile.currentPlayer.CurrentTile = newTile;
                 newTile.currentPlayer.transform.position = newTile.transform.position;
             }
             if (toBecomeExcessTile.currentItem != null)
             {
-                toBecomeExcessTile.currentItem.ChangeCurrentTile(newTile);
+                toBecomeExcessTile.currentItem.CurrentTile = newTile;
                 newTile.currentItem.transform.position = newTile.transform.position;
             }
 

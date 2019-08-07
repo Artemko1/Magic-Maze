@@ -14,6 +14,7 @@ namespace Item
         public GameObject[] ItemPrefabs;
 
         private Maze.Maze maze;
+        private ItemManager itemManager;
 
         #endregion
 
@@ -22,6 +23,7 @@ namespace Item
         private void Awake()
         {
             maze = GetComponent<Maze.Maze>();
+            itemManager = GetComponent<ItemManager>();
         }
 
         #endregion
@@ -77,9 +79,9 @@ namespace Item
             
             var item = itemObj.GetComponent<Item>();
             tile.currentItem = item;
-            item.ChangeCurrentTile(tile);
+            item.CurrentTile = tile;
             item.Id = itemId;
-            maze.Items.Add(item);
+            itemManager.UnassignedItems.Add(item);
         }
     }
 }

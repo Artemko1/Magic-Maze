@@ -19,26 +19,26 @@ namespace Item
                 }
             }
         }
-            
+
+        public MazeTile CurrentTile
+        {
+            get => currentTile;
+            set
+            {
+                if (currentTile != null)
+                {
+                    currentTile.currentItem = null;
+                }
+                currentTile = value;
+                currentTile.currentItem = this;
+            }
+        }
+
         [SerializeField] private MazeTile currentTile;
         [SerializeField] private int id;
 
         #endregion
 
 
-        /// <summary>
-        /// Убирает текущего игрока у текущей клетки
-        /// и добавляет его переданной клетке.
-        /// </summary>
-        /// <param name="mazeTile"></param>
-        public void ChangeCurrentTile(MazeTile mazeTile)
-        {
-            if (currentTile != null)
-            {
-                currentTile.currentItem = null;
-            }
-            currentTile = mazeTile;
-            currentTile.currentItem = this;
-        }
     }
 }

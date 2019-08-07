@@ -10,6 +10,9 @@ namespace Player
         public GameObject playerPrefab;
 
         private Maze.Maze maze;
+        private PlayerManager playerManager;
+        
+        
         private readonly (int, int)[] spawnPositions = new (int, int)[4];
 
         #endregion
@@ -19,6 +22,8 @@ namespace Player
         private void Awake()
         {
             maze = GetComponent<Maze.Maze>();
+            playerManager = GetComponent<PlayerManager>();
+            
             spawnPositions[0] = (0, 0);
             spawnPositions[1] = (0, maze.BoardSize - 1);
             spawnPositions[2] = (maze.BoardSize - 1, 0);
@@ -58,12 +63,9 @@ namespace Player
         
             var player = playerObj.GetComponent<Player>();
             tile.currentPlayer = player;
-            player.ChangeCurrentTile(tile);
+            player.CurrentTile = tile;
             player.AllowMovement();
-            //if (playerNumber != 1)
-            //{
-            //    player.DisallowMovement();
-            //}
+            playerManager.players.Add(player);
 
             player.isIgnoringWalls = true;
         }
