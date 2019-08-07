@@ -7,11 +7,13 @@ namespace Item
     [RequireComponent(typeof(Maze.Maze))]
     public class ItemGenerator : MonoBehaviour
     {
-        
-        public Item[] ItemPrefabs;
-        
+        #region Variables
+
+        public GameObject[] ItemPrefabs;
+
         private Maze.Maze maze;
 
+        #endregion
 
         #region Unity Methods
 
@@ -58,7 +60,6 @@ namespace Item
                 {
                     break;
                 }
-                Debug.Log(maze.Items[i]);
             }
         }
 
