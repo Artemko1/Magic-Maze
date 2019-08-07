@@ -49,7 +49,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   extraPositions: []
-  ItemsPerPlayer: 0
   NumberOfPlayers: 4
   tileArray: []
   excessTile: {fileID: 1419061577357838062}
@@ -92,6 +91,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 398d0d45f49797d448348b5d968fc4a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  itemsPerPlayer: 0
   ItemPrefabs:
   - {fileID: 1329919465682202, guid: 3d2cd2dd131a54a7e893cb7003b84b99, type: 3}
   - {fileID: 1881546828721144, guid: 9e4148579bdb64cf8ba18ae87e7fc5c1, type: 3}

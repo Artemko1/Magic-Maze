@@ -28,7 +28,7 @@ namespace Maze
         public int MovableRows => (BoardSize - 1) * 2;
 
         public Vector3[] extraPositions;
-        [Range(0, 18)] public int ItemsPerPlayer;
+        
         public int NumberOfPlayers;
         public List<Item.Item> Items { get; } = new List<Item.Item>();
 
@@ -57,14 +57,14 @@ namespace Maze
         {
             tileArray = new MazeTile[BoardSize * BoardSize];
             mazeGenerator?.GenerateTiles(tileArray);
-            
-            playerGenerator?.GeneratePlayers(NumberOfPlayers);
-            
+
             mazeGenerator?.GenerateExcessPositions();
             excessTile.transform.position = extraPositions[0];
             TileGenerator.GenerateRandomWalls(excessTile);
-            
-            itemGenerator?.GenerateItems(ItemsPerPlayer);
+
+            playerGenerator?.GeneratePlayers(NumberOfPlayers);
+
+            itemGenerator?.GenerateItems();
             
         }
 

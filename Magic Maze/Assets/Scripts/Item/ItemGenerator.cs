@@ -9,6 +9,8 @@ namespace Item
     {
         #region Variables
 
+        [SerializeField][Range(0, 18)] public int itemsPerPlayer;
+        
         public GameObject[] ItemPrefabs;
 
         private Maze.Maze maze;
@@ -24,7 +26,7 @@ namespace Item
 
         #endregion
 
-        public void GenerateItems(int itemsPerPlayer)
+        public void GenerateItems()
         {
             if (itemsPerPlayer == 0)
             {
