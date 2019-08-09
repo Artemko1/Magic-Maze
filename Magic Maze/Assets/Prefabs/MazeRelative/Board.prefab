@@ -158,6 +158,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   players: []
+  CurrentPlayer: {fileID: 0}
 --- !u!114 &4669651115151884724
 MonoBehaviour:
   m_ObjectHideFlags: 0

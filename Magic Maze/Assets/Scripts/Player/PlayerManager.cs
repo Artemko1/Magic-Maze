@@ -10,6 +10,10 @@ namespace Player
         #region Variables
 
         public List<Player> players = new List<Player>();
+        /// <summary>
+        /// Wich player's turn.
+        /// </summary>
+        public Player CurrentPlayer;
 
         private ItemGenerator itemGenerator;
         private ItemManager itemManager;
@@ -36,6 +40,11 @@ namespace Player
                     itemManager.UnassignedItems.RemoveAt(0);
                 }
             }
+        }
+
+        public void SetTurnToPlayer(int playerNumber)
+        {
+            CurrentPlayer = players[playerNumber];
         }
     }
 }

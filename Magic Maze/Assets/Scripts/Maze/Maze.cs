@@ -69,6 +69,7 @@ namespace Maze
             itemGenerator?.GenerateItems();
 
             playerManager.AssignItemsToCollect();
+            playerManager.SetTurnToPlayer(0);
 
         }
 
