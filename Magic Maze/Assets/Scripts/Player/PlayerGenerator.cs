@@ -64,7 +64,6 @@ namespace Player
             var player = playerObj.GetComponent<Player>();
             tile.currentPlayer = player;
             player.CurrentTile = tile;
-            player.AllowMovement();
             playerManager.players.Add(player);
 
             player.isIgnoringWalls = true;

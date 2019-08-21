@@ -145,6 +145,7 @@ MonoBehaviour:
   movePlayerRightButton: {fileID: 0}
   movePlayerDownButton: {fileID: 0}
   movePlayerLeftButton: {fileID: 0}
+  switchTurnButton: {fileID: 0}
 --- !u!114 &8551154413111668940
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -158,7 +159,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   players: []
-  CurrentPlayer: {fileID: 0}
 --- !u!114 &4669651115151884724
 MonoBehaviour:
   m_ObjectHideFlags: 0

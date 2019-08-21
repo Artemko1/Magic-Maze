@@ -65,12 +65,11 @@ namespace Maze
             TileGenerator.GenerateRandomWalls(excessTile);
 
             playerGenerator?.GeneratePlayers(NumberOfPlayers);
+            playerManager.InitFirstPlayer();
 
             itemGenerator?.GenerateItems();
 
             playerManager.AssignItemsToCollect();
-            playerManager.SetTurnToPlayer(0);
-
         }
 
         #endregion
