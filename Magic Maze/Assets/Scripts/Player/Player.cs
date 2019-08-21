@@ -62,21 +62,6 @@ namespace Player
 
         #endregion
 
-        /// <summary>
-        /// Убирает текущего игрока у текущей клетки
-        /// и добавляет его переданной клетке.
-        /// </summary>
-        /// <param name="mazeTile"></param>
-//        public void ChangeCurrentTile(MazeTile mazeTile)
-//        {
-//            if (CurrentTile != null)
-//            {
-//                CurrentTile.currentPlayer = null;
-//            }
-//            CurrentTile = mazeTile;
-//            CurrentTile.currentPlayer = this;
-//        }
-
         private void Move(Direction direction)
         {
             if (!isMovementAllowed) { return; }
