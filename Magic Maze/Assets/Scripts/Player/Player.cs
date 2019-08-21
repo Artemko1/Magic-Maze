@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using Tile.MazeTile;
 using UI;
 using UnityEngine;
@@ -17,7 +18,7 @@ namespace Player
 
         public MazeTile CurrentTile
         {
-            get => currentTile;
+            private get => currentTile;
             set
             {
                 if (currentTile != null)
@@ -43,6 +44,7 @@ namespace Player
             maze = transform.parent.GetComponent<Maze.Maze>();
         }
 
+        [SuppressMessage("ReSharper", "Unity.NoNullPropagation")]
         private void OnEnable()
         {
             buttons = maze.GetComponent<Buttons>();
@@ -52,6 +54,7 @@ namespace Player
             buttons.movePlayerLeftButton?.onClick.AddListener(()  =>  Move(Direction.Left));
         }
 
+        [SuppressMessage("ReSharper", "Unity.NoNullPropagation")]
         private void OnDisable()
         {
             buttons.movePlayerUpButton?.onClick.RemoveListener(() => Move(Direction.Up));
@@ -144,16 +147,6 @@ namespace Player
         
             CurrentTile = nextTile;
             transform.position = CurrentTile.transform.position;
-        }
-
-        public void AllowMovement()
-        {
-            isMovementAllowed = true;
-        }
-
-        public void DisallowMovement()
-        {
-            isMovementAllowed = false;
         }
     }
 }
