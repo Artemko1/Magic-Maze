@@ -41,7 +41,9 @@ namespace Player
 
         private void Awake()
         {
-            maze = transform.parent.GetComponent<Maze.Maze>();
+            var board = transform.parent;
+            maze = board.GetComponent<Maze.Maze>();
+            playerManager = board.GetComponent<PlayerManager>();
         }
 
         [SuppressMessage("ReSharper", "Unity.NoNullPropagation")]
