@@ -3,7 +3,6 @@ using System.Diagnostics.CodeAnalysis;
 using Tile.MazeTile;
 using UI;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace Player
 {
@@ -12,7 +11,6 @@ namespace Player
     {
         #region Variables
 
-        public bool isMovementAllowed;
         public bool isIgnoringWalls;
         public List<Item.Item> ItemsToCollect = new List<Item.Item>();
 
@@ -31,6 +29,7 @@ namespace Player
         }
         
         private Maze.Maze maze;
+        private PlayerManager playerManager;
         private Buttons buttons;
 
         private MazeTile currentTile;
@@ -69,8 +68,11 @@ namespace Player
 
         private void Move(Direction direction)
         {
-            if (!isMovementAllowed) { return; }
-        
+            if (this != playerManager.CurrentPlayer)
+            {
+                return;
+            }
+            
             MazeTile nextTile = null;
 
             switch (direction)

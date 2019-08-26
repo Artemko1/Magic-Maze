@@ -10,11 +10,18 @@ namespace Managers
         public delegate void ActionDelegate();
 
         public static event ActionDelegate TurnSwitch;
-
-        private void Start()
+        
+        public void AddButtonListeners()
         {
             var buttons = GetComponent<Buttons>();
-            buttons.switchTurnButton?.onClick.AddListener(TurnSwitch.Invoke);
+            if (TurnSwitch == null)
+            {
+                Debug.LogError("TurnSwitch == null");
+            }
+            else
+            {
+                buttons.switchTurnButton?.onClick.AddListener(TurnSwitch.Invoke);
+            }
         }
     }
 }

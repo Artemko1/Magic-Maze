@@ -34,11 +34,6 @@ namespace Player
 
         #endregion
 
-        public void InitFirstPlayer()
-        {
-            players[0].isMovementAllowed = true;
-        }
-
         public void AssignItemsToCollect()
         {
             foreach (var player in players)
@@ -53,13 +48,11 @@ namespace Player
 
         private void TurnToNextPlayer()
         {
-            CurrentPlayer.isMovementAllowed = false;
             playerIndex++;
             if (playerIndex == players.Count)
             {
                 playerIndex = 0;
             }
-            CurrentPlayer.isMovementAllowed = true;
             Debug.Log("Turn switched");
         }
     }

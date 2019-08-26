@@ -1575,7 +1575,7 @@ GameObject:
   - component: {fileID: 1482532446}
   - component: {fileID: 1482532445}
   m_Layer: 0
-  m_Name: TurnManager
+  m_Name: Managers
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1614,7 +1614,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5488c4b11cfb80748b0f2ca07a3e1f89, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerManager: {fileID: 664873475650973696}
 --- !u!4 &1482532447
 Transform:
   m_ObjectHideFlags: 0
@@ -2476,6 +2475,11 @@ PrefabInstance:
       propertyPath: NumberOfPlayers
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 4875213375233417414, guid: bf2290b2b0053a843aafeaf70ad7e949,
+        type: 3}
+      propertyPath: eventManager
+      value: 
+      objectReference: {fileID: 1482532446}
     - target: {fileID: 165624179184156990, guid: bf2290b2b0053a843aafeaf70ad7e949,
         type: 3}
       propertyPath: board

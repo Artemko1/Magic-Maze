@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using Item;
+using Managers;
 using Player;
 using Tile;
 using Tile.ExcessTile;
@@ -15,6 +16,7 @@ namespace Maze
     public class Maze : MonoBehaviour
     {
         #region Variables
+        public EventManager eventManager;
 
         public int BoardSize { get; } = 9;
         public float Spacing { get; } = 1.5f;
@@ -65,11 +67,11 @@ namespace Maze
             TileGenerator.GenerateRandomWalls(excessTile);
 
             playerGenerator?.GeneratePlayers(NumberOfPlayers);
-            playerManager.InitFirstPlayer();
 
             itemGenerator?.GenerateItems();
 
             playerManager.AssignItemsToCollect();
+            eventManager.AddButtonListeners();
         }
 
         #endregion
