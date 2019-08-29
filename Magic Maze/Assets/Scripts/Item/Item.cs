@@ -1,4 +1,6 @@
-﻿using Tile.MazeTile;
+﻿using System.Threading;
+using Tile.MazeTile;
+using UnityEditor;
 using UnityEngine;
 
 namespace Item
@@ -7,6 +9,8 @@ namespace Item
     public class Item : MonoBehaviour
     {
         #region Variables
+
+        public Texture2D texture;
 
         public int Id
         {
@@ -36,6 +40,27 @@ namespace Item
 
         [SerializeField] private MazeTile currentTile;
         [SerializeField] private int id;
+
+        #endregion
+
+        #region Unity Methods
+
+        private void Awake()
+        {
+            texture =  null;
+            while(texture==null)
+            {
+//                print("texture was null there");     
+                texture = AssetPreview.GetAssetPreview(gameObject);
+                                                 
+                Thread.Sleep(80);
+            }
+
+            if (texture != null)
+            {
+//                print("Texture is not null!");
+            }
+        }
 
         #endregion
 
