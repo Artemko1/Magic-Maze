@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.UI;
 
 namespace UI
@@ -15,5 +16,7 @@ namespace UI
         public Button movePlayerRightButton;
         public Button movePlayerDownButton;
         public Button movePlayerLeftButton;
+
+        public Button switchTurnButton;
     }
 }

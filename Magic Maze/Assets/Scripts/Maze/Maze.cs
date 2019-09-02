@@ -1,5 +1,9 @@
-﻿using Item;
+﻿using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
+using Item;
+using Managers;
 using Player;
+using Tile;
 using Tile.ExcessTile;
 using Tile.MazeTile;
 using UI;
@@ -8,8 +12,12 @@ using UnityEngine;
 namespace Maze
 {
     [RequireComponent(typeof(Buttons))]
+    [SuppressMessage("ReSharper", "Unity.NoNullPropagation")]
     public class Maze : MonoBehaviour
     {
+        #region Variables
+        public EventManager eventManager;
+
         public int BoardSize { get; } = 9;
         public float Spacing { get; } = 1.5f;
         /// <summary>
@@ -20,20 +28,53 @@ namespace Maze
         /// Количество возможных позиций для ExcessTile.
         /// </summary>
         public int MovableRows => (BoardSize - 1) * 2;
-        public int NumberOfTiles => tileArray.Length;
 
         public Vector3[] extraPositions;
-        [Range(1, 18)] public int ItemsPerPlayer;
+        
+        public int NumberOfPlayers;
+        
 
         private MazeGenerator mazeGenerator;
         private PlayerGenerator playerGenerator;
         private ItemGenerator itemGenerator;
-
-        [SerializeField] private bool spawnPlayers = true;
-        [SerializeField] private bool spawnItems = true;
+        private PlayerManager playerManager;
 
         [SerializeField] private MazeTile[] tileArray;
         [SerializeField] private ExcessTile excessTile;
+
+        #endregion
+
+        #region Unity Methods
+
+        private void Awake()
+        {
+            mazeGenerator = GetComponent<MazeGenerator>();
+            playerGenerator = GetComponent<PlayerGenerator>();
+            itemGenerator = GetComponent<ItemGenerator>();
+            playerManager = GetComponent<PlayerManager>();
+            
+            var buttons = GetComponent<Buttons>();
+            buttons.moveColumn?.onClick.AddListener(MoveColumn);
+        }
+
+        private void Start()
+        {
+            tileArray = new MazeTile[BoardSize * BoardSize];
+            mazeGenerator?.GenerateTiles(tileArray);
+
+            mazeGenerator?.GenerateExcessPositions();
+            excessTile.transform.position = extraPositions[0];
+            TileGenerator.GenerateRandomWalls(excessTile);
+
+            playerGenerator?.GeneratePlayers(NumberOfPlayers);
+
+            itemGenerator?.GenerateItems();
+
+            playerManager.AssignItemsToCollect();
+            eventManager.AddButtonListeners();
+        }
+
+        #endregion
 
         /// <summary>
         /// Присваивает переданный tile в массив объекта.
@@ -58,7 +99,8 @@ namespace Maze
         }
         public MazeTile GetTile((int, int) p)
         {
-            return tileArray[p.Item1 * BoardSize + p.Item2];
+            var (z, x) = p;
+            return tileArray[z * BoardSize + x];
         }
 
 
@@ -84,33 +126,6 @@ namespace Maze
                     break;
             }
         }
-
-        private void Awake()
-        {
-            mazeGenerator = GetComponent<MazeGenerator>();
-            playerGenerator = GetComponent<PlayerGenerator>();
-            itemGenerator = GetComponent<ItemGenerator>();
-
-            var buttons = GetComponent<Buttons>();
-            buttons.moveColumn?.onClick.AddListener(MoveColumn);
-        }
-
-        private void Start()
-        {
-            tileArray = new MazeTile[BoardSize * BoardSize];
-            mazeGenerator?.GenerateTiles(tileArray);
-            if (spawnPlayers)
-            {
-                playerGenerator?.GeneratePlayers();
-            }
-            mazeGenerator?.GenerateExcessPositions();
-            excessTile.transform.position = extraPositions[0];
-            if (spawnItems)
-            {
-                itemGenerator?.GenerateItems(ItemsPerPlayer);
-            }
-        }
-
 
         /// <summary>
         /// Смещает ряд клеток вверх.
@@ -170,12 +185,12 @@ namespace Maze
 
             if (toBecomeExcessTile.currentPlayer != null)
             {
-                toBecomeExcessTile.currentPlayer.ChangeCurrentTile(newTile);
+                toBecomeExcessTile.currentPlayer.CurrentTile = newTile;
                 newTile.currentPlayer.transform.position = newTile.transform.position;
             }
             if (toBecomeExcessTile.currentItem != null)
             {
-                toBecomeExcessTile.currentItem.ChangeCurrentTile(newTile);
+                toBecomeExcessTile.currentItem.CurrentTile = newTile;
                 newTile.currentItem.transform.position = newTile.transform.position;
             }
 
@@ -235,12 +250,12 @@ namespace Maze
 
             if (toBecomeExcessTile.currentPlayer != null)
             {
-                toBecomeExcessTile.currentPlayer.ChangeCurrentTile(newTile);
+                toBecomeExcessTile.currentPlayer.CurrentTile = newTile;
                 newTile.currentPlayer.transform.position = newTile.transform.position;
             }
             if (toBecomeExcessTile.currentItem != null)
             {
-                toBecomeExcessTile.currentItem.ChangeCurrentTile(newTile);
+                toBecomeExcessTile.currentItem.CurrentTile = newTile;
                 newTile.currentItem.transform.position = newTile.transform.position;
             }
 
@@ -300,12 +315,12 @@ namespace Maze
 
             if (toBecomeExcessTile.currentPlayer != null)
             {
-                toBecomeExcessTile.currentPlayer.ChangeCurrentTile(newTile);
+                toBecomeExcessTile.currentPlayer.CurrentTile = newTile;
                 newTile.currentPlayer.transform.position = newTile.transform.position;
             }
             if (toBecomeExcessTile.currentItem != null)
             {
-                toBecomeExcessTile.currentItem.ChangeCurrentTile(newTile);
+                toBecomeExcessTile.currentItem.CurrentTile = newTile;
                 newTile.currentItem.transform.position = newTile.transform.position;
             }
 
@@ -365,12 +380,12 @@ namespace Maze
 
             if (toBecomeExcessTile.currentPlayer != null)
             {
-                toBecomeExcessTile.currentPlayer.ChangeCurrentTile(newTile);
+                toBecomeExcessTile.currentPlayer.CurrentTile = newTile;
                 newTile.currentPlayer.transform.position = newTile.transform.position;
             }
             if (toBecomeExcessTile.currentItem != null)
             {
-                toBecomeExcessTile.currentItem.ChangeCurrentTile(newTile);
+                toBecomeExcessTile.currentItem.CurrentTile = newTile;
                 newTile.currentItem.transform.position = newTile.transform.position;
             }
 

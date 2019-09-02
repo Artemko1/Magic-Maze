@@ -7,12 +7,34 @@ namespace Item
     [RequireComponent(typeof(Maze.Maze))]
     public class ItemGenerator : MonoBehaviour
     {
-        public GameObject ItemPrefab;
+        #region Variables
+
+        [SerializeField][Range(0, 18)] public int itemsPerPlayer;
+        
+        public GameObject[] ItemPrefabs;
 
         private Maze.Maze maze;
+        private ItemManager itemManager;
 
-        public void GenerateItems(int itemsPerPlayer)
+        #endregion
+
+        #region Unity Methods
+
+        private void Awake()
         {
+            maze = GetComponent<Maze.Maze>();
+            itemManager = GetComponent<ItemManager>();
+        }
+
+        #endregion
+
+        public void GenerateItems()
+        {
+            if (itemsPerPlayer == 0)
+            {
+                return;
+            }
+            
             // Кортеж координат (0,0), (0,1), (0,2) и т.д.
             var tileList = new List<(int, int)>();
             for (var i = 0; i < maze.BoardSize; i++)
@@ -23,7 +45,7 @@ namespace Item
                 }
             }
 
-            var numberOfItems = itemsPerPlayer * 4;
+            var numberOfItems = itemsPerPlayer * maze.NumberOfPlayers;
 
             for (var i = 0; i < numberOfItems; i++)
             {
@@ -35,15 +57,7 @@ namespace Item
                 }
                 else
                 {
-                    var itemObj = Instantiate(
-                        ItemPrefab,
-                        tile.transform.position,
-                        Quaternion.identity,
-                        maze.transform);
-                    itemObj.name = $"Item {tileList[index]}";
-                    var item = itemObj.GetComponent<Item>();
-                    tile.currentItem = item;
-                    item.ChangeCurrentTile(tile);
+                    CreateItem(tile, i);
                 }
                 tileList.RemoveAt(index);
                 if (tileList.Count == 0)
@@ -53,9 +67,21 @@ namespace Item
             }
         }
 
-        private void Awake()
+
+        private void CreateItem(MazeTile tile, int itemId)
         {
-            maze = GetComponent<Maze.Maze>();
+            var itemObj = Instantiate(
+                ItemPrefabs[itemId],
+                tile.transform.position,
+                Quaternion.identity,
+                maze.transform);
+            
+            
+            var item = itemObj.GetComponent<Item>();
+            tile.currentItem = item;
+            item.CurrentTile = tile;
+            item.Id = itemId;
+            itemManager.UnassignedItems.Add(item);
         }
     }
 }

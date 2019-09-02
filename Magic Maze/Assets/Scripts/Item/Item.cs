@@ -1,4 +1,6 @@
-﻿using Tile.MazeTile;
+﻿using System.Threading;
+using Tile.MazeTile;
+using UnityEditor;
 using UnityEngine;
 
 namespace Item
@@ -6,21 +8,62 @@ namespace Item
     [SelectionBase]
     public class Item : MonoBehaviour
     {
-        public MazeTile CurrentTile { get; private set; }
+        #region Variables
 
-        /// <summary>
-        /// Убирает текущего игрока у текущей клетки
-        /// и добавляет его переданной клетке.
-        /// </summary>
-        /// <param name="mazeTile"></param>
-        public void ChangeCurrentTile(MazeTile mazeTile)
+        public Texture2D texture;
+
+        public int Id
         {
-            if (CurrentTile != null)
+            get => id;
+            set
             {
-                CurrentTile.currentItem = null;
+                if (value == 0)
+                {
+                    id = value;
+                }
             }
-            CurrentTile = mazeTile;
-            CurrentTile.currentItem = this;
         }
+
+        public MazeTile CurrentTile
+        {
+            get => currentTile;
+            set
+            {
+                if (currentTile != null)
+                {
+                    currentTile.currentItem = null;
+                }
+                currentTile = value;
+                currentTile.currentItem = this;
+            }
+        }
+
+        [SerializeField] private MazeTile currentTile;
+        [SerializeField] private int id;
+
+        #endregion
+
+        #region Unity Methods
+
+        private void Awake()
+        {
+            texture =  null;
+            while(texture==null)
+            {
+//                print("texture was null there");     
+                texture = AssetPreview.GetAssetPreview(gameObject);
+                                                 
+                Thread.Sleep(80);
+            }
+
+            if (texture != null)
+            {
+//                print("Texture is not null!");
+            }
+        }
+
+        #endregion
+
+
     }
 }
