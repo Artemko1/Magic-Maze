@@ -14,10 +14,6 @@ namespace UI
         public PlayerManager PlayerManager;
         public Image image;
 
-        public GameObject prefab;
-        public Texture2D currentTexture;
-
-
         private Texture2D texture;
         private Sprite sprite;
 
