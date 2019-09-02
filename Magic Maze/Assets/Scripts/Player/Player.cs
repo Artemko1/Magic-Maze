@@ -151,6 +151,17 @@ namespace Player
         
             CurrentTile = nextTile;
             transform.position = CurrentTile.transform.position;
+            TryCollectItem();
+        }
+
+        private void TryCollectItem()
+        {
+            var item = currentTile.currentItem;
+            if (item != null && item == ItemsToCollect[0])
+            {
+                item.gameObject.SetActive(false);
+                ItemsToCollect.RemoveAt(0);
+            }
         }
     }
 }
