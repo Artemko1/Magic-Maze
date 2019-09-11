@@ -8,6 +8,7 @@ namespace Player
         #region Variables
 
         public GameObject playerPrefab;
+        public GameObject[] playerPrefabs;
 
         private Maze.Maze maze;
         private PlayerManager playerManager;
@@ -44,17 +45,17 @@ namespace Player
                 {
                     break;
                 }
-                CreatePlayer(spawnPositions[i], "Player "+i);
+                CreatePlayer(spawnPositions[i], playerPrefabs[i], "Player "+i);
             }
         }
 
-        private void CreatePlayer((int,int) p, string playerName = "Player")
+        private void CreatePlayer((int,int) p, GameObject prefab, string playerName = "Player")
         {
             var (z, x) = p;
             var tile = maze.GetTile(z, x);
 
             var playerObj = Instantiate(
-                playerPrefab,
+                prefab,
                 tile.transform.position,
                 Quaternion.identity,
                 transform);
