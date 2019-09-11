@@ -55,11 +55,6 @@ namespace Item
                                                  
                 Thread.Sleep(80);
             }
-
-            if (texture != null)
-            {
-//                print("Texture is not null!");
-            }
         }
 
         #endregion
