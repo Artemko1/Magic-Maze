@@ -14,20 +14,10 @@ namespace UI
         public PlayerManager PlayerManager;
         public Image image;
 
-        private Texture2D texture;
-        private Sprite sprite;
-
         #endregion
 
         #region Unity Methods
-
-        private void Awake()
-        {
-//            EventManager.FirstEverTurn += UpdateImage;
-//            EventManager.TurnSwitch += UpdateImage;
-            
-        }
-
+        
         private void Update()
         {
             UpdateImage();
@@ -35,9 +25,9 @@ namespace UI
 
         private void UpdateImage()
         {
-            texture = PlayerManager.CurrentPlayer.ItemsToCollect[0].texture;
+            var texture = PlayerManager.CurrentPlayer.ItemsToCollect[0].texture;
             var rect = new Rect(0, 0, texture.width, texture.height);
-            sprite = Sprite.Create(texture, rect, Vector2.zero);
+            var sprite = Sprite.Create(texture, rect, Vector2.zero);
             image.sprite = sprite;
         }
 
@@ -61,7 +51,7 @@ namespace UI
             {
                 print("Texture is not null!");
                 var rect = new Rect(0, 0, bTexture.width, bTexture.height);
-                sprite = Sprite.Create(bTexture, rect, Vector2.zero);
+                var sprite = Sprite.Create(bTexture, rect, Vector2.zero);
                 image.sprite = sprite;
                                  
             }    
