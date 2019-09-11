@@ -82,6 +82,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerPrefab: {fileID: 1593622067508916, guid: 047cbcff827e4804488958170ba04172,
     type: 3}
+  playerPrefabs:
+  - {fileID: 8392191990525986202, guid: 20f8fc455b028f4499d66fc2c5ea665a, type: 3}
+  - {fileID: 8392191990525986202, guid: f69951fc0638a1b4680e094c79371149, type: 3}
+  - {fileID: 8392191990525986202, guid: bbbb025b80971aa4d9462469f7152bd5, type: 3}
+  - {fileID: 8392191990525986202, guid: 50911049d96ce41479ccefc9464631ce, type: 3}
 --- !u!114 &4708362419299807496
 MonoBehaviour:
   m_ObjectHideFlags: 0
