@@ -44,10 +44,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f9b5ddc5f25697498f8202a8f60b0ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maze: {fileID: 0}
-  currentTile: {fileID: 0}
-  isMovementAllowed: 0
   isIgnoringWalls: 0
+  ItemsToCollect: []
 --- !u!1 &8503812163837559074
 GameObject:
   m_ObjectHideFlags: 0
