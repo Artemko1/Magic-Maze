@@ -26,6 +26,7 @@ namespace UI
         private void UpdateImage()
         {
             var texture = PlayerManager.CurrentPlayer.ItemsToCollect[0].texture;
+            if (texture == null) return;
             var rect = new Rect(0, 0, texture.width, texture.height);
             var sprite = Sprite.Create(texture, rect, Vector2.zero);
             image.sprite = sprite;
