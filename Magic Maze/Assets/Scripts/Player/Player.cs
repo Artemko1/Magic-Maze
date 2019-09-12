@@ -3,6 +3,7 @@ using System.Diagnostics.CodeAnalysis;
 using Tile.MazeTile;
 using UI;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 namespace Player
 {
@@ -14,6 +15,8 @@ namespace Player
         public bool isIgnoringWalls;
         public List<Item.Item> ItemsToCollect = new List<Item.Item>();
 
+        public Actions actions;
+        
         public MazeTile CurrentTile
         {
             private get => currentTile;
@@ -43,6 +46,8 @@ namespace Player
             var board = transform.parent;
             maze = board.GetComponent<Maze.Maze>();
             playerManager = board.GetComponent<PlayerManager>();
+            actions = new Actions();
+            actions.Player.Move.performed += ctx => OnMove();
         }
 
         [SuppressMessage("ReSharper", "Unity.NoNullPropagation")]
@@ -53,6 +58,8 @@ namespace Player
             buttons.movePlayerRightButton?.onClick.AddListener(() =>  Move(Direction.Right));
             buttons.movePlayerDownButton?.onClick.AddListener(()  =>  Move(Direction.Down));
             buttons.movePlayerLeftButton?.onClick.AddListener(()  =>  Move(Direction.Left));
+            
+            actions.Enable();
         }
 
         [SuppressMessage("ReSharper", "Unity.NoNullPropagation")]
@@ -62,6 +69,8 @@ namespace Player
             buttons.movePlayerRightButton?.onClick.RemoveListener(() => Move(Direction.Right));
             buttons.movePlayerDownButton?.onClick.RemoveListener(() => Move(Direction.Down));
             buttons.movePlayerLeftButton?.onClick.RemoveListener(() => Move(Direction.Left));
+            
+            actions.Disable();
         }
 
         #endregion
@@ -154,6 +163,11 @@ namespace Player
             TryCollectItem();
         }
 
+        public void OnMove()
+        {
+            print("Moving ");
+        }
+        
         private void TryCollectItem()
         {
             var item = currentTile.currentItem;
