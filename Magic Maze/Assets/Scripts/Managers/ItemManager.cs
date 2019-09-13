@@ -1,13 +1,14 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-namespace Item
+namespace Managers
 {
     public class ItemManager : MonoBehaviour
     {
         #region Variables
 
-        public List<Item> UnassignedItems = new List<Item>();
+        [SerializeField][Range(0, 18)] public int itemsPerPlayer;
+        [HideInInspector] public List<Item.Item> UnassignedItems = new List<Item.Item>();
 
         #endregion
 

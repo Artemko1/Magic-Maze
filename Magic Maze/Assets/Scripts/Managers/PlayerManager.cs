@@ -1,20 +1,19 @@
 ﻿using System.Collections.Generic;
 using Item;
-using Managers;
 using UnityEngine;
 
-namespace Player
+namespace Managers
 {
     public class PlayerManager : MonoBehaviour
     {
         #region Variables
 
-        public List<Player> players = new List<Player>();
+        public List<Player.Player> players = new List<Player.Player>();
 
         /// <summary>
         /// Wich player's turn.
         /// </summary>
-        public Player CurrentPlayer => players[playerIndex];
+        public Player.Player CurrentPlayer => players[playerIndex];
 
         private ItemGenerator itemGenerator;
         private ItemManager itemManager;
@@ -38,7 +37,7 @@ namespace Player
         {
             foreach (var player in players)
             {
-                for (var i = 0; i < itemGenerator.itemsPerPlayer; i++)
+                for (var i = 0; i < itemManager.itemsPerPlayer; i++)
                 {
                     player.ItemsToCollect.Add(itemManager.UnassignedItems[0]);
                     itemManager.UnassignedItems.RemoveAt(0);

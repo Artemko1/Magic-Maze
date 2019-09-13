@@ -2760,6 +2760,11 @@ PrefabInstance:
       propertyPath: switchTurnButton
       value: 
       objectReference: {fileID: 590797901}
+    - target: {fileID: 4669651115151884724, guid: bf2290b2b0053a843aafeaf70ad7e949,
+        type: 3}
+      propertyPath: itemsPerPlayer
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bf2290b2b0053a843aafeaf70ad7e949, type: 3}
 --- !u!1 &2082615231

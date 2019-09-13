@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Managers;
 using Tile.MazeTile;
 using UnityEngine;
 
@@ -9,7 +10,7 @@ namespace Item
     {
         #region Variables
 
-        [SerializeField][Range(0, 18)] public int itemsPerPlayer;
+        
         
         public GameObject[] ItemPrefabs;
 
@@ -30,7 +31,7 @@ namespace Item
 
         public void GenerateItems()
         {
-            if (itemsPerPlayer == 0)
+            if (itemManager.itemsPerPlayer == 0)
             {
                 return;
             }
@@ -45,7 +46,7 @@ namespace Item
                 }
             }
 
-            var numberOfItems = itemsPerPlayer * maze.NumberOfPlayers;
+            var numberOfItems = itemManager.itemsPerPlayer * maze.NumberOfPlayers;
 
             for (var i = 0; i < numberOfItems; i++)
             {
