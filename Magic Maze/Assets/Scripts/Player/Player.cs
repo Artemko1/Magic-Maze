@@ -59,7 +59,7 @@ namespace Player
             buttons.movePlayerDownButton?.onClick.AddListener(()  =>  Move(Direction.Down));
             buttons.movePlayerLeftButton?.onClick.AddListener(()  =>  Move(Direction.Left));
             
-            actions.Enable();
+//            actions.Enable();
         }
 
         [SuppressMessage("ReSharper", "Unity.NoNullPropagation")]
@@ -70,7 +70,7 @@ namespace Player
             buttons.movePlayerDownButton?.onClick.RemoveListener(() => Move(Direction.Down));
             buttons.movePlayerLeftButton?.onClick.RemoveListener(() => Move(Direction.Left));
             
-            actions.Disable();
+//            actions.Disable();
         }
 
         #endregion

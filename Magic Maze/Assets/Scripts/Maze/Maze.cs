@@ -71,6 +71,7 @@ namespace Maze
             itemGenerator?.GenerateItems();
 
             playerManager.AssignItemsToCollect();
+            playerManager.InitializeFirstTurn();
             eventManager.AddButtonListeners();
         }
 
