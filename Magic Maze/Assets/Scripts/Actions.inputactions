@@ -128,6 +128,90 @@
                     "isPartOfComposite": false
                 }
             ]
+        },
+        {
+            "name": "ExcessTile",
+            "id": "59713d72-8db0-43a4-b315-df93e5f521d1",
+            "actions": [
+                {
+                    "name": "MoveForward",
+                    "type": "Button",
+                    "id": "379558b0-ef42-49af-a3dd-e3662503d9b1",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "MoveBackward",
+                    "type": "Button",
+                    "id": "3a597cf2-ec38-4b02-b834-febcbf9ed3a3",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "RotateClockwise",
+                    "type": "Button",
+                    "id": "b3874625-0297-4900-b513-c066a2bda4ec",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "RotateCounterclockwise",
+                    "type": "Button",
+                    "id": "0cc639db-abce-4ae3-9216-989c39c058bf",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": ""
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "b0c7c2d4-eaf1-445c-875f-08feff7d807e",
+                    "path": "<Keyboard>/d",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "MoveForward",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "c767d77e-7440-4bc8-a52c-17bfd1f359c1",
+                    "path": "<Keyboard>/a",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "MoveBackward",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "4d3acfd1-3d6b-4262-8040-bd250e66e60e",
+                    "path": "<Keyboard>/w",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "RotateClockwise",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "b172d339-3cc4-4071-a1a3-a54610b5b35d",
+                    "path": "<Keyboard>/s",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "RotateCounterclockwise",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": [

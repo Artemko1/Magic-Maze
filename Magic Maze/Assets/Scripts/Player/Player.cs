@@ -47,7 +47,7 @@ namespace Player
             var board = transform.parent;
             maze = board.GetComponent<Maze.Maze>();
             playerManager = board.GetComponent<PlayerManager>();
-            actions = InputManager.GetActions();
+            actions = new Actions();
             actions.Player.MoveUp.performed += ctx => Move(Direction.Up);
             actions.Player.MoveRight.performed += ctx => Move(Direction.Right);
             actions.Player.MoveDown.performed += ctx => Move(Direction.Down);
@@ -62,8 +62,6 @@ namespace Player
             buttons.movePlayerRightButton?.onClick.AddListener(() =>  Move(Direction.Right));
             buttons.movePlayerDownButton?.onClick.AddListener(()  =>  Move(Direction.Down));
             buttons.movePlayerLeftButton?.onClick.AddListener(()  =>  Move(Direction.Left));
-            
-//            actions.Enable();
         }
 
         [SuppressMessage("ReSharper", "Unity.NoNullPropagation")]
@@ -73,19 +71,12 @@ namespace Player
             buttons.movePlayerRightButton?.onClick.RemoveListener(() => Move(Direction.Right));
             buttons.movePlayerDownButton?.onClick.RemoveListener(() => Move(Direction.Down));
             buttons.movePlayerLeftButton?.onClick.RemoveListener(() => Move(Direction.Left));
-            
-//            actions.Disable();
         }
 
         #endregion
 
         private void Move(Direction direction)
         {
-            if (this != playerManager.CurrentPlayer)
-            {
-                return;
-            }
-            
             MazeTile nextTile = null;
 
             switch (direction)

@@ -140,6 +140,90 @@ public class Actions : IInputActionCollection
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""ExcessTile"",
+            ""id"": ""59713d72-8db0-43a4-b315-df93e5f521d1"",
+            ""actions"": [
+                {
+                    ""name"": ""MoveForward"",
+                    ""type"": ""Button"",
+                    ""id"": ""379558b0-ef42-49af-a3dd-e3662503d9b1"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""MoveBackward"",
+                    ""type"": ""Button"",
+                    ""id"": ""3a597cf2-ec38-4b02-b834-febcbf9ed3a3"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""RotateClockwise"",
+                    ""type"": ""Button"",
+                    ""id"": ""b3874625-0297-4900-b513-c066a2bda4ec"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""RotateCounterclockwise"",
+                    ""type"": ""Button"",
+                    ""id"": ""0cc639db-abce-4ae3-9216-989c39c058bf"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """"
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""b0c7c2d4-eaf1-445c-875f-08feff7d807e"",
+                    ""path"": ""<Keyboard>/d"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MoveForward"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""c767d77e-7440-4bc8-a52c-17bfd1f359c1"",
+                    ""path"": ""<Keyboard>/a"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MoveBackward"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""4d3acfd1-3d6b-4262-8040-bd250e66e60e"",
+                    ""path"": ""<Keyboard>/w"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""RotateClockwise"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b172d339-3cc4-4071-a1a3-a54610b5b35d"",
+                    ""path"": ""<Keyboard>/s"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""RotateCounterclockwise"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": [
@@ -200,6 +284,12 @@ public class Actions : IInputActionCollection
         m_Player_MoveRight = m_Player.GetAction("MoveRight");
         m_Player_MoveDown = m_Player.GetAction("MoveDown");
         m_Player_MoveLeft = m_Player.GetAction("MoveLeft");
+        // ExcessTile
+        m_ExcessTile = asset.GetActionMap("ExcessTile");
+        m_ExcessTile_MoveForward = m_ExcessTile.GetAction("MoveForward");
+        m_ExcessTile_MoveBackward = m_ExcessTile.GetAction("MoveBackward");
+        m_ExcessTile_RotateClockwise = m_ExcessTile.GetAction("RotateClockwise");
+        m_ExcessTile_RotateCounterclockwise = m_ExcessTile.GetAction("RotateCounterclockwise");
     }
 
     ~Actions()
@@ -302,6 +392,63 @@ public class Actions : IInputActionCollection
         }
     }
     public PlayerActions @Player => new PlayerActions(this);
+
+    // ExcessTile
+    private readonly InputActionMap m_ExcessTile;
+    private IExcessTileActions m_ExcessTileActionsCallbackInterface;
+    private readonly InputAction m_ExcessTile_MoveForward;
+    private readonly InputAction m_ExcessTile_MoveBackward;
+    private readonly InputAction m_ExcessTile_RotateClockwise;
+    private readonly InputAction m_ExcessTile_RotateCounterclockwise;
+    public struct ExcessTileActions
+    {
+        private Actions m_Wrapper;
+        public ExcessTileActions(Actions wrapper) { m_Wrapper = wrapper; }
+        public InputAction @MoveForward => m_Wrapper.m_ExcessTile_MoveForward;
+        public InputAction @MoveBackward => m_Wrapper.m_ExcessTile_MoveBackward;
+        public InputAction @RotateClockwise => m_Wrapper.m_ExcessTile_RotateClockwise;
+        public InputAction @RotateCounterclockwise => m_Wrapper.m_ExcessTile_RotateCounterclockwise;
+        public InputActionMap Get() { return m_Wrapper.m_ExcessTile; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(ExcessTileActions set) { return set.Get(); }
+        public void SetCallbacks(IExcessTileActions instance)
+        {
+            if (m_Wrapper.m_ExcessTileActionsCallbackInterface != null)
+            {
+                MoveForward.started -= m_Wrapper.m_ExcessTileActionsCallbackInterface.OnMoveForward;
+                MoveForward.performed -= m_Wrapper.m_ExcessTileActionsCallbackInterface.OnMoveForward;
+                MoveForward.canceled -= m_Wrapper.m_ExcessTileActionsCallbackInterface.OnMoveForward;
+                MoveBackward.started -= m_Wrapper.m_ExcessTileActionsCallbackInterface.OnMoveBackward;
+                MoveBackward.performed -= m_Wrapper.m_ExcessTileActionsCallbackInterface.OnMoveBackward;
+                MoveBackward.canceled -= m_Wrapper.m_ExcessTileActionsCallbackInterface.OnMoveBackward;
+                RotateClockwise.started -= m_Wrapper.m_ExcessTileActionsCallbackInterface.OnRotateClockwise;
+                RotateClockwise.performed -= m_Wrapper.m_ExcessTileActionsCallbackInterface.OnRotateClockwise;
+                RotateClockwise.canceled -= m_Wrapper.m_ExcessTileActionsCallbackInterface.OnRotateClockwise;
+                RotateCounterclockwise.started -= m_Wrapper.m_ExcessTileActionsCallbackInterface.OnRotateCounterclockwise;
+                RotateCounterclockwise.performed -= m_Wrapper.m_ExcessTileActionsCallbackInterface.OnRotateCounterclockwise;
+                RotateCounterclockwise.canceled -= m_Wrapper.m_ExcessTileActionsCallbackInterface.OnRotateCounterclockwise;
+            }
+            m_Wrapper.m_ExcessTileActionsCallbackInterface = instance;
+            if (instance != null)
+            {
+                MoveForward.started += instance.OnMoveForward;
+                MoveForward.performed += instance.OnMoveForward;
+                MoveForward.canceled += instance.OnMoveForward;
+                MoveBackward.started += instance.OnMoveBackward;
+                MoveBackward.performed += instance.OnMoveBackward;
+                MoveBackward.canceled += instance.OnMoveBackward;
+                RotateClockwise.started += instance.OnRotateClockwise;
+                RotateClockwise.performed += instance.OnRotateClockwise;
+                RotateClockwise.canceled += instance.OnRotateClockwise;
+                RotateCounterclockwise.started += instance.OnRotateCounterclockwise;
+                RotateCounterclockwise.performed += instance.OnRotateCounterclockwise;
+                RotateCounterclockwise.canceled += instance.OnRotateCounterclockwise;
+            }
+        }
+    }
+    public ExcessTileActions @ExcessTile => new ExcessTileActions(this);
     private int m_KeyboardMouseSchemeIndex = -1;
     public InputControlScheme KeyboardMouseScheme
     {
@@ -344,5 +491,12 @@ public class Actions : IInputActionCollection
         void OnMoveRight(InputAction.CallbackContext context);
         void OnMoveDown(InputAction.CallbackContext context);
         void OnMoveLeft(InputAction.CallbackContext context);
+    }
+    public interface IExcessTileActions
+    {
+        void OnMoveForward(InputAction.CallbackContext context);
+        void OnMoveBackward(InputAction.CallbackContext context);
+        void OnRotateClockwise(InputAction.CallbackContext context);
+        void OnRotateCounterclockwise(InputAction.CallbackContext context);
     }
 }

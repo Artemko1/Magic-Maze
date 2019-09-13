@@ -1,4 +1,6 @@
-﻿using UI;
+﻿using System;
+using Managers;
+using UI;
 using UnityEngine;
 
 namespace Tile.ExcessTile
@@ -44,8 +46,11 @@ namespace Tile.ExcessTile
             }
         }
 
-        [SerializeField] private int extraPosId;
+        [SerializeField] 
+        private int extraPosId;
+        
         private Buttons buttons;
+        public Actions actions;
 
         #endregion
 
@@ -57,6 +62,13 @@ namespace Tile.ExcessTile
             buttons.moveExcessTileForward?.onClick.AddListener(MoveForward);
             buttons.moveExcessTileBackward?.onClick.AddListener(MoveBackward);
             buttons.RotateExcessTile?.onClick.AddListener(RotateClockwise);
+            
+            actions = new Actions();
+            actions.ExcessTile.MoveForward.performed += ctx => MoveForward();
+            actions.ExcessTile.MoveBackward.performed += ctx => MoveBackward();
+            actions.ExcessTile.RotateClockwise.performed += ctx => RotateClockwise();
+            actions.ExcessTile.RotateCounterclockwise.performed += ctx => RotateCounterclockwise();
+            actions.ExcessTile.Enable();
         }
 
         private void OnDisable()
@@ -64,6 +76,11 @@ namespace Tile.ExcessTile
             buttons.moveExcessTileForward?.onClick.RemoveListener(MoveForward);
             buttons.moveExcessTileBackward?.onClick.RemoveListener(MoveBackward);
             buttons.RotateExcessTile?.onClick.RemoveListener(RotateClockwise);
+            actions.ExcessTile.MoveForward.performed -= ctx => MoveForward();
+            actions.ExcessTile.MoveBackward.performed -= ctx => MoveBackward();
+            actions.ExcessTile.RotateClockwise.performed -= ctx => RotateClockwise();
+            actions.ExcessTile.RotateCounterclockwise.performed -= ctx => RotateCounterclockwise();
+            actions.ExcessTile.Disable();
         }
 
         #endregion
