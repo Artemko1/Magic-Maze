@@ -30,7 +30,9 @@ namespace Maze
         public int MovableRows => (BoardSize - 1) * 2;
 
         public Vector3[] extraPositions;
-        
+
+        public ExcessTile ExcessTile => excessTile;
+
         public int NumberOfPlayers;
         
 
@@ -38,6 +40,7 @@ namespace Maze
         private PlayerGenerator playerGenerator;
         private ItemGenerator itemGenerator;
         private PlayerManager playerManager;
+        private TurnManager turnManager;
 
         [SerializeField] private MazeTile[] tileArray;
         [SerializeField] private ExcessTile excessTile;
@@ -52,6 +55,8 @@ namespace Maze
             playerGenerator = GetComponent<PlayerGenerator>();
             itemGenerator = GetComponent<ItemGenerator>();
             playerManager = GetComponent<PlayerManager>();
+            var managers = GameObject.FindWithTag("Managers");
+            turnManager = managers.GetComponent<TurnManager>();
             
             var buttons = GetComponent<Buttons>();
             buttons.moveColumn?.onClick.AddListener(MoveColumn);
@@ -71,7 +76,7 @@ namespace Maze
             itemGenerator?.GenerateItems();
 
             playerManager.AssignItemsToCollect();
-            playerManager.InitializeFirstTurn();
+            turnManager.InitializeFirstTurn();
             eventManager.AddButtonListeners();
         }
 
@@ -111,6 +116,11 @@ namespace Maze
         /// </summary>
         private void MoveColumn()
         {
+            if (turnManager.CurrentPhase != TurnPhase.ColumnMove)
+            {
+                print("that's not a column turn'");
+                return;
+            }
             switch (excessTile.CurrentDirection)
             {
                 case Direction.Down:
@@ -126,6 +136,7 @@ namespace Maze
                     MoveColumnRight();
                     break;
             }
+            turnManager.ToPlayerMove();
         }
 
         /// <summary>

@@ -10,14 +10,7 @@ namespace Managers
 
         public List<Player.Player> players = new List<Player.Player>();
 
-        /// <summary>
-        /// Wich player's turn.
-        /// </summary>
-        public Player.Player CurrentPlayer => players[playerIndex];
-
         private ItemManager itemManager;
-
-        private int playerIndex;
 
         #endregion
 
@@ -26,7 +19,6 @@ namespace Managers
         private void Awake()
         {
             itemManager = GetComponent<ItemManager>();
-            EventManager.TurnSwitch += TurnToNextPlayer;
         }
 
         #endregion
@@ -41,23 +33,6 @@ namespace Managers
                     itemManager.UnassignedItems.RemoveAt(0);
                 }
             }
-        }
-
-        private void TurnToNextPlayer()
-        {
-            CurrentPlayer.actions.Player.Disable();
-            playerIndex++;
-            if (playerIndex == players.Count)
-            {
-                playerIndex = 0;
-            }
-            CurrentPlayer.actions.Player.Enable();
-            Debug.Log("Turn switched");
-        }
-
-        public void InitializeFirstTurn()
-        {
-            players[0].actions.Player.Enable();
         }
     }
 }

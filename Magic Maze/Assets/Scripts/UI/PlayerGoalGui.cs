@@ -12,7 +12,8 @@ namespace UI
         #region Variables
 
         public Button GlowButton;
-        public PlayerManager PlayerManager;
+        public TurnManager TurnManager;
+//        public PlayerManager PlayerManager;
         public Image image;
 
         #endregion
@@ -26,7 +27,7 @@ namespace UI
 
         private void UpdateImage()
         {
-            var texture = PlayerManager.CurrentPlayer.ItemsToCollect[0].texture;
+            var texture = TurnManager.CurrentPlayer.ItemsToCollect[0].texture;
             if (texture == null) return;
             var rect = new Rect(0, 0, texture.width, texture.height);
             var sprite = Sprite.Create(texture, rect, Vector2.zero);
@@ -44,7 +45,7 @@ namespace UI
             while(bTexture==null)
             {
                 print("texture was null there");     
-                bTexture = AssetPreview.GetAssetPreview(PlayerManager.CurrentPlayer.ItemsToCollect[0].texture);
+                bTexture = AssetPreview.GetAssetPreview(TurnManager.CurrentPlayer.ItemsToCollect[0].texture);
                                                  
                 Thread.Sleep(80);
             }

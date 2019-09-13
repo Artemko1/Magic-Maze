@@ -68,7 +68,6 @@ namespace Tile.ExcessTile
             actions.ExcessTile.MoveBackward.performed += ctx => MoveBackward();
             actions.ExcessTile.RotateClockwise.performed += ctx => RotateClockwise();
             actions.ExcessTile.RotateCounterclockwise.performed += ctx => RotateCounterclockwise();
-            actions.ExcessTile.Enable();
         }
 
         private void OnDisable()
