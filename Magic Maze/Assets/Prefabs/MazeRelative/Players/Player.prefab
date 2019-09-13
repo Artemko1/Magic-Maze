@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4037313480669552}
   - component: {fileID: 114553860919418076}
-  - component: {fileID: 700529563289735313}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -47,44 +46,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isIgnoringWalls: 0
   ItemsToCollect: []
---- !u!114 &700529563289735313
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1593622067508916}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Actions: {fileID: -944628639613478452, guid: 64399b95f4d2504428a3651d6355756a,
-    type: 3}
-  m_NotificationBehavior: 2
-  m_UIInputModule: {fileID: 0}
-  m_DeviceLostEvent:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.InputSystem.PlayerInput+DeviceLostEvent, Unity.InputSystem,
-      Version=0.9.5.0, Culture=neutral, PublicKeyToken=null
-  m_DeviceRegainedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.InputSystem.PlayerInput+DeviceRegainedEvent, Unity.InputSystem,
-      Version=0.9.5.0, Culture=neutral, PublicKeyToken=null
-  m_ActionEvents:
-  - m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.InputSystem.PlayerInput+ActionEvent, Unity.InputSystem,
-      Version=0.9.5.0, Culture=neutral, PublicKeyToken=null
-    m_ActionId: 2b29749a-5660-4d4a-83db-2078c3baa540
-    m_ActionName: Player/New action[/Keyboard/w,/Keyboard/a,/Keyboard/s,/Keyboard/d]
-  m_AutoSwitchControlScheme: 0
-  m_DefaultControlScheme: Keyboard&Mouse
-  m_DefaultActionMap: 6ac139bc-82ba-4e08-a28a-3a8ac69d61f2
-  m_SplitScreenIndex: -1
-  m_Camera: {fileID: 0}
 --- !u!1 &8503812163837559074
 GameObject:
   m_ObjectHideFlags: 0
