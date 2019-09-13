@@ -12,18 +12,6 @@ namespace Item
 
         public Texture2D texture;
 
-        public int Id
-        {
-            get => id;
-            set
-            {
-                if (value == 0)
-                {
-                    id = value;
-                }
-            }
-        }
-
         public MazeTile CurrentTile
         {
             get => currentTile;

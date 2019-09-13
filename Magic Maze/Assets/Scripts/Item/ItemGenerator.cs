@@ -81,7 +81,6 @@ namespace Item
             var item = itemObj.GetComponent<Item>();
             tile.currentItem = item;
             item.CurrentTile = tile;
-            item.Id = itemId;
             itemManager.UnassignedItems.Add(item);
         }
     }
