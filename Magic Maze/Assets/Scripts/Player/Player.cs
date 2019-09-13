@@ -47,7 +47,10 @@ namespace Player
             maze = board.GetComponent<Maze.Maze>();
             playerManager = board.GetComponent<PlayerManager>();
             actions = new Actions();
-            actions.Player.Move.performed += ctx => OnMove();
+            actions.Player.MoveUp.performed += ctx => Move(Direction.Up);
+            actions.Player.MoveRight.performed += ctx => Move(Direction.Right);
+            actions.Player.MoveDown.performed += ctx => Move(Direction.Down);
+            actions.Player.MoveLeft.performed += ctx => Move(Direction.Left);
         }
 
         [SuppressMessage("ReSharper", "Unity.NoNullPropagation")]
@@ -161,11 +164,6 @@ namespace Player
             CurrentTile = nextTile;
             transform.position = CurrentTile.transform.position;
             TryCollectItem();
-        }
-
-        public void OnMove()
-        {
-            print("Moving ");
         }
         
         private void TryCollectItem()

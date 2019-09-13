@@ -48,19 +48,19 @@ namespace Player
 
         private void TurnToNextPlayer()
         {
-            CurrentPlayer.actions.Disable();
+            CurrentPlayer.actions.Player.Disable();
             playerIndex++;
             if (playerIndex == players.Count)
             {
                 playerIndex = 0;
             }
-            CurrentPlayer.actions.Enable();
+            CurrentPlayer.actions.Player.Enable();
             Debug.Log("Turn switched");
         }
 
         public void InitializeFirstTurn()
         {
-            players[0].actions.Enable();
+            players[0].actions.Player.Enable();
         }
     }
 }
