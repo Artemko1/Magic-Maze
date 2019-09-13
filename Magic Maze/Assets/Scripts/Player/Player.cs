@@ -34,6 +34,7 @@ namespace Player
         
         private Maze.Maze maze;
         private PlayerManager playerManager;
+        private TurnManager turnManager;
         private Buttons buttons;
 
         private MazeTile currentTile;
@@ -47,11 +48,14 @@ namespace Player
             var board = transform.parent;
             maze = board.GetComponent<Maze.Maze>();
             playerManager = board.GetComponent<PlayerManager>();
+            var managers = GameObject.FindWithTag("Managers");
+            turnManager = managers.GetComponent<TurnManager>();
             actions = new Actions();
-            actions.Player.MoveUp.performed += ctx => Move(Direction.Up);
-            actions.Player.MoveRight.performed += ctx => Move(Direction.Right);
-            actions.Player.MoveDown.performed += ctx => Move(Direction.Down);
-            actions.Player.MoveLeft.performed += ctx => Move(Direction.Left);
+            actions.PlayerMap.MoveUp.performed += ctx => Move(Direction.Up);
+            actions.PlayerMap.MoveRight.performed += ctx => Move(Direction.Right);
+            actions.PlayerMap.MoveDown.performed += ctx => Move(Direction.Down);
+            actions.PlayerMap.MoveLeft.performed += ctx => Move(Direction.Left);
+            actions.PlayerMap.EndPlayerTurn.performed += ctx => turnManager.SwitchTurn();
         }
 
         [SuppressMessage("ReSharper", "Unity.NoNullPropagation")]

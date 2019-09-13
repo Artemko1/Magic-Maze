@@ -49,8 +49,8 @@ namespace Managers
         
         public void ToColumnMove()
         {
-            CurrentPlayer.actions.Player.Disable();
-            maze.ExcessTile.actions.Enable();
+            CurrentPlayer.actions.PlayerMap.Disable();
+            maze.ExcessTile.actions.ExcessTileMap.Enable();
             playerIndex++;
             if (playerIndex == playerManager.players.Count)
             {
@@ -63,8 +63,8 @@ namespace Managers
 
         public void ToPlayerMove()
         {
-            maze.ExcessTile.actions.Disable();
-            CurrentPlayer.actions.Player.Enable();
+            maze.ExcessTile.actions.ExcessTileMap.Disable();
+            CurrentPlayer.actions.PlayerMap.Enable();
 
             CurrentPhase = TurnPhase.PlayerMove;
             print("Player turn");
@@ -72,7 +72,6 @@ namespace Managers
         
         public void InitializeFirstTurn()
         {
-//            playerManager.players[0].actions.Player.Enable();
             maze.ExcessTile.actions.Enable();
         }
     }

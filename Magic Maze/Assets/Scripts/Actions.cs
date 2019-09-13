@@ -14,7 +14,7 @@ public class Actions : IInputActionCollection
     ""name"": ""Actions"",
     ""maps"": [
         {
-            ""name"": ""Player"",
+            ""name"": ""PlayerMap"",
             ""id"": ""6ac139bc-82ba-4e08-a28a-3a8ac69d61f2"",
             ""actions"": [
                 {
@@ -45,6 +45,14 @@ public class Actions : IInputActionCollection
                     ""name"": ""MoveLeft"",
                     ""type"": ""Button"",
                     ""id"": ""9db79b54-1834-4dfd-bb5e-2eda5d087bf4"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""EndPlayerTurn"",
+                    ""type"": ""Button"",
+                    ""id"": ""b4c2d8b1-a7f3-4aef-88e1-cc56e26a9919"",
                     ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """"
@@ -138,11 +146,22 @@ public class Actions : IInputActionCollection
                     ""action"": ""MoveRight"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""2f0dcc38-7de1-4e9b-9e47-0b174bbe8161"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""EndPlayerTurn"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
         {
-            ""name"": ""ExcessTile"",
+            ""name"": ""ExcessTileMap"",
             ""id"": ""59713d72-8db0-43a4-b315-df93e5f521d1"",
             ""actions"": [
                 {
@@ -176,6 +195,14 @@ public class Actions : IInputActionCollection
                     ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""MoveColumn"",
+                    ""type"": ""Button"",
+                    ""id"": ""f70c97f9-216c-4473-b3b2-f78101c459cd"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -185,7 +212,7 @@ public class Actions : IInputActionCollection
                     ""path"": ""<Keyboard>/d"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": ""Keyboard&Mouse"",
                     ""action"": ""MoveForward"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -196,7 +223,7 @@ public class Actions : IInputActionCollection
                     ""path"": ""<Keyboard>/a"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": ""Keyboard&Mouse"",
                     ""action"": ""MoveBackward"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -207,7 +234,7 @@ public class Actions : IInputActionCollection
                     ""path"": ""<Keyboard>/w"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": ""Keyboard&Mouse"",
                     ""action"": ""RotateClockwise"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -218,8 +245,19 @@ public class Actions : IInputActionCollection
                     ""path"": ""<Keyboard>/s"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": ""Keyboard&Mouse"",
                     ""action"": ""RotateCounterclockwise"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""afbad217-827f-47b3-8264-6a9ec51fba09"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""MoveColumn"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -278,18 +316,20 @@ public class Actions : IInputActionCollection
         }
     ]
 }");
-        // Player
-        m_Player = asset.GetActionMap("Player");
-        m_Player_MoveUp = m_Player.GetAction("MoveUp");
-        m_Player_MoveRight = m_Player.GetAction("MoveRight");
-        m_Player_MoveDown = m_Player.GetAction("MoveDown");
-        m_Player_MoveLeft = m_Player.GetAction("MoveLeft");
-        // ExcessTile
-        m_ExcessTile = asset.GetActionMap("ExcessTile");
-        m_ExcessTile_MoveForward = m_ExcessTile.GetAction("MoveForward");
-        m_ExcessTile_MoveBackward = m_ExcessTile.GetAction("MoveBackward");
-        m_ExcessTile_RotateClockwise = m_ExcessTile.GetAction("RotateClockwise");
-        m_ExcessTile_RotateCounterclockwise = m_ExcessTile.GetAction("RotateCounterclockwise");
+        // PlayerMap
+        m_PlayerMap = asset.GetActionMap("PlayerMap");
+        m_PlayerMap_MoveUp = m_PlayerMap.GetAction("MoveUp");
+        m_PlayerMap_MoveRight = m_PlayerMap.GetAction("MoveRight");
+        m_PlayerMap_MoveDown = m_PlayerMap.GetAction("MoveDown");
+        m_PlayerMap_MoveLeft = m_PlayerMap.GetAction("MoveLeft");
+        m_PlayerMap_EndPlayerTurn = m_PlayerMap.GetAction("EndPlayerTurn");
+        // ExcessTileMap
+        m_ExcessTileMap = asset.GetActionMap("ExcessTileMap");
+        m_ExcessTileMap_MoveForward = m_ExcessTileMap.GetAction("MoveForward");
+        m_ExcessTileMap_MoveBackward = m_ExcessTileMap.GetAction("MoveBackward");
+        m_ExcessTileMap_RotateClockwise = m_ExcessTileMap.GetAction("RotateClockwise");
+        m_ExcessTileMap_RotateCounterclockwise = m_ExcessTileMap.GetAction("RotateCounterclockwise");
+        m_ExcessTileMap_MoveColumn = m_ExcessTileMap.GetAction("MoveColumn");
     }
 
     ~Actions()
@@ -336,44 +376,49 @@ public class Actions : IInputActionCollection
         asset.Disable();
     }
 
-    // Player
-    private readonly InputActionMap m_Player;
-    private IPlayerActions m_PlayerActionsCallbackInterface;
-    private readonly InputAction m_Player_MoveUp;
-    private readonly InputAction m_Player_MoveRight;
-    private readonly InputAction m_Player_MoveDown;
-    private readonly InputAction m_Player_MoveLeft;
-    public struct PlayerActions
+    // PlayerMap
+    private readonly InputActionMap m_PlayerMap;
+    private IPlayerMapActions m_PlayerMapActionsCallbackInterface;
+    private readonly InputAction m_PlayerMap_MoveUp;
+    private readonly InputAction m_PlayerMap_MoveRight;
+    private readonly InputAction m_PlayerMap_MoveDown;
+    private readonly InputAction m_PlayerMap_MoveLeft;
+    private readonly InputAction m_PlayerMap_EndPlayerTurn;
+    public struct PlayerMapActions
     {
         private Actions m_Wrapper;
-        public PlayerActions(Actions wrapper) { m_Wrapper = wrapper; }
-        public InputAction @MoveUp => m_Wrapper.m_Player_MoveUp;
-        public InputAction @MoveRight => m_Wrapper.m_Player_MoveRight;
-        public InputAction @MoveDown => m_Wrapper.m_Player_MoveDown;
-        public InputAction @MoveLeft => m_Wrapper.m_Player_MoveLeft;
-        public InputActionMap Get() { return m_Wrapper.m_Player; }
+        public PlayerMapActions(Actions wrapper) { m_Wrapper = wrapper; }
+        public InputAction @MoveUp => m_Wrapper.m_PlayerMap_MoveUp;
+        public InputAction @MoveRight => m_Wrapper.m_PlayerMap_MoveRight;
+        public InputAction @MoveDown => m_Wrapper.m_PlayerMap_MoveDown;
+        public InputAction @MoveLeft => m_Wrapper.m_PlayerMap_MoveLeft;
+        public InputAction @EndPlayerTurn => m_Wrapper.m_PlayerMap_EndPlayerTurn;
+        public InputActionMap Get() { return m_Wrapper.m_PlayerMap; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
         public bool enabled => Get().enabled;
-        public static implicit operator InputActionMap(PlayerActions set) { return set.Get(); }
-        public void SetCallbacks(IPlayerActions instance)
+        public static implicit operator InputActionMap(PlayerMapActions set) { return set.Get(); }
+        public void SetCallbacks(IPlayerMapActions instance)
         {
-            if (m_Wrapper.m_PlayerActionsCallbackInterface != null)
+            if (m_Wrapper.m_PlayerMapActionsCallbackInterface != null)
             {
-                MoveUp.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMoveUp;
-                MoveUp.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMoveUp;
-                MoveUp.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMoveUp;
-                MoveRight.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMoveRight;
-                MoveRight.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMoveRight;
-                MoveRight.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMoveRight;
-                MoveDown.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMoveDown;
-                MoveDown.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMoveDown;
-                MoveDown.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMoveDown;
-                MoveLeft.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMoveLeft;
-                MoveLeft.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMoveLeft;
-                MoveLeft.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMoveLeft;
+                MoveUp.started -= m_Wrapper.m_PlayerMapActionsCallbackInterface.OnMoveUp;
+                MoveUp.performed -= m_Wrapper.m_PlayerMapActionsCallbackInterface.OnMoveUp;
+                MoveUp.canceled -= m_Wrapper.m_PlayerMapActionsCallbackInterface.OnMoveUp;
+                MoveRight.started -= m_Wrapper.m_PlayerMapActionsCallbackInterface.OnMoveRight;
+                MoveRight.performed -= m_Wrapper.m_PlayerMapActionsCallbackInterface.OnMoveRight;
+                MoveRight.canceled -= m_Wrapper.m_PlayerMapActionsCallbackInterface.OnMoveRight;
+                MoveDown.started -= m_Wrapper.m_PlayerMapActionsCallbackInterface.OnMoveDown;
+                MoveDown.performed -= m_Wrapper.m_PlayerMapActionsCallbackInterface.OnMoveDown;
+                MoveDown.canceled -= m_Wrapper.m_PlayerMapActionsCallbackInterface.OnMoveDown;
+                MoveLeft.started -= m_Wrapper.m_PlayerMapActionsCallbackInterface.OnMoveLeft;
+                MoveLeft.performed -= m_Wrapper.m_PlayerMapActionsCallbackInterface.OnMoveLeft;
+                MoveLeft.canceled -= m_Wrapper.m_PlayerMapActionsCallbackInterface.OnMoveLeft;
+                EndPlayerTurn.started -= m_Wrapper.m_PlayerMapActionsCallbackInterface.OnEndPlayerTurn;
+                EndPlayerTurn.performed -= m_Wrapper.m_PlayerMapActionsCallbackInterface.OnEndPlayerTurn;
+                EndPlayerTurn.canceled -= m_Wrapper.m_PlayerMapActionsCallbackInterface.OnEndPlayerTurn;
             }
-            m_Wrapper.m_PlayerActionsCallbackInterface = instance;
+            m_Wrapper.m_PlayerMapActionsCallbackInterface = instance;
             if (instance != null)
             {
                 MoveUp.started += instance.OnMoveUp;
@@ -388,49 +433,57 @@ public class Actions : IInputActionCollection
                 MoveLeft.started += instance.OnMoveLeft;
                 MoveLeft.performed += instance.OnMoveLeft;
                 MoveLeft.canceled += instance.OnMoveLeft;
+                EndPlayerTurn.started += instance.OnEndPlayerTurn;
+                EndPlayerTurn.performed += instance.OnEndPlayerTurn;
+                EndPlayerTurn.canceled += instance.OnEndPlayerTurn;
             }
         }
     }
-    public PlayerActions @Player => new PlayerActions(this);
+    public PlayerMapActions @PlayerMap => new PlayerMapActions(this);
 
-    // ExcessTile
-    private readonly InputActionMap m_ExcessTile;
-    private IExcessTileActions m_ExcessTileActionsCallbackInterface;
-    private readonly InputAction m_ExcessTile_MoveForward;
-    private readonly InputAction m_ExcessTile_MoveBackward;
-    private readonly InputAction m_ExcessTile_RotateClockwise;
-    private readonly InputAction m_ExcessTile_RotateCounterclockwise;
-    public struct ExcessTileActions
+    // ExcessTileMap
+    private readonly InputActionMap m_ExcessTileMap;
+    private IExcessTileMapActions m_ExcessTileMapActionsCallbackInterface;
+    private readonly InputAction m_ExcessTileMap_MoveForward;
+    private readonly InputAction m_ExcessTileMap_MoveBackward;
+    private readonly InputAction m_ExcessTileMap_RotateClockwise;
+    private readonly InputAction m_ExcessTileMap_RotateCounterclockwise;
+    private readonly InputAction m_ExcessTileMap_MoveColumn;
+    public struct ExcessTileMapActions
     {
         private Actions m_Wrapper;
-        public ExcessTileActions(Actions wrapper) { m_Wrapper = wrapper; }
-        public InputAction @MoveForward => m_Wrapper.m_ExcessTile_MoveForward;
-        public InputAction @MoveBackward => m_Wrapper.m_ExcessTile_MoveBackward;
-        public InputAction @RotateClockwise => m_Wrapper.m_ExcessTile_RotateClockwise;
-        public InputAction @RotateCounterclockwise => m_Wrapper.m_ExcessTile_RotateCounterclockwise;
-        public InputActionMap Get() { return m_Wrapper.m_ExcessTile; }
+        public ExcessTileMapActions(Actions wrapper) { m_Wrapper = wrapper; }
+        public InputAction @MoveForward => m_Wrapper.m_ExcessTileMap_MoveForward;
+        public InputAction @MoveBackward => m_Wrapper.m_ExcessTileMap_MoveBackward;
+        public InputAction @RotateClockwise => m_Wrapper.m_ExcessTileMap_RotateClockwise;
+        public InputAction @RotateCounterclockwise => m_Wrapper.m_ExcessTileMap_RotateCounterclockwise;
+        public InputAction @MoveColumn => m_Wrapper.m_ExcessTileMap_MoveColumn;
+        public InputActionMap Get() { return m_Wrapper.m_ExcessTileMap; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
         public bool enabled => Get().enabled;
-        public static implicit operator InputActionMap(ExcessTileActions set) { return set.Get(); }
-        public void SetCallbacks(IExcessTileActions instance)
+        public static implicit operator InputActionMap(ExcessTileMapActions set) { return set.Get(); }
+        public void SetCallbacks(IExcessTileMapActions instance)
         {
-            if (m_Wrapper.m_ExcessTileActionsCallbackInterface != null)
+            if (m_Wrapper.m_ExcessTileMapActionsCallbackInterface != null)
             {
-                MoveForward.started -= m_Wrapper.m_ExcessTileActionsCallbackInterface.OnMoveForward;
-                MoveForward.performed -= m_Wrapper.m_ExcessTileActionsCallbackInterface.OnMoveForward;
-                MoveForward.canceled -= m_Wrapper.m_ExcessTileActionsCallbackInterface.OnMoveForward;
-                MoveBackward.started -= m_Wrapper.m_ExcessTileActionsCallbackInterface.OnMoveBackward;
-                MoveBackward.performed -= m_Wrapper.m_ExcessTileActionsCallbackInterface.OnMoveBackward;
-                MoveBackward.canceled -= m_Wrapper.m_ExcessTileActionsCallbackInterface.OnMoveBackward;
-                RotateClockwise.started -= m_Wrapper.m_ExcessTileActionsCallbackInterface.OnRotateClockwise;
-                RotateClockwise.performed -= m_Wrapper.m_ExcessTileActionsCallbackInterface.OnRotateClockwise;
-                RotateClockwise.canceled -= m_Wrapper.m_ExcessTileActionsCallbackInterface.OnRotateClockwise;
-                RotateCounterclockwise.started -= m_Wrapper.m_ExcessTileActionsCallbackInterface.OnRotateCounterclockwise;
-                RotateCounterclockwise.performed -= m_Wrapper.m_ExcessTileActionsCallbackInterface.OnRotateCounterclockwise;
-                RotateCounterclockwise.canceled -= m_Wrapper.m_ExcessTileActionsCallbackInterface.OnRotateCounterclockwise;
+                MoveForward.started -= m_Wrapper.m_ExcessTileMapActionsCallbackInterface.OnMoveForward;
+                MoveForward.performed -= m_Wrapper.m_ExcessTileMapActionsCallbackInterface.OnMoveForward;
+                MoveForward.canceled -= m_Wrapper.m_ExcessTileMapActionsCallbackInterface.OnMoveForward;
+                MoveBackward.started -= m_Wrapper.m_ExcessTileMapActionsCallbackInterface.OnMoveBackward;
+                MoveBackward.performed -= m_Wrapper.m_ExcessTileMapActionsCallbackInterface.OnMoveBackward;
+                MoveBackward.canceled -= m_Wrapper.m_ExcessTileMapActionsCallbackInterface.OnMoveBackward;
+                RotateClockwise.started -= m_Wrapper.m_ExcessTileMapActionsCallbackInterface.OnRotateClockwise;
+                RotateClockwise.performed -= m_Wrapper.m_ExcessTileMapActionsCallbackInterface.OnRotateClockwise;
+                RotateClockwise.canceled -= m_Wrapper.m_ExcessTileMapActionsCallbackInterface.OnRotateClockwise;
+                RotateCounterclockwise.started -= m_Wrapper.m_ExcessTileMapActionsCallbackInterface.OnRotateCounterclockwise;
+                RotateCounterclockwise.performed -= m_Wrapper.m_ExcessTileMapActionsCallbackInterface.OnRotateCounterclockwise;
+                RotateCounterclockwise.canceled -= m_Wrapper.m_ExcessTileMapActionsCallbackInterface.OnRotateCounterclockwise;
+                MoveColumn.started -= m_Wrapper.m_ExcessTileMapActionsCallbackInterface.OnMoveColumn;
+                MoveColumn.performed -= m_Wrapper.m_ExcessTileMapActionsCallbackInterface.OnMoveColumn;
+                MoveColumn.canceled -= m_Wrapper.m_ExcessTileMapActionsCallbackInterface.OnMoveColumn;
             }
-            m_Wrapper.m_ExcessTileActionsCallbackInterface = instance;
+            m_Wrapper.m_ExcessTileMapActionsCallbackInterface = instance;
             if (instance != null)
             {
                 MoveForward.started += instance.OnMoveForward;
@@ -445,10 +498,13 @@ public class Actions : IInputActionCollection
                 RotateCounterclockwise.started += instance.OnRotateCounterclockwise;
                 RotateCounterclockwise.performed += instance.OnRotateCounterclockwise;
                 RotateCounterclockwise.canceled += instance.OnRotateCounterclockwise;
+                MoveColumn.started += instance.OnMoveColumn;
+                MoveColumn.performed += instance.OnMoveColumn;
+                MoveColumn.canceled += instance.OnMoveColumn;
             }
         }
     }
-    public ExcessTileActions @ExcessTile => new ExcessTileActions(this);
+    public ExcessTileMapActions @ExcessTileMap => new ExcessTileMapActions(this);
     private int m_KeyboardMouseSchemeIndex = -1;
     public InputControlScheme KeyboardMouseScheme
     {
@@ -485,18 +541,20 @@ public class Actions : IInputActionCollection
             return asset.controlSchemes[m_JoystickSchemeIndex];
         }
     }
-    public interface IPlayerActions
+    public interface IPlayerMapActions
     {
         void OnMoveUp(InputAction.CallbackContext context);
         void OnMoveRight(InputAction.CallbackContext context);
         void OnMoveDown(InputAction.CallbackContext context);
         void OnMoveLeft(InputAction.CallbackContext context);
+        void OnEndPlayerTurn(InputAction.CallbackContext context);
     }
-    public interface IExcessTileActions
+    public interface IExcessTileMapActions
     {
         void OnMoveForward(InputAction.CallbackContext context);
         void OnMoveBackward(InputAction.CallbackContext context);
         void OnRotateClockwise(InputAction.CallbackContext context);
         void OnRotateCounterclockwise(InputAction.CallbackContext context);
+        void OnMoveColumn(InputAction.CallbackContext context);
     }
 }

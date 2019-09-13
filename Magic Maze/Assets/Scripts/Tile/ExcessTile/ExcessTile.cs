@@ -64,10 +64,10 @@ namespace Tile.ExcessTile
             buttons.RotateExcessTile?.onClick.AddListener(RotateClockwise);
             
             actions = new Actions();
-            actions.ExcessTile.MoveForward.performed += ctx => MoveForward();
-            actions.ExcessTile.MoveBackward.performed += ctx => MoveBackward();
-            actions.ExcessTile.RotateClockwise.performed += ctx => RotateClockwise();
-            actions.ExcessTile.RotateCounterclockwise.performed += ctx => RotateCounterclockwise();
+            actions.ExcessTileMap.MoveForward.performed += ctx => MoveForward();
+            actions.ExcessTileMap.MoveBackward.performed += ctx => MoveBackward();
+            actions.ExcessTileMap.RotateClockwise.performed += ctx => RotateClockwise();
+            actions.ExcessTileMap.RotateCounterclockwise.performed += ctx => RotateCounterclockwise();
         }
 
         private void OnDisable()
@@ -75,11 +75,11 @@ namespace Tile.ExcessTile
             buttons.moveExcessTileForward?.onClick.RemoveListener(MoveForward);
             buttons.moveExcessTileBackward?.onClick.RemoveListener(MoveBackward);
             buttons.RotateExcessTile?.onClick.RemoveListener(RotateClockwise);
-            actions.ExcessTile.MoveForward.performed -= ctx => MoveForward();
-            actions.ExcessTile.MoveBackward.performed -= ctx => MoveBackward();
-            actions.ExcessTile.RotateClockwise.performed -= ctx => RotateClockwise();
-            actions.ExcessTile.RotateCounterclockwise.performed -= ctx => RotateCounterclockwise();
-            actions.ExcessTile.Disable();
+            actions.ExcessTileMap.MoveForward.performed -= ctx => MoveForward();
+            actions.ExcessTileMap.MoveBackward.performed -= ctx => MoveBackward();
+            actions.ExcessTileMap.RotateClockwise.performed -= ctx => RotateClockwise();
+            actions.ExcessTileMap.RotateCounterclockwise.performed -= ctx => RotateCounterclockwise();
+            actions.ExcessTileMap.Disable();
         }
 
         #endregion

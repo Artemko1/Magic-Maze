@@ -2,7 +2,7 @@
     "name": "Actions",
     "maps": [
         {
-            "name": "Player",
+            "name": "PlayerMap",
             "id": "6ac139bc-82ba-4e08-a28a-3a8ac69d61f2",
             "actions": [
                 {
@@ -33,6 +33,14 @@
                     "name": "MoveLeft",
                     "type": "Button",
                     "id": "9db79b54-1834-4dfd-bb5e-2eda5d087bf4",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "EndPlayerTurn",
+                    "type": "Button",
+                    "id": "b4c2d8b1-a7f3-4aef-88e1-cc56e26a9919",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": ""
@@ -126,11 +134,22 @@
                     "action": "MoveRight",
                     "isComposite": false,
                     "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "2f0dcc38-7de1-4e9b-9e47-0b174bbe8161",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "EndPlayerTurn",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         },
         {
-            "name": "ExcessTile",
+            "name": "ExcessTileMap",
             "id": "59713d72-8db0-43a4-b315-df93e5f521d1",
             "actions": [
                 {
@@ -164,6 +183,14 @@
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": ""
+                },
+                {
+                    "name": "MoveColumn",
+                    "type": "Button",
+                    "id": "f70c97f9-216c-4473-b3b2-f78101c459cd",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": ""
                 }
             ],
             "bindings": [
@@ -173,7 +200,7 @@
                     "path": "<Keyboard>/d",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": "Keyboard&Mouse",
                     "action": "MoveForward",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -184,7 +211,7 @@
                     "path": "<Keyboard>/a",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": "Keyboard&Mouse",
                     "action": "MoveBackward",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -195,7 +222,7 @@
                     "path": "<Keyboard>/w",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": "Keyboard&Mouse",
                     "action": "RotateClockwise",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -206,8 +233,19 @@
                     "path": "<Keyboard>/s",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": "Keyboard&Mouse",
                     "action": "RotateCounterclockwise",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "afbad217-827f-47b3-8264-6a9ec51fba09",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "MoveColumn",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

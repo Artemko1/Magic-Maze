@@ -34,7 +34,8 @@ namespace Maze
         public ExcessTile ExcessTile => excessTile;
 
         public int NumberOfPlayers;
-        
+
+        public Actions actions;
 
         private MazeGenerator mazeGenerator;
         private PlayerGenerator playerGenerator;
@@ -60,6 +61,10 @@ namespace Maze
             
             var buttons = GetComponent<Buttons>();
             buttons.moveColumn?.onClick.AddListener(MoveColumn);
+            
+            actions = new Actions();
+            actions.ExcessTileMap.MoveColumn.performed += ctx => MoveColumn();
+            actions.ExcessTileMap.MoveColumn.Enable();
         }
 
         private void Start()
