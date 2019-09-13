@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
+using Managers;
 using Tile.MazeTile;
 using UI;
 using UnityEngine;
@@ -46,7 +47,7 @@ namespace Player
             var board = transform.parent;
             maze = board.GetComponent<Maze.Maze>();
             playerManager = board.GetComponent<PlayerManager>();
-            actions = new Actions();
+            actions = InputManager.GetActions();
             actions.Player.MoveUp.performed += ctx => Move(Direction.Up);
             actions.Player.MoveRight.performed += ctx => Move(Direction.Right);
             actions.Player.MoveDown.performed += ctx => Move(Direction.Down);
