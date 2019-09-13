@@ -15,7 +15,6 @@ namespace Managers
         /// </summary>
         public Player.Player CurrentPlayer => players[playerIndex];
 
-        private ItemGenerator itemGenerator;
         private ItemManager itemManager;
 
         private int playerIndex;
@@ -26,7 +25,6 @@ namespace Managers
 
         private void Awake()
         {
-            itemGenerator = GetComponent<ItemGenerator>();
             itemManager = GetComponent<ItemManager>();
             EventManager.TurnSwitch += TurnToNextPlayer;
         }
