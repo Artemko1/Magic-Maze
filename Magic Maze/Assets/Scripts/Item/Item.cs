@@ -10,7 +10,6 @@ namespace Item
     {
         #region Variables
 
-        public bool loadPreview = false;
         public Texture2D texture;
 
         public int Id
@@ -49,7 +48,7 @@ namespace Item
         private void Awake()
         {
             texture =  null;
-            if (loadPreview == false) return;
+            return;
             while(texture==null)
             {
                 //                print("texture was null there");     
