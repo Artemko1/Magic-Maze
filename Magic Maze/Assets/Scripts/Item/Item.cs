@@ -27,7 +27,6 @@ namespace Item
         }
 
         [SerializeField] private MazeTile currentTile;
-        [SerializeField] private int id;
 
         #endregion
 
