@@ -7,14 +7,14 @@ namespace Managers
     {
         #region Variables
 
-        [SerializeField][Range(0, 18)] public int itemsPerPlayer;
+        [SerializeField][Range(0, 9)] public int itemsPerPlayer;
         [HideInInspector] public List<Item.Item> UnassignedItems = new List<Item.Item>();
-
+        public bool loadAssetPreviews;
         #endregion
 
         #region Unity Methods
 
-    
+
 
         #endregion
     }

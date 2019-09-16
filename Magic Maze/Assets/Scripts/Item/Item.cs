@@ -1,4 +1,5 @@
 ﻿using System.Threading;
+using Managers;
 using Tile.MazeTile;
 using UnityEditor;
 using UnityEngine;
@@ -11,7 +12,7 @@ namespace Item
         #region Variables
 
         public Texture2D texture;
-
+        
         public MazeTile CurrentTile
         {
             get => currentTile;
@@ -27,6 +28,7 @@ namespace Item
         }
 
         [SerializeField] private MazeTile currentTile;
+        private ItemManager itemManager;
 
         #endregion
 
@@ -34,8 +36,10 @@ namespace Item
 
         private void Awake()
         {
-            texture =  null;
-            return;
+            var board = transform.parent;
+            itemManager = board.GetComponent<ItemManager>();
+            
+            if (!itemManager.loadAssetPreviews) { return; }
             while(texture==null)
             {
                 //                print("texture was null there");     

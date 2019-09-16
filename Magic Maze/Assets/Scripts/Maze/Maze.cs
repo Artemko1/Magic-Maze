@@ -18,7 +18,7 @@ namespace Maze
         #region Variables
 
         public int BoardSize { get; } = 9;
-        public float Spacing { get; } = 1.5f;
+        public float Spacing { get; } = 2f;
         /// <summary>
         /// Количество excess позиций вдоль одной стороны лабиринта.
         /// </summary>
