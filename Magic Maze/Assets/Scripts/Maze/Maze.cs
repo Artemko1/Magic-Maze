@@ -16,7 +16,6 @@ namespace Maze
     public class Maze : MonoBehaviour
     {
         #region Variables
-        public EventManager eventManager;
 
         public int BoardSize { get; } = 9;
         public float Spacing { get; } = 1.5f;
@@ -82,7 +81,6 @@ namespace Maze
 
             playerManager.AssignItemsToCollect();
             turnManager.InitializeFirstTurn();
-            eventManager.AddButtonListeners();
         }
 
         #endregion

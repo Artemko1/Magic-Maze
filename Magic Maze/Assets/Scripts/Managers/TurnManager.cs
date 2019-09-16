@@ -25,8 +25,6 @@ namespace Managers
             var board = GameObject.FindWithTag("Board");
             playerManager = board.GetComponent<PlayerManager>();
             maze = board.GetComponent<Maze.Maze>();
-            
-            EventManager.TurnSwitch += SwitchTurn;
         }
 
         #endregion

@@ -50,7 +50,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e570f6b3df56764e9bbf61738283fcb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  eventManager: {fileID: 0}
   extraPositions: []
   NumberOfPlayers: 4
   tileArray: []

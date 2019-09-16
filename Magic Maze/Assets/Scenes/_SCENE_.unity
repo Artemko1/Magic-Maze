@@ -144,6 +144,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: MoveColumnButton
       objectReference: {fileID: 0}
+    - target: {fileID: 723773380438701285, guid: d45f9937fdc44ff4187145c2a06a2790,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 723773380438701283, guid: d45f9937fdc44ff4187145c2a06a2790,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
@@ -357,6 +362,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: RotateExcessTileButton
+      objectReference: {fileID: 0}
+    - target: {fileID: 723773380438701285, guid: d45f9937fdc44ff4187145c2a06a2790,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 723773380438701284, guid: d45f9937fdc44ff4187145c2a06a2790,
         type: 3}
@@ -621,6 +631,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: SwitchTurnButton
+      objectReference: {fileID: 0}
+    - target: {fileID: 723773380438701285, guid: d45f9937fdc44ff4187145c2a06a2790,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 723773380438701283, guid: d45f9937fdc44ff4187145c2a06a2790,
         type: 3}
@@ -1408,7 +1423,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1224971475
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1443,6 +1458,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: MoveExcessTileBackwardButton
+      objectReference: {fileID: 0}
+    - target: {fileID: 723773380438701285, guid: d45f9937fdc44ff4187145c2a06a2790,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 723773380438701284, guid: d45f9937fdc44ff4187145c2a06a2790,
         type: 3}
@@ -1573,7 +1593,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1482532447}
-  - component: {fileID: 1482532446}
   - component: {fileID: 1482532445}
   - component: {fileID: 1482532448}
   m_Layer: 0
@@ -1604,18 +1623,6 @@ MonoBehaviour:
   movePlayerDownButton: {fileID: 967689104}
   movePlayerLeftButton: {fileID: 358820243}
   switchTurnButton: {fileID: 590797901}
---- !u!114 &1482532446
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1482532444}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5488c4b11cfb80748b0f2ca07a3e1f89, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &1482532447
 Transform:
   m_ObjectHideFlags: 0
@@ -1985,6 +1992,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: RefreshMazeButton
+      objectReference: {fileID: 0}
+    - target: {fileID: 723773380438701285, guid: d45f9937fdc44ff4187145c2a06a2790,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 723773380438701283, guid: d45f9937fdc44ff4187145c2a06a2790,
         type: 3}
@@ -2494,7 +2506,7 @@ PrefabInstance:
         type: 3}
       propertyPath: eventManager
       value: 
-      objectReference: {fileID: 1482532446}
+      objectReference: {fileID: 0}
     - target: {fileID: 165624179184156990, guid: bf2290b2b0053a843aafeaf70ad7e949,
         type: 3}
       propertyPath: board
@@ -2858,6 +2870,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: MoveExcessTileForwardButton
+      objectReference: {fileID: 0}
+    - target: {fileID: 723773380438701285, guid: d45f9937fdc44ff4187145c2a06a2790,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 723773380438701284, guid: d45f9937fdc44ff4187145c2a06a2790,
         type: 3}
