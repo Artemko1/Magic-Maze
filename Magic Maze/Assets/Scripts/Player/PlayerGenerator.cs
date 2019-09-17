@@ -68,7 +68,7 @@ namespace Player
             player.CurrentTile = tile;
             playerManager.players.Add(player);
 
-            player.isIgnoringWalls = true;
+            player.isIgnoringWalls = false;
         }
     }
 }

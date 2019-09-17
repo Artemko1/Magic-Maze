@@ -1,8 +1,5 @@
-﻿using System.Threading;
-using Managers;
+﻿using Managers;
 using UnityEngine;
-using Player;
-using UnityEditor;
 using UnityEngine.UI;
 
 namespace UI
@@ -38,28 +35,6 @@ namespace UI
 //        {
 //            ItemText.text = PlayerManager.CurrentPlayer.ItemsToCollect[0].ToString();
 //        }
-        
-        private void UpdateImageWithoutCache()
-        {
-            Texture2D bTexture =  null;
-            while(bTexture==null)
-            {
-                print("texture was null there");     
-                bTexture = AssetPreview.GetAssetPreview(TurnManager.CurrentPlayer.ItemsToCollect[0].texture);
-                                                 
-                Thread.Sleep(80);
-            }
-                             
-            if(bTexture != null)
-            {
-                print("Texture is not null!");
-                var rect = new Rect(0, 0, bTexture.width, bTexture.height);
-                var sprite = Sprite.Create(bTexture, rect, Vector2.zero);
-                image.sprite = sprite;
-                                 
-            }    
-        }
-
 
         #endregion
         

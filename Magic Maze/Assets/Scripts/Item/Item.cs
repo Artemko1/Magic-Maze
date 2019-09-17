@@ -1,7 +1,5 @@
-﻿using System.Threading;
-using Managers;
+﻿using Managers;
 using Tile.MazeTile;
-using UnityEditor;
 using UnityEngine;
 
 namespace Item
@@ -38,15 +36,6 @@ namespace Item
         {
             var board = transform.parent;
             itemManager = board.GetComponent<ItemManager>();
-            
-            if (!itemManager.loadAssetPreviews) { return; }
-            while(texture==null)
-            {
-                //                print("texture was null there");     
-                texture = AssetPreview.GetAssetPreview(gameObject);
-                                                     
-                Thread.Sleep(80);
-            }
         }
 
         #endregion
