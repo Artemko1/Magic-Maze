@@ -385,7 +385,7 @@ namespace Maze
         }
 
         
-        private void CopyTileWalls(Tile.Tile oldTile, Tile.Tile newTile)
+        private static void CopyTileWalls(Tile.Tile oldTile, Tile.Tile newTile)
         {
             newTile.IsWallUp = oldTile.IsWallUp;
             newTile.IsWallRight = oldTile.IsWallRight;
