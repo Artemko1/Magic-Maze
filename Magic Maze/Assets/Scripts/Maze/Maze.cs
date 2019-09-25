@@ -121,7 +121,7 @@ namespace Maze
         {
             if (turnManager.CurrentPhase != TurnPhase.ColumnMove)
             {
-                Debug.LogError("that's not a column turn");
+                Debug.LogError("Column move should not be called in not it's turn.'");
                 return;
             }
             switch (excessTile.CurrentDirection)
@@ -164,18 +164,11 @@ namespace Maze
                 currentTile.zIndex--;
                 SetTile(z - 1, x, currentTile);
                 currentTile.MoveUp();
-                if (currentTile.currentPlayer != null)
-                {
-                    currentTile.currentPlayer.transform.position = currentTile.transform.position;
-                }
-                if (currentTile.currentItem != null)
-                {
-                    currentTile.currentItem.transform.position = currentTile.transform.position;
-                }
             }
 
             // Последний тайл становится обычным вместо эксесс
             var toBeReplacedByExcessTile = GetTile(BoardSize - 1, x);
+            
             CopyTileWalls(excessTile, newTile);
 
             Destroy(excessTile);
@@ -188,22 +181,14 @@ namespace Maze
             newTile.xIndex = toBeReplacedByExcessTile.xIndex;
             newTile.MoveUp();
 
-            if (toBecomeExcessTile.currentPlayer != null)
-            {
-                toBecomeExcessTile.currentPlayer.CurrentTile = newTile;
-                newTile.currentPlayer.transform.position = newTile.transform.position;
-            }
-            if (toBecomeExcessTile.currentItem != null)
-            {
-                toBecomeExcessTile.currentItem.CurrentTile = newTile;
-                newTile.currentItem.transform.position = newTile.transform.position;
-            }
+            AlsoMovePlayerAndItem(toBecomeExcessTile, newTile);
+            
 
             SetTile(BoardSize - 1, x, newTile);
             excessTile = newExcessTile;
             excessTile.ExtraPosId = 3 * MovableRowsPerSide - oldExtraPosId - 1;
         }
-        
+
         private void MoveColumnRight()
         {
             var z = excessTile.GetRowNumber();
@@ -226,14 +211,6 @@ namespace Maze
                 currentTile.xIndex++;
                 SetTile(z, x + 1, currentTile);
                 currentTile.MoveRight();
-                if (currentTile.currentPlayer != null)
-                {
-                    currentTile.currentPlayer.transform.position = currentTile.transform.position;
-                }
-                if (currentTile.currentItem != null)
-                {
-                    currentTile.currentItem.transform.position = currentTile.transform.position;
-                }
             }
 
             // Первый тайл становится обычным вместо эксесс
@@ -248,22 +225,13 @@ namespace Maze
             newTile.xIndex--;
             newTile.MoveRight();
 
-            if (toBecomeExcessTile.currentPlayer != null)
-            {
-                toBecomeExcessTile.currentPlayer.CurrentTile = newTile;
-                newTile.currentPlayer.transform.position = newTile.transform.position;
-            }
-            if (toBecomeExcessTile.currentItem != null)
-            {
-                toBecomeExcessTile.currentItem.CurrentTile = newTile;
-                newTile.currentItem.transform.position = newTile.transform.position;
-            }
+            AlsoMovePlayerAndItem(toBecomeExcessTile, newTile);
 
             SetTile(z, 0, newTile);
             excessTile = newExcessTile;
             excessTile.ExtraPosId = 5 * MovableRowsPerSide - oldExtraPosId - 1;
         }
-       
+
         private void MoveColumnDown()
         {
             var x = excessTile.GetRowNumber();
@@ -286,14 +254,6 @@ namespace Maze
                 currentTile.zIndex++;
                 SetTile(z + 1, x, currentTile);
                 currentTile.MoveDown();
-                if (currentTile.currentPlayer != null)
-                {
-                    currentTile.currentPlayer.transform.position = currentTile.transform.position;
-                }
-                if (currentTile.currentItem != null)
-                {
-                    currentTile.currentItem.transform.position = currentTile.transform.position;
-                }
             }
 
             // Первый тайл становится обычным вместо эксесс
@@ -308,22 +268,13 @@ namespace Maze
             newTile.xIndex = toBeReplacedByExcessTile.xIndex;
             newTile.MoveDown();
 
-            if (toBecomeExcessTile.currentPlayer != null)
-            {
-                toBecomeExcessTile.currentPlayer.CurrentTile = newTile;
-                newTile.currentPlayer.transform.position = newTile.transform.position;
-            }
-            if (toBecomeExcessTile.currentItem != null)
-            {
-                toBecomeExcessTile.currentItem.CurrentTile = newTile;
-                newTile.currentItem.transform.position = newTile.transform.position;
-            }
+            AlsoMovePlayerAndItem(toBecomeExcessTile, newTile);
 
             SetTile(0, x, newTile);
             excessTile = newExcessTile;
             excessTile.ExtraPosId = 3 * MovableRowsPerSide - oldExtraPosId - 1;
         }
-        
+
         private void MoveColumnLeft()
         {
             var z = excessTile.GetRowNumber();
@@ -346,14 +297,6 @@ namespace Maze
                 currentTile.xIndex--;
                 SetTile(z, x - 1, currentTile);
                 currentTile.MoveLeft();
-                if (currentTile.currentPlayer != null)
-                {
-                    currentTile.currentPlayer.transform.position = currentTile.transform.position;
-                }
-                if (currentTile.currentItem != null)
-                {
-                    currentTile.currentItem.transform.position = currentTile.transform.position;
-                }
             }
 
             // Последний тайл становится обычным вместо эксесс
@@ -368,23 +311,35 @@ namespace Maze
             newTile.zIndex = toBeReplacedByExcessTile.zIndex;
             newTile.MoveLeft();
 
-            if (toBecomeExcessTile.currentPlayer != null)
-            {
-                toBecomeExcessTile.currentPlayer.CurrentTile = newTile;
-                newTile.currentPlayer.transform.position = newTile.transform.position;
-            }
-            if (toBecomeExcessTile.currentItem != null)
-            {
-                toBecomeExcessTile.currentItem.CurrentTile = newTile;
-                newTile.currentItem.transform.position = newTile.transform.position;
-            }
+            AlsoMovePlayerAndItem(toBecomeExcessTile, newTile);
 
             SetTile(z, BoardSize - 1, newTile);
             excessTile = newExcessTile;
             excessTile.ExtraPosId = 5 * MovableRowsPerSide - oldExtraPosId - 1;
         }
 
-        
+
+       
+        /// <summary>
+        /// Для перемещения когда mazeTile выдвигается из лабиринта.
+        /// </summary>
+        /// <param name="fromTile"></param>
+        /// <param name="toTile"></param>
+        private static void AlsoMovePlayerAndItem(MazeTile fromTile, MazeTile toTile)
+        {
+            if (fromTile.currentPlayer != null)
+            {
+                fromTile.currentPlayer.CurrentTile = toTile;
+                toTile.currentPlayer.transform.position = toTile.transform.position;
+            }
+            if (fromTile.currentItem != null)
+            {
+                fromTile.currentItem.CurrentTile = toTile;
+                toTile.currentItem.transform.position = toTile.transform.position;
+            }
+        }
+
+
         private static void CopyTileWalls(Tile.Tile oldTile, Tile.Tile newTile)
         {
             newTile.IsWallUp = oldTile.IsWallUp;
