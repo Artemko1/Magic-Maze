@@ -142,9 +142,6 @@ namespace Maze
             turnManager.ToPlayerMove();
         }
 
-        /// <summary>
-        /// Смещает ряд клеток вверх.
-        /// </summary>
         private void MoveColumnUp()
         {
             var x = excessTile.GetRowNumber();
@@ -206,9 +203,7 @@ namespace Maze
             excessTile = newExcessTile;
             excessTile.ExtraPosId = 3 * MovableRowsPerSide - oldExtraPosId - 1;
         }
-        /// <summary>
-        /// Смещает ряд клеток вправо.
-        /// </summary>
+        
         private void MoveColumnRight()
         {
             var z = excessTile.GetRowNumber();
@@ -268,9 +263,7 @@ namespace Maze
             excessTile = newExcessTile;
             excessTile.ExtraPosId = 5 * MovableRowsPerSide - oldExtraPosId - 1;
         }
-        /// <summary>
-        /// Смещает ряд клеток вниз.
-        /// </summary>
+       
         private void MoveColumnDown()
         {
             var x = excessTile.GetRowNumber();
@@ -330,9 +323,7 @@ namespace Maze
             excessTile = newExcessTile;
             excessTile.ExtraPosId = 3 * MovableRowsPerSide - oldExtraPosId - 1;
         }
-        /// <summary>
-        /// Смещает ряд клеток влево.
-        /// </summary>
+        
         private void MoveColumnLeft()
         {
             var z = excessTile.GetRowNumber();
