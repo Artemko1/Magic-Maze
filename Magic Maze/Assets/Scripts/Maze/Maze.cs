@@ -121,7 +121,7 @@ namespace Maze
         {
             if (turnManager.CurrentPhase != TurnPhase.ColumnMove)
             {
-                print("that's not a column turn'");
+                Debug.LogError("that's not a column turn");
                 return;
             }
             switch (excessTile.CurrentDirection)
