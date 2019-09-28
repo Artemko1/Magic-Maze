@@ -68,6 +68,7 @@ namespace Tile.ExcessTile
             actions.ExcessTileMap.MoveBackward.performed += ctx => MoveBackward();
             actions.ExcessTileMap.RotateClockwise.performed += ctx => RotateClockwise();
             actions.ExcessTileMap.RotateCounterclockwise.performed += ctx => RotateCounterclockwise();
+            actions.ExcessTileMap.MoveColumn.performed += ctx => maze.MoveColumn();
         }
 
         private void OnDisable()
@@ -79,6 +80,7 @@ namespace Tile.ExcessTile
             actions.ExcessTileMap.MoveBackward.performed -= ctx => MoveBackward();
             actions.ExcessTileMap.RotateClockwise.performed -= ctx => RotateClockwise();
             actions.ExcessTileMap.RotateCounterclockwise.performed -= ctx => RotateCounterclockwise();
+            actions.ExcessTileMap.MoveColumn.performed -= ctx => maze.MoveColumn();
             actions.ExcessTileMap.Disable();
         }
 

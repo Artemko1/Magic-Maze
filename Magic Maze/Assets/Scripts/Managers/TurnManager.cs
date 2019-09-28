@@ -31,21 +31,20 @@ namespace Managers
 
         public void SwitchTurn()
         {
-            if (CurrentPhase == TurnPhase.PlayerMove)
+            switch (CurrentPhase)
             {
-                ToColumnMove();
-            }
-            else if (CurrentPhase == TurnPhase.ColumnMove)
-            {
-                print("Move a column");
-            }
-            else
-            {
-                throw new Exception("Turn phase not assigned");
+                case TurnPhase.PlayerMove:
+                    ToColumnMove();
+                    break;
+                case TurnPhase.ColumnMove:
+                    ToPlayerMove();
+                    break;
+                default:
+                    throw new Exception("Turn phase not assigned");
             }
         }
-        
-        public void ToColumnMove()
+
+        private void ToColumnMove()
         {
             CurrentPlayer.actions.PlayerMap.Disable();
             maze.ExcessTile.actions.ExcessTileMap.Enable();
@@ -59,7 +58,7 @@ namespace Managers
             print("Column turn");
         }
 
-        public void ToPlayerMove()
+        private void ToPlayerMove()
         {
             maze.ExcessTile.actions.ExcessTileMap.Disable();
             CurrentPlayer.actions.PlayerMap.Enable();

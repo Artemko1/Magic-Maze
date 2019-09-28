@@ -62,8 +62,6 @@ namespace Maze
             buttons.moveColumn?.onClick.AddListener(MoveColumn);
             
             actions = new Actions();
-            actions.ExcessTileMap.MoveColumn.performed += ctx => MoveColumn();
-            actions.ExcessTileMap.MoveColumn.Enable();
         }
 
         private void Start()
@@ -117,7 +115,7 @@ namespace Maze
         /// Смещает ряд клеток.
         /// ExcessTile оказывается с противоположной стороны
         /// </summary>
-        private void MoveColumn()
+        public void MoveColumn()
         {
             if (turnManager.CurrentPhase != TurnPhase.ColumnMove)
             {
@@ -139,7 +137,7 @@ namespace Maze
                     MoveColumnRight();
                     break;
             }
-            turnManager.ToPlayerMove();
+            turnManager.SwitchTurn();
         }
 
         private void MoveColumnUp()
